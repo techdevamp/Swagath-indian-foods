@@ -1,0 +1,22 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <!--  <span>HOME</span> -->
+     <a mat-button  routerLink="/sell">Sell</a>
+     <span class="spacer"></span>
+     <a  mat-button  routerLink="/register">Register</a>
+     <a  mat-button  routerLink="/login">Login</a>
+     <a  mat-button  routerLink="/list-user">List Users</a>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<form class="form-inline md-form mr-auto mb-4">
+    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+    <button mat-icon-button >
+        <mat-icon class="mat-18">ligature</mat-icon>
+    Search</button>
+
+  </form>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,12 @@
+h1 {
+    color: #369;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 250%;
+  }
+  .image{
+    height:40em;
+    background-size:cover;
+    width:auto;
+    background-image:url("https://www.google.com/images/srpr/logo4w.png");
+    background-position:50% 50%;
+  }
