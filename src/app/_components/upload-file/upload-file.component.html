@@ -3,26 +3,13 @@
     <thead>
     <tr>
       <td>
+          <label> Upload File</label>
           <input id="files" style="display: inline-block;" name="uploadExcel"
           type="file" (change)="setFile($event.target.files)" >
       </td>
       <td><button type="button" class="btn btn-info" (click)="uploadData()" >Upload</button></td>
     </tr>
-    <tr>
-        <th>Item Id</th>
-        <th>Item Name</th>
-        <th>Item Description</th>
-        <th>Item Price</th>
-      </tr>
     </thead>
-    <tbody>
-      <tr *ngFor="let item of itemDetails">
-          <td >{{item.itemId}}</td>
-          <td>{{item.itemName}}</td>
-          <td>{{item.itemDescription}}</td>
-          <td>{{item.itemPrice}}</td>
-        </tr>
-      </tbody>
   </table>
 
 </div>

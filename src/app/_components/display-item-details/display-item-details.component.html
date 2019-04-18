@@ -1,0 +1,40 @@
+<section class="app flex-container" fxLayout="column" fxLayoutAlign="start stretch">
+
+    <mat-toolbar color="primary" class="mat-elevation-z10">
+      <mat-icon>favorite</mat-icon>
+      Indian Grocery Store
+    </mat-toolbar>
+
+    <!-- this flex item takes the rest of the screen in height -->
+    <mat-sidenav-container fxFlex>
+      <mat-sidenav mode="side" align="end" class="mat-elevation-z6" #sidenav>
+        </mat-sidenav>
+        </mat-sidenav-container>
+        <section class="flex-container" fxLayout="column" fxLayoutAlign="start stretch">
+          <mat-table [dataSource]="dataSource"
+          matSort matSortActive="itemName" matSortDirection="asc" matSortDisableClear>
+            <ng-container matColumnDef="itemId">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>Item Id</mat-header-cell>
+              <mat-cell *matCellDef="let item">{{item.id}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="itemName">
+              <mat-header-cell *matHeaderCellDef>Item Name</mat-header-cell>
+              <mat-cell *matCellDef="let item">{{item.itemName}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="itemDescription">
+              <mat-header-cell *matHeaderCellDef>Item Description</mat-header-cell>
+              <mat-cell *matCellDef="let item">{{item.itemDescription}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="itemPrice">
+              <mat-header-cell *matHeaderCellDef>Item Price</mat-header-cell>
+              <mat-cell *matCellDef="let item">{{item.itemPrice}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="Image">
+                <mat-header-cell *matHeaderCellDef>Item Image</mat-header-cell>
+                <mat-cell *matCellDef="let item"><img src="../../../assets/images/rice3.png" alt="model rice3"></mat-cell>
+              </ng-container>
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+          </mat-table>
+        </section>
+  </section>

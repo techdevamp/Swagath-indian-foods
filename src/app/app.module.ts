@@ -8,14 +8,17 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RegisterUserComponent } from './_components/register-user/register-user.component';
 import { HomeScreenComponent } from './_components/home-screen/home-screen.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCardModule, MatListModule, MatToolbarModule, MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,
-  MatSortModule, MatTableModule, MatSidenavModule, MatIconModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatListModule, MatToolbarModule
+  , MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,
+  MatSortModule, MatTableModule, MatSidenavModule, MatIconModule} from '@angular/material';
 import { LoginComponent } from './_components/login/login.component';
 import { AlertComponent } from './_components/alert.component';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { ListUserComponent } from './_components/list-user/list-user.component';
 import { EditUserComponent } from './_components/edit-user/edit-user.component';
 import { UploadFileComponent } from './_components/upload-file/upload-file.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { DisplayItemDetailsComponent } from './_components/display-item-details/display-item-details.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,8 @@ import { UploadFileComponent } from './_components/upload-file/upload-file.compo
     AlertComponent,
     ListUserComponent,
     EditUserComponent,
-    UploadFileComponent
+    UploadFileComponent,
+    DisplayItemDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -46,8 +50,8 @@ import { UploadFileComponent } from './_components/upload-file/upload-file.compo
     MatSortModule,
     MatProgressSpinnerModule,
     MatSidenavModule,
-    MatIconModule
-
+    MatIconModule,
+    FlexLayoutModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

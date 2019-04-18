@@ -42,7 +42,11 @@ export class DataService {
 
   uploadFile(file: FormData): Observable<ApiResponse> {
 
-    return this.http.post<ApiResponse>(this.baseUrl + '/upload/itemDetails', file);
+    return this.http.post<ApiResponse>(this.baseUrl + '/upload/dataFile', file);
+  }
+
+  getItemDetails(): Observable<ApiResponse> {
+    return this.http.get<ApiResponse>(this.baseUrl + '/upload/getItemDetails');
   }
 }
 // Access-Control-Allow-Origin: *

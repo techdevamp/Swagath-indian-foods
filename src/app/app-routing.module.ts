@@ -9,9 +9,10 @@ import { AuthGuard } from './_guards';
 import { UserDetailsComponent } from './_components/user-details/user-details.component';
 import { ListUserComponent } from './_components/list-user/list-user.component';
 import { UploadFileComponent } from './_components/upload-file/upload-file.component';
+import { DisplayItemDetailsComponent } from './_components/display-item-details/display-item-details.component';
 
 const routes: Routes = [
-{ path: '', redirectTo: '/home', pathMatch: 'full', canActivate: [AuthGuard] },
+{ path: '', redirectTo: '/login', pathMatch: 'full', canActivate: [AuthGuard] },
 {path: 'login', component: LoginComponent},
 {path: 'home', component: HomeScreenComponent},
 {path: 'register', component:  RegisterUserComponent},
@@ -19,7 +20,7 @@ const routes: Routes = [
 {path: 'edit-user', component: EditUserComponent },
 {path: 'add-userDetails', component: UserDetailsComponent },
 {path: 'upload-file', component: UploadFileComponent },
-
+{path: 'display-item-details', component: DisplayItemDetailsComponent },
 // otherwise redirect to home
 {path: '**', redirectTo: '' }];
 export const routing = RouterModule.forRoot(routes);

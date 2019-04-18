@@ -1,7 +1,8 @@
-import { ItemDetails } from './../../_models/item.details';
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { DataService, AlertService } from 'src/app/_services';
 import { first } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-upload-file',
@@ -9,11 +10,12 @@ import { first } from 'rxjs/operators';
   styleUrls: ['./upload-file.component.scss']
 })
 export class UploadFileComponent implements OnInit {
-  itemDetails: ItemDetails[];
+
   fileToUpload: File;
-
-  constructor(private dataService: DataService, private alertService: AlertService) {}
-
+  DataTransferService;
+  constructor(private dataService: DataService
+    ,         private alertService: AlertService
+    ,         private router: Router) {}
   ngOnInit() {
 
   }
@@ -28,8 +30,8 @@ export class UploadFileComponent implements OnInit {
     formData.append('uploadExcel', this.fileToUpload, this.fileToUpload.name);
     this.dataService.uploadFile(formData).pipe(first()).subscribe(res => {
       this.alertService.success(res.message, true),
-      this.itemDetails = res.result;
-      // this.goToUsersDetails(),
+      this.router.navigate(['display-item-details']);
     });
   }
 }
+

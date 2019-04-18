@@ -1,7 +1,6 @@
 export class ItemDetails {
-    itemId: number;
+    id: number;
     itemName: string;
     itemDescription: string;
     itemPrice: number;
-    itemDetailsFile: File;
 }
