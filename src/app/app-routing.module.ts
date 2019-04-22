@@ -10,6 +10,7 @@ import { UserDetailsComponent } from './_components/user-details/user-details.co
 import { ListUserComponent } from './_components/list-user/list-user.component';
 import { UploadFileComponent } from './_components/upload-file/upload-file.component';
 import { DisplayItemDetailsComponent } from './_components/display-item-details/display-item-details.component';
+import { SidenavListComponent } from './_components/sidenav-list/sidenav-list.component';
 
 const routes: Routes = [
 { path: '', redirectTo: '/login', pathMatch: 'full', canActivate: [AuthGuard] },
@@ -19,8 +20,15 @@ const routes: Routes = [
 {path: 'list-user', component: ListUserComponent },
 {path: 'edit-user', component: EditUserComponent },
 {path: 'add-userDetails', component: UserDetailsComponent },
-{path: 'upload-file', component: UploadFileComponent },
-{path: 'display-item-details', component: DisplayItemDetailsComponent },
+
+
+{path: 'side-nav-list', component: SidenavListComponent
+, children: [{
+  path: 'upload-file/:id',
+  outlet: 'sidemenu',
+  component: UploadFileComponent
+}, { path: 'display-item-details/:id', outlet: 'sidemenu', component: DisplayItemDetailsComponent },
+] },
 // otherwise redirect to home
 {path: '**', redirectTo: '' }];
 export const routing = RouterModule.forRoot(routes);

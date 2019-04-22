@@ -10,7 +10,8 @@ import { HomeScreenComponent } from './_components/home-screen/home-screen.compo
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCardModule, MatListModule, MatToolbarModule
   , MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,
-  MatSortModule, MatTableModule, MatSidenavModule, MatIconModule} from '@angular/material';
+  MatSortModule, MatTableModule, MatSidenavModule, MatIconModule, MatMenuModule,
+  MatDialogModule} from '@angular/material';
 import { LoginComponent } from './_components/login/login.component';
 import { AlertComponent } from './_components/alert.component';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
@@ -19,6 +20,9 @@ import { EditUserComponent } from './_components/edit-user/edit-user.component';
 import { UploadFileComponent } from './_components/upload-file/upload-file.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DisplayItemDetailsComponent } from './_components/display-item-details/display-item-details.component';
+import { CommonModule } from '@angular/common';
+import { SidenavListComponent } from './_components/sidenav-list/sidenav-list.component';
+import { SubscriptionsComponent } from './_components/subscriptions/subscriptions.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,9 @@ import { DisplayItemDetailsComponent } from './_components/display-item-details/
     ListUserComponent,
     EditUserComponent,
     UploadFileComponent,
-    DisplayItemDetailsComponent
+    DisplayItemDetailsComponent,
+    SidenavListComponent,
+    SubscriptionsComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +46,7 @@ import { DisplayItemDetailsComponent } from './_components/display-item-details/
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    CommonModule,
     MatButtonModule,
     MatCardModule,
     MatListModule,
@@ -51,7 +58,9 @@ import { DisplayItemDetailsComponent } from './_components/display-item-details/
     MatProgressSpinnerModule,
     MatSidenavModule,
     MatIconModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatDialogModule,
+    MatMenuModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import { AlertService, AuthenticationService, DataTransferService } from './../../_services';
 
-@Component({templateUrl: 'login.component.html'})
+@Component({templateUrl: 'login.component.html',
+selector: 'app-login' })
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     loading = false;
@@ -60,7 +61,7 @@ export class LoginComponent implements OnInit {
                     window.localStorage.setItem('token', data.result.token);
                     this.dataTransferService.setApiResponse(data);
                     // this.router.navigate(['add-userDetails']);
-                    this.router.navigate(['upload-file']);
+                    this.router.navigate(['side-nav-list']);
                   } else {
                     this.invalidLogin = true;
                     alert(data.message);
@@ -71,4 +72,5 @@ export class LoginComponent implements OnInit {
                     this.loading = false;
                 });
     }
+    @Input() error: string | null;
 }

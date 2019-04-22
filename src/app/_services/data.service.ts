@@ -1,3 +1,4 @@
+import { EmailData } from './../_models/email.data';
 import { AppConstants } from './../constants/AppConstants';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
@@ -40,13 +41,19 @@ export class DataService {
     return this.http.post<ApiResponse>(this.baseUrl + '/userDetails/addUserDetails', usersDetails);
   }
 
-  uploadFile(file: FormData): Observable<ApiResponse> {
-
-    return this.http.post<ApiResponse>(this.baseUrl + '/upload/dataFile', file);
+  uploadFile(file: FormData, uploadType: string): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(this.baseUrl + '/upload/' + uploadType, file);
   }
 
   getItemDetails(): Observable<ApiResponse> {
     return this.http.get<ApiResponse>(this.baseUrl + '/upload/getItemDetails');
+  }
+
+  getSubscriptionDetails(): Observable<ApiResponse> {
+    return this.http.get<ApiResponse>(this.baseUrl + '/upload/getSubscriptionsDetails');
+  }
+  sendEmail(emailData: EmailData): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(this.baseUrl + '/upload/sendEmail' , emailData);
   }
 }
 // Access-Control-Allow-Origin: *
