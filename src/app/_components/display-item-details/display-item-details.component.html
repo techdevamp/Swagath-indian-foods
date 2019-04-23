@@ -16,15 +16,15 @@ fxLayoutGap.xs="0" fxFlex="100%" >
             </ng-container>
             <ng-container matColumnDef="itemName">
               <mat-header-cell *matHeaderCellDef>Item Name</mat-header-cell>
-              <mat-cell *matCellDef="let item">{{item.itemName}}</mat-cell>
+              <mat-cell *matCellDef="let item">{{item.productItemNm}}</mat-cell>
             </ng-container>
             <ng-container matColumnDef="itemDescription">
               <mat-header-cell *matHeaderCellDef>Item Description</mat-header-cell>
-              <mat-cell *matCellDef="let item">{{item.itemDescription}}</mat-cell>
+              <mat-cell *matCellDef="let item">{{item.productItemDesc}}</mat-cell>
             </ng-container>
             <ng-container matColumnDef="itemPrice">
               <mat-header-cell *matHeaderCellDef>Item Price</mat-header-cell>
-              <mat-cell *matCellDef="let item">{{item.itemPrice}}</mat-cell>
+              <mat-cell *matCellDef="let item">{{item.productItemUnitPrice}}</mat-cell>
             </ng-container>
             <ng-container matColumnDef="Image">
                 <mat-header-cell *matHeaderCellDef>Item Image</mat-header-cell>

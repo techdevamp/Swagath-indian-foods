@@ -1,6 +1,8 @@
 export class ItemDetails {
     id: number;
-    itemName: string;
-    itemDescription: string;
-    itemPrice: number;
+    productItemNm: string;
+    productItemDesc: string;
+    productItemWeight: number
+    productItemQnty: number
+    productItemUnitPrice: number;
 }
