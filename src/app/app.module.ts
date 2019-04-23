@@ -11,7 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCardModule, MatListModule, MatToolbarModule
   , MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,
   MatSortModule, MatTableModule, MatSidenavModule, MatIconModule, MatMenuModule,
-  MatDialogModule} from '@angular/material';
+  MatDialogModule, MatCheckboxModule} from '@angular/material';
 import { LoginComponent } from './_components/login/login.component';
 import { AlertComponent } from './_components/alert.component';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
@@ -60,7 +60,8 @@ import { SubscriptionsComponent } from './_components/subscriptions/subscription
     MatIconModule,
     FlexLayoutModule,
     MatDialogModule,
-    MatMenuModule
+    MatMenuModule,
+    MatCheckboxModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

@@ -1,3 +1,47 @@
-<p>
-  subscriptions works!
-</p>
+<section class="flex-container" fxLayout="column" fxLayoutAlign="center"
+fxLayoutGap.xs="0" fxFlex="100%" >
+<div class="example-container mat-elevation-z8">
+  <mat-table [dataSource]="dataSourceSub"
+  matSort matSortActive="firstName" matSortDirection="asc" matSortDisableClear >
+    <ng-container matColumnDef="firstName">
+      <mat-header-cell *matHeaderCellDef>First Name</mat-header-cell>
+      <mat-cell *matCellDef="let sub">{{sub.firstName}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="lastName">
+      <mat-header-cell *matHeaderCellDef>Last Name</mat-header-cell>
+      <mat-cell *matCellDef="let sub">{{sub.lastName}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+      <mat-cell *matCellDef="let sub">{{sub.email}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="subscribed">
+        <mat-header-cell *matHeaderCellDef> Subscribed </mat-header-cell>
+        <mat-cell *matCellDef="let sub">{{sub.subscribed}}</mat-cell>
+      </ng-container>
+      <!-- Checkbox Column -->
+      <ng-container matColumnDef="select">
+        <mat-header-cell *matHeaderCellDef>
+          <mat-checkbox (change)="$event ? masterToggle() : null"
+                        [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()">
+          </mat-checkbox>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-checkbox (click)="$event.stopPropagation()"
+                        (change)="$event ? selection.toggle(row) : null"
+                        [checked]="selection.isSelected(row)">
+          </mat-checkbox>
+        </mat-cell>
+      </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumnsSub"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumnsSub"></mat-row>
+  </mat-table>
+  <mat-paginator #paginator
+         [pageSize]="10"
+         [pageSizeOptions]="[5, 10, 20]">
+</mat-paginator>
+<button mat-button (click)="sendEmail(selection.selected)" >Send</button>
+</div>
+</section>

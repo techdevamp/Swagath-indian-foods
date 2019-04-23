@@ -7,14 +7,14 @@
             <a mat-list-item (click)="navigate('display-item-details','items')">Display Item Details</a>
             <mat-divider><hr></mat-divider>
             <a mat-list-item (click)="navigate('upload-file','subscriptions')">Upload Subscription File</a>
-            <a mat-list-item (click)="navigate('display-item-details','subscriptions')">Display Subscriptions Details</a>
+            <a mat-list-item (click)="navigate('subscriptions','subscriptions')">Display Subscriptions Details</a>
             <mat-divider><hr></mat-divider>
         </mat-drawer>
         <mat-drawer-content>
-            <div class="container">
-                <div class="row row-offcanvas row-offcanvas-right">
+            <div >
+
                     <router-outlet name="sidemenu"></router-outlet>
-                </div>
+
             </div>
         </mat-drawer-content>
       </mat-drawer-container>

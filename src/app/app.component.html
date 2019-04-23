@@ -7,7 +7,7 @@
 
       <button mat-button>About</button>
       <button mat-button>Contact</button>
-      <button mat-button (click)="logout()">Logout</button>
+      <button mat-button (click)="logout()" *ngIf='currentUser'>Logout</button>
     </mat-toolbar-row>
   </mat-toolbar>
 <!-- main app container -->

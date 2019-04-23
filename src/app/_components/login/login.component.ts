@@ -40,7 +40,9 @@ export class LoginComponent implements OnInit {
 
     // convenience getter for easy access to form fields
     get f() { return this.loginForm.controls; }
-
+    register() {
+      this.router.navigate(['register']);
+    }
     onSubmit() {
         this.submitted = true;
 

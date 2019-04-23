@@ -52,7 +52,7 @@ export class DataService {
   getSubscriptionDetails(): Observable<ApiResponse> {
     return this.http.get<ApiResponse>(this.baseUrl + '/upload/getSubscriptionsDetails');
   }
-  sendEmail(emailData: EmailData): Observable<ApiResponse> {
+  sendEmail(emailData: EmailData[]): Observable<ApiResponse> {
     return this.http.post<ApiResponse>(this.baseUrl + '/upload/sendEmail' , emailData);
   }
 }

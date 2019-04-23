@@ -1,13 +1,8 @@
 <section class="flex-container" fxLayout="column" fxLayoutAlign="center"
 fxLayoutGap.xs="0" fxFlex="100%" >
 
-    <mat-toolbar color="primary" class="mat-elevation-z10">
-      <mat-icon>favorite</mat-icon>
-      Indian Grocery Store
-    </mat-toolbar>
-
     <!-- this flex item takes the rest of the screen in height -->
-<div *ngIf="uploadType==='items'">
+<div>
           <mat-table [dataSource]="dataSourceItems"
           matSort matSortActive="itemName" matSortDirection="asc" matSortDisableClear >
             <ng-container matColumnDef="itemId">
@@ -28,39 +23,15 @@ fxLayoutGap.xs="0" fxFlex="100%" >
             </ng-container>
             <ng-container matColumnDef="Image">
                 <mat-header-cell *matHeaderCellDef>Item Image</mat-header-cell>
-                <mat-cell *matCellDef="let item"><img src="../../../assets/images/{{item.itemName}}.png" alt="{{item.itemName}}"></mat-cell>
+                <mat-cell *matCellDef="let item"><img src="../../../assets/images/{{item.productItemNm}}.png" alt="{{item.itemName}}"></mat-cell>
               </ng-container>
-            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-          <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+            <mat-header-row *matHeaderRowDef="displayedColumnsItems"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumnsItems"></mat-row>
           </mat-table>
-        </div>
-<div *ngIf="uploadType==='subscriptions'">
-          <mat-table [dataSource]="dataSourceSub"
-          matSort matSortActive="firstName" matSortDirection="asc" matSortDisableClear >
-            <ng-container matColumnDef="firstName">
-              <mat-header-cell *matHeaderCellDef>First Name</mat-header-cell>
-              <mat-cell *matCellDef="let sub">{{sub.firstName}}</mat-cell>
-            </ng-container>
-            <ng-container matColumnDef="lastName">
-              <mat-header-cell *matHeaderCellDef>Last Name</mat-header-cell>
-              <mat-cell *matCellDef="let sub">{{sub.lastName}}</mat-cell>
-            </ng-container>
-            <ng-container matColumnDef="email">
-              <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
-              <mat-cell *matCellDef="let sub">{{sub.email}}</mat-cell>
-            </ng-container>
-            <ng-container matColumnDef="subscribed">
-                <mat-header-cell *matHeaderCellDef> Subscribed </mat-header-cell>
-                <mat-cell *matCellDef="let sub">{{sub.subscribed}}</mat-cell>
-              </ng-container>
-              <ng-container matColumnDef="send">
-                  <mat-header-cell *matHeaderCellDef> Send </mat-header-cell>
-                  <mat-cell *matCellDef="let sub"><button mat-button (click)="sendEmail(sub.email)" >Send</button></mat-cell>
-                </ng-container>
-
-            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-          <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-          </mat-table>
+          <mat-paginator #paginator
+            [pageSize]="10"
+            [pageSizeOptions]="[5, 10, 20]">
+            </mat-paginator>
         </div>
         </section>
 

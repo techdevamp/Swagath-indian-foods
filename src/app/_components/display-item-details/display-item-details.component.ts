@@ -1,57 +1,45 @@
-import { EmailData } from './../../_models/email.data';
-import { SubscriptionsComponent } from './../subscriptions/subscriptions.component';
-import { Component, OnInit } from '@angular/core';
+import { ItemDetailsDataSource } from './ItemDetailsDataSource';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { ItemDetails } from 'src/app/_models/item.details';
-import { UserDataSource } from './UserDataSource';
 import { DataService } from 'src/app/_services';
-import { Router, ActivatedRoute } from '@angular/router';
-import { SubscriptionsDataSource } from '../subscriptions/SubscriptionsDataSource';
-import { SubscriptionsData } from 'src/app/_models/subscription.data';
-
+import { ActivatedRoute } from '@angular/router';
+import { MatPaginator, MatSort } from '@angular/material';
 
 @Component({
   selector: 'app-display-item-details',
   templateUrl: './display-item-details.component.html',
   styleUrls: ['./display-item-details.component.scss']
 })
-export class DisplayItemDetailsComponent implements OnInit {
+export class DisplayItemDetailsComponent implements OnInit, AfterViewInit {
   constructor(private dataService: DataService,
-              private router: Router
-    ,         private route: ActivatedRoute) { }
+              private route: ActivatedRoute) { }
   itemDetails: ItemDetails[];
-  dataSourceItems: UserDataSource;
-  dataSourceSub: SubscriptionsDataSource;
-  subscriptions: SubscriptionsData[];
+  dataSourceItems: ItemDetailsDataSource;
   uploadType: string;
-  displayedColumns: string[];
-
+  displayedColumnsItems: string[];
   /**
    * name
    */
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   ngOnInit() {
-    this.dataSourceItems = null;
-    this.displayedColumns = null;
-    this.dataSourceSub = null;
     this.route.params.subscribe(params => {
       this.uploadType = params.id;
     });
-    if (this.uploadType === 'items') {
-      this.displayedColumns = ['itemId', 'itemName', 'itemDescription', 'itemPrice', 'Image'];
-      this.dataSourceItems = new UserDataSource(this.dataService);
-      this.dataSourceItems.loadItemDetails();
-    } else {
-        this.displayedColumns = ['firstName', 'lastName', 'email', 'subscribed', 'send' ];
-        this.dataSourceSub = new SubscriptionsDataSource(this.dataService);
-        this.dataSourceSub.loadSubscriptionsDetails();
-    }
-  }
-  public sendEmail(email: string): void {
-    const emailData: EmailData = new EmailData();
-    emailData.to = email;
-    emailData.message = 'This is for you.... ';
-    emailData.subject = 'Test Email from anugular sunil';
 
-    this.dataService.sendEmail(emailData).subscribe(res => alert(res.result));
+    this.displayedColumnsItems = ['itemId', 'itemName', 'itemDescription', 'itemPrice', 'Image'];
+
+    this.dataSourceItems = new ItemDetailsDataSource(this.dataService);
+    this.dataSourceItems.loadItemDetails();
+  }
+  /**
+   * Set the paginator after the view init since this component will
+   * be able to query its view for the initialized paginator.
+   */
+  ngAfterViewInit() {
+
+    this.dataSourceItems.paginator = this.paginator;
+    this.dataSourceItems.sort = this.sort;
   }
 }

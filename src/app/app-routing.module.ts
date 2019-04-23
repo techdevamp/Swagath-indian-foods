@@ -11,6 +11,7 @@ import { ListUserComponent } from './_components/list-user/list-user.component';
 import { UploadFileComponent } from './_components/upload-file/upload-file.component';
 import { DisplayItemDetailsComponent } from './_components/display-item-details/display-item-details.component';
 import { SidenavListComponent } from './_components/sidenav-list/sidenav-list.component';
+import { SubscriptionsComponent } from './_components/subscriptions/subscriptions.component';
 
 const routes: Routes = [
 { path: '', redirectTo: '/login', pathMatch: 'full', canActivate: [AuthGuard] },
@@ -22,12 +23,21 @@ const routes: Routes = [
 {path: 'add-userDetails', component: UserDetailsComponent },
 
 
-{path: 'side-nav-list', component: SidenavListComponent
-, children: [{
+{  path: 'side-nav-list',
+    component: SidenavListComponent,
+     children: [{
   path: 'upload-file/:id',
   outlet: 'sidemenu',
   component: UploadFileComponent
-}, { path: 'display-item-details/:id', outlet: 'sidemenu', component: DisplayItemDetailsComponent },
+  },
+  {
+    path: 'display-item-details/:id',
+    outlet: 'sidemenu',
+    component: DisplayItemDetailsComponent
+  },
+{ path: 'subscriptions/:id',
+    outlet: 'sidemenu',
+    component: SubscriptionsComponent   },
 ] },
 // otherwise redirect to home
 {path: '**', redirectTo: '' }];
