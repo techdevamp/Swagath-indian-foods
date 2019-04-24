@@ -7,7 +7,11 @@
 
       <button mat-button>About</button>
       <button mat-button>Contact</button>
-      <button mat-button (click)="logout()" *ngIf='currentUser'>Logout</button>
+      <button mat-button (click)="homeDetails()">Home</button>
+      <button mat-button (click)="logout()" *ngIf='currentUser ; else loginButton'>Logout</button>
+      <ng-template #loginButton>
+      <button mat-button  (click)="loginScreen()" >Login</button>
+    </ng-template>
     </mat-toolbar-row>
   </mat-toolbar>
 <!-- main app container -->

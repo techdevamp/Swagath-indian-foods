@@ -22,4 +22,12 @@ export class AppComponent {
         this.authenticationService.logout();
         this.router.navigate(['login']);
     }
+
+    homeDetails() {
+      this.router.navigate(['home-details']);
+    }
+
+    loginScreen() {
+      this.router.navigate(['login']);
+    }
 }

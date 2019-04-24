@@ -1,3 +1,4 @@
+import { FileDetails } from './../../_models/file.details';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { DataService, AlertService } from 'src/app/_services';
@@ -12,6 +13,7 @@ import { first } from 'rxjs/operators';
 export class UploadFileComponent implements OnInit {
   uploadType: string;
   fileToUpload: File;
+  fileDetails: FileDetails;
   constructor(private dataService: DataService
     ,         private alertService: AlertService
     ,         private router: Router
@@ -19,6 +21,10 @@ export class UploadFileComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
         this.uploadType = params.id;
+      });
+    this.dataService.getFileDetails(this.uploadType).subscribe(res => {
+          this.fileDetails = res.result;
+          this.alertService.success(res.message, true);
       });
   }
 
@@ -32,7 +38,7 @@ export class UploadFileComponent implements OnInit {
     formData.append('uploadExcel', this.fileToUpload, this.fileToUpload.name);
     this.dataService.uploadFile(formData, this.uploadType).pipe(first()).subscribe(res => {
       this.alertService.success(res.message, true),
-
+      this.fileDetails = res.result;
       this.router.navigate([{outlets: {sidemenu: ['display-item-details', this.uploadType]}}],
         {relativeTo: this.route.parent});
     });

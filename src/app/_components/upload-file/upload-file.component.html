@@ -12,9 +12,27 @@
     </thead>
     <tbody>
       <tr>
+        <th>
+          File Name
+        </th>
+        <th>
+            File Upload By
+          </th>
+          <th>
+              File Upload Date
+            </th>
+      </tr>
+      <tr *ngFor="let fileDtl of fileDetails">
         <td>
-          <a></a>
+          <a>{{fileDtl.fileNm}}</a>
         </td>
+        <td>
+            <a>{{fileDtl.uploadBy}}</a>
+          </td>
+          <td>
+              <a>{{fileDtl.uploadDt | date}}</a>
+            </td>
+
       </tr>
     </tbody>
   </table>

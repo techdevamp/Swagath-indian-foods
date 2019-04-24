@@ -11,7 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCardModule, MatListModule, MatToolbarModule
   , MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,
   MatSortModule, MatTableModule, MatSidenavModule, MatIconModule, MatMenuModule,
-  MatDialogModule, MatCheckboxModule} from '@angular/material';
+  MatDialogModule, MatCheckboxModule, MatGridListModule} from '@angular/material';
 import { LoginComponent } from './_components/login/login.component';
 import { AlertComponent } from './_components/alert.component';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
@@ -23,6 +23,7 @@ import { DisplayItemDetailsComponent } from './_components/display-item-details/
 import { CommonModule } from '@angular/common';
 import { SidenavListComponent } from './_components/sidenav-list/sidenav-list.component';
 import { SubscriptionsComponent } from './_components/subscriptions/subscriptions.component';
+import { HomeDetailsComponent } from './_components/home-details/home-details.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { SubscriptionsComponent } from './_components/subscriptions/subscription
     UploadFileComponent,
     DisplayItemDetailsComponent,
     SidenavListComponent,
-    SubscriptionsComponent
+    SubscriptionsComponent,
+    HomeDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +63,8 @@ import { SubscriptionsComponent } from './_components/subscriptions/subscription
     FlexLayoutModule,
     MatDialogModule,
     MatMenuModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatGridListModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

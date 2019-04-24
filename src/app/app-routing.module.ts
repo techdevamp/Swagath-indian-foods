@@ -1,5 +1,4 @@
 import { EditUserComponent } from './_components/edit-user/edit-user.component';
-
 import { LoginComponent } from './_components/login/login.component';
 import { HomeScreenComponent } from './_components/home-screen/home-screen.component';
 import { RegisterUserComponent } from './_components/register-user/register-user.component';
@@ -12,6 +11,7 @@ import { UploadFileComponent } from './_components/upload-file/upload-file.compo
 import { DisplayItemDetailsComponent } from './_components/display-item-details/display-item-details.component';
 import { SidenavListComponent } from './_components/sidenav-list/sidenav-list.component';
 import { SubscriptionsComponent } from './_components/subscriptions/subscriptions.component';
+import { HomeDetailsComponent } from './_components/home-details/home-details.component';
 
 const routes: Routes = [
 { path: '', redirectTo: '/login', pathMatch: 'full', canActivate: [AuthGuard] },
@@ -21,7 +21,7 @@ const routes: Routes = [
 {path: 'list-user', component: ListUserComponent },
 {path: 'edit-user', component: EditUserComponent },
 {path: 'add-userDetails', component: UserDetailsComponent },
-
+{path: 'home-details', component: HomeDetailsComponent },
 
 {  path: 'side-nav-list',
     component: SidenavListComponent,

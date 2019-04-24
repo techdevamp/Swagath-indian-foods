@@ -45,6 +45,9 @@ export class DataService {
     return this.http.post<ApiResponse>(this.baseUrl + '/upload/' + uploadType, file);
   }
 
+  getFileDetails(uploadType: string): Observable<ApiResponse> {
+    return this.http.get<ApiResponse>(this.baseUrl + '/upload/getFileDetails?fileType=' + uploadType);
+  }
   getItemDetails(): Observable<ApiResponse> {
     return this.http.get<ApiResponse>(this.baseUrl + '/upload/getItemDetails');
   }
