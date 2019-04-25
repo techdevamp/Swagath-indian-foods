@@ -28,7 +28,7 @@ export class DisplayItemDetailsComponent implements OnInit, AfterViewInit {
       this.uploadType = params.id;
     });
 
-    this.displayedColumnsItems = ['itemId', 'itemName', 'itemDescription', 'itemPrice', 'Image'];
+    this.displayedColumnsItems = ['itemId', 'itemName', 'itemDescription','itemWeight','itemQuantity','itemPrice', 'Image'];
 
     this.dataSourceItems = new ItemDetailsDataSource(this.dataService);
     this.dataSourceItems.loadItemDetails();

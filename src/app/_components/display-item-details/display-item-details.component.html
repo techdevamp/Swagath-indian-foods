@@ -17,6 +17,14 @@ fxLayoutGap.xs="0" fxFlex="100%" >
               <mat-header-cell *matHeaderCellDef>Item Description</mat-header-cell>
               <mat-cell *matCellDef="let item">{{item.productItemDesc}}</mat-cell>
             </ng-container>
+            <ng-container matColumnDef="itemWeight">
+              <mat-header-cell *matHeaderCellDef>Item Weight</mat-header-cell>
+              <mat-cell *matCellDef="let item">{{item.productItemWeight}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="itemQuantity">
+              <mat-header-cell *matHeaderCellDef>Item Quantity</mat-header-cell>
+              <mat-cell *matCellDef="let item">{{item.productItemQnty}}</mat-cell>
+            </ng-container>
             <ng-container matColumnDef="itemPrice">
               <mat-header-cell *matHeaderCellDef>Item Price</mat-header-cell>
               <mat-cell *matCellDef="let item">{{item.productItemUnitPrice}}</mat-cell>
