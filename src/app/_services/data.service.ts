@@ -48,8 +48,12 @@ export class DataService {
   getFileDetails(uploadType: string): Observable<ApiResponse> {
     return this.http.get<ApiResponse>(this.baseUrl + '/upload/getFileDetails?fileType=' + uploadType);
   }
-  getItemDetails(): Observable<ApiResponse> {
-    return this.http.get<ApiResponse>(this.baseUrl + '/upload/getItemDetails');
+  getItemDetails(category: string): Observable<ApiResponse> {
+    return this.http.get<ApiResponse>(this.baseUrl + '/upload/getItemDetails?category=' + category);
+  }
+
+  getProductCategories(): Observable<ApiResponse> {
+    return this.http.get<ApiResponse>(this.baseUrl + '/upload/getProductCategories');
   }
 
   getSubscriptionDetails(): Observable<ApiResponse> {

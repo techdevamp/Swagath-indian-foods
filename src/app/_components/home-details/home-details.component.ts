@@ -3,6 +3,7 @@ import { ItemDetails } from 'src/app/_models/item.details';
 import { ItemDetailsDataSource } from '../display-item-details/ItemDetailsDataSource';
 import { DataService } from 'src/app/_services';
 import { first } from 'rxjs/operators';
+import { ProductCategory } from 'src/app/_models/product.category';
 
 @Component({
   selector: 'app-home-details',
@@ -13,12 +14,20 @@ export class HomeDetailsComponent implements OnInit {
 
   constructor(private dataService: DataService) { }
   itemDetails: ItemDetails[];
-  dataSourceItems: ItemDetailsDataSource;
+  productCategories: ProductCategory[];
 
   ngOnInit() {
-    this.dataService.getItemDetails().pipe(first()).subscribe(res => {
+    this.getProductCategories();
+  }
+  public getProductCategories() {
+    this.dataService.getProductCategories().pipe(first()).subscribe(res => {
+      this.productCategories = res.result;
+      this.getItemDetails(this.productCategories[0].productCategoryNm);
+    });
+  }
+  public getItemDetails(category: string) {
+    this.dataService.getItemDetails(category).pipe(first()).subscribe(res => {
       this.itemDetails = res.result;
     });
   }
-
 }

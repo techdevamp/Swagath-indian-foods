@@ -30,4 +30,8 @@ export class AppComponent {
     loginScreen() {
       this.router.navigate(['login']);
     }
+
+    adminScreen() {
+      this.router.navigate(['side-nav-list']);
+    }
 }

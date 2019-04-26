@@ -1,17 +1,22 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="warn">
     <mat-toolbar-row>
-      <span><img src="./assets/logo.png"></span>
-      <span class="app-toolbar-filler"></span>
-      <span class="align-center"></span>
+      <span></span>
       <span class="app-toolbar-filler"></span>
 
-      <button mat-button>About</button>
-      <button mat-button>Contact</button>
-      <button mat-button (click)="homeDetails()">Home</button>
-      <button mat-button (click)="logout()" *ngIf='currentUser ; else loginButton'>Logout</button>
-      <ng-template #loginButton>
-      <button mat-button  (click)="loginScreen()" >Login</button>
-    </ng-template>
+      <span class="align-center">
+          <button mat-button (click)="adminScreen()"><mat-icon > person_pin</mat-icon>Admin</button>
+          <button mat-button><mat-icon>phone</mat-icon>Contact</button>
+          <button mat-button (click)="homeDetails()"><mat-icon>home</mat-icon>Home</button>
+      </span>
+      <span class = "filler"></span>
+      <span class="align-right">
+          <button mat-button (click)="logout()" *ngIf='currentUser ; else loginButton'>Logout<mat-icon>arrow_right_alt</mat-icon></button>
+          <ng-template #loginButton>
+          <button mat-button  (click)="loginScreen()" >Login</button>
+        </ng-template>
+      </span>
+
+
     </mat-toolbar-row>
   </mat-toolbar>
 <!-- main app container -->

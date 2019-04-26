@@ -23,7 +23,7 @@ export class UserDataSource extends DataSource<ItemDetails> {
   }
 
   loadItemDetails() {
-        this.dataService.getItemDetails().pipe(first()).subscribe(res => {
+        this.dataService.getItemDetails('').pipe(first()).subscribe(res => {
         this.itemDetails.next(res.result);
       });
   }

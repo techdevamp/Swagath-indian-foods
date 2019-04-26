@@ -14,15 +14,21 @@ export class UploadFileComponent implements OnInit {
   uploadType: string;
   fileToUpload: File;
   fileDetails: FileDetails;
+  displayDetails: string;
   constructor(private dataService: DataService
     ,         private alertService: AlertService
     ,         private router: Router
     ,         private route: ActivatedRoute) {}
   ngOnInit() {
-    this.route.params.subscribe(params => {
+      this.route.params.subscribe(params => {
         this.uploadType = params.id;
       });
-    this.dataService.getFileDetails(this.uploadType).subscribe(res => {
+      if (this.uploadType === 'items') {
+        this.displayDetails = 'display-item-details';
+      } else if (this.uploadType === 'subscriptions') {
+        this.displayDetails = 'subscriptions';
+      }
+      this.dataService.getFileDetails(this.uploadType).subscribe(res => {
           this.fileDetails = res.result;
           this.alertService.success(res.message, true);
       });
@@ -39,7 +45,7 @@ export class UploadFileComponent implements OnInit {
     this.dataService.uploadFile(formData, this.uploadType).pipe(first()).subscribe(res => {
       this.alertService.success(res.message, true),
       this.fileDetails = res.result;
-      this.router.navigate([{outlets: {sidemenu: ['display-item-details', this.uploadType]}}],
+      this.router.navigate([{outlets: {sidemenu: [this.displayDetails, this.uploadType]}}],
         {relativeTo: this.route.parent});
     });
   }

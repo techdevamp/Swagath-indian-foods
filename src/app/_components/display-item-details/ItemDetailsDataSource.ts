@@ -14,7 +14,7 @@ export class ItemDetailsDataSource extends MatTableDataSource<ItemDetails> {
     this.itemDetails.complete();
   }*/
   loadItemDetails() {
-    this.dataService.getItemDetails().pipe(first()).subscribe(res => {
+    this.dataService.getItemDetails('').pipe(first()).subscribe(res => {
       this.data = res.result;
     });
   }

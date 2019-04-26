@@ -1,6 +1,7 @@
 
-<div class="jumbotron col-sm-6 form-group" align="right" >
-<mat-card>
+<div class="jumbotron " >
+    <div class="container text-center col-sm-5">
+<mat-card >
     <mat-card-header>
 <mat-card-title>Login</mat-card-title>
 </mat-card-header>
@@ -23,10 +24,11 @@
 <mat-card-actions align="middle">
 
 <button type="submit" mat-raised-button>Login</button>
- <a (click)="register()">Register</a>
+<button (click)="register()" mat-raised-button>Register</button>
 </mat-card-actions>
 </form>
 <mat-progress-spinner mode="determinate" color="primary"></mat-progress-spinner>
 </mat-card-content>
 </mat-card>
+</div>
 </div>
