@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemDetails } from 'src/app/_models/item.details';
-import { ItemDetailsDataSource } from '../display-item-details/ItemDetailsDataSource';
 import { DataService } from 'src/app/_services';
 import { first } from 'rxjs/operators';
 import { ProductCategory } from 'src/app/_models/product.category';

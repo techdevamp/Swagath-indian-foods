@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthenticationService } from './_services';
 import { RegisterUser } from './_models';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +13,8 @@ export class AppComponent {
 
     constructor(
         private router: Router,
-        private authenticationService: AuthenticationService
+        private authenticationService: AuthenticationService,
+        private route: ActivatedRoute
     ) {
         this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     }
@@ -23,8 +24,8 @@ export class AppComponent {
         this.router.navigate(['login']);
     }
 
-    homeDetails() {
-      this.router.navigate(['home-details']);
+    home(path: any) {
+      this.router.navigate([path]);
     }
 
     loginScreen() {

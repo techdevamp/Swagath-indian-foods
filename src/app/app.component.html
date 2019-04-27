@@ -1,12 +1,9 @@
 <mat-toolbar color="warn">
     <mat-toolbar-row>
-      <span></span>
-      <span class="app-toolbar-filler"></span>
-
       <span class="align-center">
           <button mat-button (click)="adminScreen()"><mat-icon > person_pin</mat-icon>Admin</button>
           <button mat-button><mat-icon>phone</mat-icon>Contact</button>
-          <button mat-button (click)="homeDetails()"><mat-icon>home</mat-icon>Home</button>
+          <button mat-button (click)="home('home')"><mat-icon>home</mat-icon>Home</button>
       </span>
       <span class = "filler"></span>
       <span class="align-right">
@@ -15,15 +12,11 @@
           <button mat-button  (click)="loginScreen()" >Login</button>
         </ng-template>
       </span>
-
-
     </mat-toolbar-row>
   </mat-toolbar>
 <!-- main app container -->
 <main>
-
-        <div class="app-content">
-                <alert></alert>
-                <router-outlet></router-outlet>
+    <div class="app-content">
+      <router-outlet></router-outlet>
     </div>
 </main>

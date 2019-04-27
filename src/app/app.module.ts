@@ -65,6 +65,7 @@ import { HomeDetailsComponent } from './_components/home-details/home-details.co
     MatMenuModule,
     MatCheckboxModule,
     MatGridListModule
+
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

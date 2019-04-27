@@ -13,35 +13,68 @@ import { SidenavListComponent } from './_components/sidenav-list/sidenav-list.co
 import { SubscriptionsComponent } from './_components/subscriptions/subscriptions.component';
 import { HomeDetailsComponent } from './_components/home-details/home-details.component';
 
-const routes: Routes = [
-{ path: '', redirectTo: '/login', pathMatch: 'full', canActivate: [AuthGuard] },
-{path: 'login', component: LoginComponent},
-{path: 'home', component: HomeScreenComponent},
-{path: 'register', component:  RegisterUserComponent},
-{path: 'list-user', component: ListUserComponent },
-{path: 'edit-user', component: EditUserComponent },
-{path: 'add-userDetails', component: UserDetailsComponent },
-{path: 'home-details', component: HomeDetailsComponent },
-
-{  path: 'side-nav-list',
-    component: SidenavListComponent,
-     children: [{
-  path: 'upload-file/:id',
-  outlet: 'sidemenu',
-  component: UploadFileComponent
+const routes: Routes =
+[
+  {
+    path: '',
+    redirectTo: '/login',
+    pathMatch: 'full',
+    canActivate: [AuthGuard]
   },
   {
-    path: 'display-item-details/:id',
-    outlet: 'sidemenu',
-    component: DisplayItemDetailsComponent
+    path: 'login',
+    component: LoginComponent
   },
-{ path: 'subscriptions/:id',
-    outlet: 'sidemenu',
-    component: SubscriptionsComponent   },
-] },
+  {
+    path: 'home',
+    component: HomeScreenComponent,
+    children: [{
+      path: 'home-details',
+      outlet: 'homeDetails',
+      component: HomeDetailsComponent
+    }]
+  },
+  {
+    path: 'register',
+    component:  RegisterUserComponent
+  },
+  {
+    path: 'list-user',
+    component: ListUserComponent
+  },
+  {
+    path: 'edit-user',
+    component: EditUserComponent
+  },
+  {
+    path: 'add-userDetails',
+    component: UserDetailsComponent
+  },
+  {
+    path: 'side-nav-list',
+    component: SidenavListComponent,
+    children: [{
+      path: 'upload-file/:id',
+      outlet: 'sidemenu',
+      component: UploadFileComponent
+    },
+    {
+      path: 'display-item-details/:id',
+      outlet: 'sidemenu',
+      component: DisplayItemDetailsComponent
+    },
+    {
+      path: 'subscriptions/:id',
+      outlet: 'sidemenu',
+      component: SubscriptionsComponent
+    }]
+  },
 // otherwise redirect to home
-{path: '**', redirectTo: '' }];
-export const routing = RouterModule.forRoot(routes);
+  {
+    path: '**',
+    redirectTo: '/login'
+  }];
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

@@ -6,4 +6,5 @@ export class ItemDetails {
     productItemQnty: number;
     productItemUnitPrice: number;
     productCategory: string;
+    productItemDscnt: number;
 }

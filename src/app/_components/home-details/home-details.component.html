@@ -1,11 +1,9 @@
   <mat-sidenav-container fxFlex  >
     <mat-sidenav  #sideNavItemDetails mode="side" >
-
       <mat-list *ngFor="let categ of productCategories">
         <a mat-list-item (click)='getItemDetails(categ.productCategoryNm)'>{{categ.productCategoryNm}}</a>
         <mat-divider><hr></mat-divider>
       </mat-list>
-
     </mat-sidenav>
 
     <mat-sidenav-content >
@@ -17,7 +15,10 @@
               <img src="../../../assets/images/{{item.productItemNm}}.png" alt="model {{item.productItemNm}}" class="img-responsive">
               <mat-grid-tile-footer class="snipcart-details">
                   <h3 mat-line>{{item.productItemNm}}({{item.productItemWeight | number}} gm)</h3>
-                  <h3>$5.00<span >{{item.productItemUnitPrice | currency}}</span></h3>
+                  <h3 *ngIf="item.productItemDscnt; else noDiscount">{{item.productItemDscnt | currency}}<span>{{item.productItemUnitPrice | currency}}</span></h3>
+                  <ng-template #noDiscount>
+                    <h3>{{item.productItemUnitPrice | currency}}</h3>
+                  </ng-template>
                   <span mat-line>{{item.productItemDesc}}</span>
                   <button mat-icon-button >
                       <mat-icon>info</mat-icon>
@@ -29,5 +30,3 @@
         </mat-grid-list>
     </mat-sidenav-content>
   </mat-sidenav-container>
-
-
