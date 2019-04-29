@@ -17,8 +17,8 @@ export class SubscriptionsDataSource extends MatTableDataSource<SubscriptionsDat
     this.subscriptionsData.complete();
   }*/
 
-  loadSubscriptionsDetails() {
-        this.dataService.getSubscriptionDetails().pipe(first()).subscribe(res => {
+  loadSubscriptionsDetails(fileId: any) {
+        this.dataService.getSubscriptionsByFileId(fileId).pipe(first()).subscribe(res => {
         this.data = (res.result);
       });
   }

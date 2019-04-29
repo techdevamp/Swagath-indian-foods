@@ -13,8 +13,8 @@ export class ItemDetailsDataSource extends MatTableDataSource<ItemDetails> {
   disconnect(collectionViewer: CollectionViewer): void {
     this.itemDetails.complete();
   }*/
-  loadItemDetails() {
-    this.dataService.getItemDetails('').pipe(first()).subscribe(res => {
+  loadItemDetails(fileId: any) {
+    this.dataService.getItemDetailsByFileId(fileId).pipe(first()).subscribe(res => {
       this.data = res.result;
     });
   }

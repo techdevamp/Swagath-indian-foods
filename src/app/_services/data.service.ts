@@ -1,7 +1,7 @@
 import { EmailData } from './../_models/email.data';
 import { AppConstants } from './../constants/AppConstants';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { RegisterUser } from '../_models/registerUser';
 import { ApiResponse } from '../_models/api.response';
@@ -46,10 +46,23 @@ export class DataService {
   }
 
   getFileDetails(uploadType: string): Observable<ApiResponse> {
-    return this.http.get<ApiResponse>(this.baseUrl + '/upload/getFileDetails?fileType=' + uploadType);
+    const params = new HttpParams().set('fileType', uploadType);
+    return this.http.get<ApiResponse>(this.baseUrl + '/upload/getFileDetails', {params});
   }
+
   getItemDetails(category: string): Observable<ApiResponse> {
-    return this.http.get<ApiResponse>(this.baseUrl + '/upload/getItemDetails?category=' + category);
+    const params = new HttpParams().set('category', category);
+    return this.http.get<ApiResponse>(this.baseUrl + '/upload/getItemDetails', { params });
+  }
+
+  getItemDetailsByFileId(fileId: any): Observable<ApiResponse> {
+    const params = new HttpParams().set('fileId', fileId);
+    return this.http.get<ApiResponse>(this.baseUrl + '/upload/getItemDetailsByFileId', { params });
+  }
+
+  getSubscriptionsByFileId(fileId: any): Observable<ApiResponse> {
+    const params = new HttpParams().set('fileId', fileId);
+    return this.http.get<ApiResponse>(this.baseUrl + '/upload/getSubscriptionsByFileId', { params });
   }
 
   getProductCategories(): Observable<ApiResponse> {

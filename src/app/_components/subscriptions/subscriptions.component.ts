@@ -18,7 +18,7 @@ export class SubscriptionsComponent implements OnInit, AfterViewInit {
               private route: ActivatedRoute) { }
   dataSourceSub: SubscriptionsDataSource;
   subscriptions: SubscriptionsData[];
-  uploadType: string;
+  fileId: string;
   displayedColumnsSub: string[];
   selection = new SelectionModel<SubscriptionsData>(true, []);
 
@@ -27,11 +27,11 @@ export class SubscriptionsComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
   this.route.params.subscribe(params => {
-  this.uploadType = params.id;
+  this.fileId = params.id;
   });
   this.displayedColumnsSub = ['firstName', 'lastName', 'email', 'subscribed', 'select' ];
   this.dataSourceSub = new SubscriptionsDataSource(this.dataService);
-  this.dataSourceSub.loadSubscriptionsDetails();
+  this.dataSourceSub.loadSubscriptionsDetails(this.fileId);
   }
 /*
 * Set the paginator after the view init since this component will

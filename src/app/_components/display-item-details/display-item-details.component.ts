@@ -15,30 +15,25 @@ export class DisplayItemDetailsComponent implements OnInit, AfterViewInit {
               private route: ActivatedRoute) { }
   itemDetails: ItemDetails[];
   dataSourceItems: ItemDetailsDataSource;
-  uploadType: string;
+  uploadDt: any;
   displayedColumnsItems: string[];
-  /**
-   * name
-   */
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.uploadType = params.id;
-    });
-
-    this.displayedColumnsItems = ['itemId', 'itemName', 'itemDescription','itemWeight','itemQuantity','itemPrice', 'Image'];
-
-    this.dataSourceItems = new ItemDetailsDataSource(this.dataService);
-    this.dataSourceItems.loadItemDetails();
+      this.route.params.subscribe(params => {
+      this.uploadDt = params.id;
+      });
+      this.displayedColumnsItems = ['itemId', 'itemName', 'itemDescription', 'itemWeight', 'itemQuantity', 'itemPrice', 'Image'];
+      this.dataSourceItems = new ItemDetailsDataSource(this.dataService);
+      this.dataSourceItems.loadItemDetails(this.uploadDt);
   }
   /**
    * Set the paginator after the view init since this component will
    * be able to query its view for the initialized paginator.
    */
   ngAfterViewInit() {
-
     this.dataSourceItems.paginator = this.paginator;
     this.dataSourceItems.sort = this.sort;
   }

@@ -1,8 +1,9 @@
 import { FileDetails } from './../../_models/file.details';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe } from '@angular/core';
 import { DataService, AlertService } from 'src/app/_services';
 import { first } from 'rxjs/operators';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -15,10 +16,12 @@ export class UploadFileComponent implements OnInit {
   fileToUpload: File;
   fileDetails: FileDetails;
   displayDetails: string;
+  uploadDt: any;
   constructor(private dataService: DataService
     ,         private alertService: AlertService
     ,         private router: Router
-    ,         private route: ActivatedRoute) {}
+    ,         private route: ActivatedRoute
+    ,         private datePipe: DatePipe ) {}
   ngOnInit() {
       this.route.params.subscribe(params => {
         this.uploadType = params.id;
@@ -28,10 +31,14 @@ export class UploadFileComponent implements OnInit {
       } else if (this.uploadType === 'subscriptions') {
         this.displayDetails = 'subscriptions';
       }
-      this.dataService.getFileDetails(this.uploadType).subscribe(res => {
-          this.fileDetails = res.result;
-          this.alertService.success(res.message, true);
-      });
+      this.getFileDetails();
+  }
+
+  public getFileDetails() {
+    this.dataService.getFileDetails(this.uploadType).subscribe(res => {
+      this.fileDetails = res.result;
+      this.alertService.success(res.message, true);
+  });
   }
 
   public setFile(event: any): void {
@@ -45,9 +52,13 @@ export class UploadFileComponent implements OnInit {
     this.dataService.uploadFile(formData, this.uploadType).pipe(first()).subscribe(res => {
       this.alertService.success(res.message, true),
       this.fileDetails = res.result;
-      this.router.navigate([{outlets: {sidemenu: [this.displayDetails, this.uploadType]}}],
-        {relativeTo: this.route.parent});
+      this.getFileDetails();
     });
+  }
+
+  public getItemDetails(fileId: any): void {
+    this.router.navigate([{outlets: {sidemenu: [this.displayDetails, fileId]}}],
+      {relativeTo: this.route.parent});
   }
 }
 

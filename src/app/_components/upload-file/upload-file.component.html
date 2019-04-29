@@ -16,21 +16,15 @@
           File Name
         </th>
         <th>
-            File Upload By
+            File Upload Date
           </th>
-          <th>
-              File Upload Date
-            </th>
       </tr>
       <tr *ngFor="let fileDtl of fileDetails">
         <td>
-          <a>{{fileDtl.fileNm}}</a>
+          <a (click)="getItemDetails(fileDtl.id)">{{fileDtl.fileNm}}</a>
         </td>
-        <td>
-            <a>{{fileDtl.uploadBy}}</a>
-          </td>
           <td>
-              <a>{{fileDtl.uploadDt | date}}</a>
+              <label>{{fileDtl.uploadDt | date }}</label>
             </td>
 
       </tr>
