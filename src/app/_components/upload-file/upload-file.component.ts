@@ -1,6 +1,6 @@
 import { FileDetails } from './../../_models/file.details';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Component, OnInit, Pipe } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DataService, AlertService } from 'src/app/_services';
 import { first } from 'rxjs/operators';
 import { DatePipe } from '@angular/common';
@@ -11,7 +11,8 @@ import { DatePipe } from '@angular/common';
   templateUrl: './upload-file.component.html',
   styleUrls: ['./upload-file.component.scss']
 })
-export class UploadFileComponent implements OnInit {
+export class UploadFileComponent implements OnInit, OnDestroy {
+
   uploadType: string;
   fileToUpload: File;
   fileDetails: FileDetails;
@@ -25,13 +26,13 @@ export class UploadFileComponent implements OnInit {
   ngOnInit() {
       this.route.params.subscribe(params => {
         this.uploadType = params.id;
+        this.getFileDetails();
       });
       if (this.uploadType === 'items') {
         this.displayDetails = 'display-item-details';
       } else if (this.uploadType === 'subscriptions') {
         this.displayDetails = 'subscriptions';
       }
-      this.getFileDetails();
   }
 
   public getFileDetails() {
@@ -59,6 +60,9 @@ export class UploadFileComponent implements OnInit {
   public getItemDetails(fileId: any): void {
     this.router.navigate([{outlets: {sidemenu: [this.displayDetails, fileId]}}],
       {relativeTo: this.route.parent});
+  }
+  ngOnDestroy() {
+   this.uploadType = null;
   }
 }
 

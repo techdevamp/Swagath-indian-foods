@@ -3,9 +3,11 @@
     <thead>
     <tr>
       <td>
-          <label> Upload File</label>
-          <input id="files" style="display: inline-block;" name="uploadExcel"
+          <label class="btn btn-outline-primary">
+              <span>Select File</span>
+          <input id="files" style="display: none;" name="uploadExcel"
           type="file" (change)="setFile($event)" >
+        </label>
       </td>
       <td><button type="button" class="btn btn-info" (click)="uploadData()" >Upload</button></td>
     </tr>
@@ -15,14 +17,16 @@
         <th>
           File Name
         </th>
-        <th>
-            File Upload Date
-          </th>
+
+          <th>
+              File Upload Date
+            </th>
       </tr>
       <tr *ngFor="let fileDtl of fileDetails">
         <td>
           <a (click)="getItemDetails(fileDtl.id)">{{fileDtl.fileNm}}</a>
         </td>
+
           <td>
               <label>{{fileDtl.uploadDt | date }}</label>
             </td>
