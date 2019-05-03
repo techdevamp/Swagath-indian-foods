@@ -12,6 +12,7 @@ import { DisplayItemDetailsComponent } from './_components/display-item-details/
 import { SidenavListComponent } from './_components/sidenav-list/sidenav-list.component';
 import { SubscriptionsComponent } from './_components/subscriptions/subscriptions.component';
 import { HomeDetailsComponent } from './_components/home-details/home-details.component';
+import { ItemDealsLinkComponent } from './_components/item-deals-link/item-deals-link.component';
 
 const routes: Routes =
 [
@@ -67,6 +68,11 @@ const routes: Routes =
       path: 'subscriptions/:id',
       outlet: 'sidemenu',
       component: SubscriptionsComponent
+    },
+    {
+      path: 'item-link-deals/:id',
+      outlet: 'sidemenu',
+      component: ItemDealsLinkComponent
     }]
   },
 // otherwise redirect to home

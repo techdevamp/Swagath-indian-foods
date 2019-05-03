@@ -21,8 +21,7 @@ export class UploadFileComponent implements OnInit, OnDestroy {
   constructor(private dataService: DataService
     ,         private alertService: AlertService
     ,         private router: Router
-    ,         private route: ActivatedRoute
-    ,         private datePipe: DatePipe ) {}
+    ,         private route: ActivatedRoute ) {}
   ngOnInit() {
       this.route.params.subscribe(params => {
         this.uploadType = params.id;

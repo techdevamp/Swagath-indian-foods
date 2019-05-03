@@ -24,6 +24,7 @@ import { CommonModule } from '@angular/common';
 import { SidenavListComponent } from './_components/sidenav-list/sidenav-list.component';
 import { SubscriptionsComponent } from './_components/subscriptions/subscriptions.component';
 import { HomeDetailsComponent } from './_components/home-details/home-details.component';
+import { ItemDealsLinkComponent } from './_components/item-deals-link/item-deals-link.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { HomeDetailsComponent } from './_components/home-details/home-details.co
     DisplayItemDetailsComponent,
     SidenavListComponent,
     SubscriptionsComponent,
-    HomeDetailsComponent
+    HomeDetailsComponent,
+    ItemDealsLinkComponent
   ],
   imports: [
     BrowserModule,
