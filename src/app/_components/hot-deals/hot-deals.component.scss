@@ -3,8 +3,15 @@
 @import url('../../../assets/css/bootstrap.css');
 @import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/prism/^1.12.2/themes/prism.css');
-.bkcgrnd {
-  background-color: chocolate;
-  vertical-align: middle;
-  align-items: center;
+
+ng-template {
+
+  border: 1px solid #c3c3c3;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-align-content: center;
+  align-content: center;
+  align-self: center
 }

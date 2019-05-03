@@ -1,3 +1,4 @@
+import { HotDealsComponent } from './_components/hot-deals/hot-deals.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -25,6 +26,7 @@ import { SidenavListComponent } from './_components/sidenav-list/sidenav-list.co
 import { SubscriptionsComponent } from './_components/subscriptions/subscriptions.component';
 import { HomeDetailsComponent } from './_components/home-details/home-details.component';
 import { ItemDealsLinkComponent } from './_components/item-deals-link/item-deals-link.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { ItemDealsLinkComponent } from './_components/item-deals-link/item-deals
     SidenavListComponent,
     SubscriptionsComponent,
     HomeDetailsComponent,
-    ItemDealsLinkComponent
+    ItemDealsLinkComponent,
+    HotDealsComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +69,8 @@ import { ItemDealsLinkComponent } from './_components/item-deals-link/item-deals
     MatDialogModule,
     MatMenuModule,
     MatCheckboxModule,
-    MatGridListModule
+    MatGridListModule,
+    NgbModule
 
   ],
   providers: [
