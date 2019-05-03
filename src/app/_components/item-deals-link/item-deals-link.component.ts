@@ -22,14 +22,14 @@ displayedColumnsItems: string[];
       this.uploadDt = params.id;
       });
       this.displayedColumnsItems = ['selectDeal','dealCode', 'dealDesc'];
-      this.dataSourceItems = new ItemDetailsDataSource(this.dataService);
-      this.dataSourceItems.loadItemDetails(this.uploadDt);
+    //  this.dataSourceItems = new ItemDetailsDataSource(this.dataService);
+    //  this.dataSourceItems.loadItemDetails(this.uploadDt);
   }
 
   loadItemDetails(fileId: any) {
-    this.dataService.getItemDetailsByFileId(fileId).pipe(first()).subscribe(res => {
-      this.data = res.result;
-    });
+  //  this.dataService.getItemDetailsByFileId(fileId).pipe(first()).subscribe(res => {
+  //    this.data = res.result;
+  //  });
   }
 
 }
