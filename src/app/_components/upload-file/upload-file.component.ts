@@ -1,10 +1,9 @@
+import { SubscriptionsData } from 'src/app/_models/subscription.data';
 import { FileDetails } from './../../_models/file.details';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DataService, AlertService } from 'src/app/_services';
 import { first } from 'rxjs/operators';
-import { DatePipe } from '@angular/common';
-
 
 @Component({
   selector: 'app-upload-file',
@@ -21,7 +20,7 @@ export class UploadFileComponent implements OnInit, OnDestroy {
   constructor(private dataService: DataService
     ,         private alertService: AlertService
     ,         private router: Router
-    ,         private route: ActivatedRoute ) {}
+    ,         private route: ActivatedRoute) {}
   ngOnInit() {
       this.route.params.subscribe(params => {
         this.uploadType = params.id;

@@ -1,9 +1,3 @@
-:host {
-  display: flex;
-  justify-content: center;
-  margin: 100px 0px;
-}
-
 .mat-form-field {
   width: 100%;
   min-width: 300px;
@@ -28,12 +22,8 @@ mat-card-content {
 }
 .login-main{
   margin-top: 30%;
-  }
-
-
-  mat-card{
-
+}
+mat-card{
   min-width: 40%;
-
-
-  }
+  background-color: blue;
+}

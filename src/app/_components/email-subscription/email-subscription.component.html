@@ -1,0 +1,26 @@
+<div class="col-sm-5">
+  <h4 mat-dialog-title>Subscribe to get the latest updates</h4>
+    <form>
+      <mat-icon color="warn">email</mat-icon>
+      <mat-form-field class="newsletter-form-field">
+        <mat-label>Email</mat-label>
+        <input matInput [formControl]="emailAddress" >
+        <mat-error *ngIf="emailAddress.hasError('email') ">
+          Please enter a valid email address
+        </mat-error>
+
+      </mat-form-field>
+      <mat-icon color="warn">sms</mat-icon>
+      <mat-form-field class="newsletter-form-field">
+          <mat-label>Text</mat-label>
+          <input matInput [formControl]="phoneNo" >
+          <mat-error *ngIf="phoneNo.hasError('minlength') ">
+            Phone number must be at least 10 digits
+          </mat-error>
+          <mat-error *ngIf="phoneNo.hasError('maxlength') ">
+              Phone number must not excees 10 digits
+            </mat-error>
+        </mat-form-field>
+      <button mat-raised-button color="primary" (click)="subscribe()"  type="submit">Subscribe</button>
+    </form>
+</div>

@@ -21,4 +21,8 @@ export class HomeScreenComponent implements OnInit , AfterViewInit {
 
   ngOnInit() {
   }
+
+  subscribeEmail() {
+    this.router.navigate(['emailSubscription']);
+  }
 }

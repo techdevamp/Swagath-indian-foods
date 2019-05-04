@@ -6,6 +6,7 @@ import { Observable, of } from 'rxjs';
 import { RegisterUser } from '../_models/registerUser';
 import { ApiResponse } from '../_models/api.response';
 import { UsersDetails } from '../_models/usersDetails';
+import { SubscriptionsData } from '../_models/subscription.data';
 
 
 @Injectable({
@@ -74,6 +75,10 @@ export class DataService {
   }
   sendEmail(emailData: EmailData[]): Observable<ApiResponse> {
     return this.http.post<ApiResponse>(this.baseUrl + '/upload/sendEmail' , emailData);
+  }
+  subscribeEmail(subscriptionsData: SubscriptionsData): Observable<ApiResponse> {
+    alert(this.baseUrl + '/upload/subscribe')
+    return this.http.post<ApiResponse>(this.baseUrl + '/upload/subscribe' , subscriptionsData);
   }
 }
 // Access-Control-Allow-Origin: *

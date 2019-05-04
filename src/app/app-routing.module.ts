@@ -1,3 +1,4 @@
+import { EmailSubscriptionComponent } from './_components/email-subscription/email-subscription.component';
 import { EditUserComponent } from './_components/edit-user/edit-user.component';
 import { LoginComponent } from './_components/login/login.component';
 import { HomeScreenComponent } from './_components/home-screen/home-screen.component';
@@ -74,6 +75,10 @@ const routes: Routes =
       outlet: 'sidemenu',
       component: ItemDealsLinkComponent
     }]
+  },
+  {
+    path: 'emailSubscription',
+    component: EmailSubscriptionComponent
   },
 // otherwise redirect to home
   {

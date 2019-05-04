@@ -27,6 +27,7 @@ import { SubscriptionsComponent } from './_components/subscriptions/subscription
 import { HomeDetailsComponent } from './_components/home-details/home-details.component';
 import { ItemDealsLinkComponent } from './_components/item-deals-link/item-deals-link.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EmailSubscriptionComponent } from './_components/email-subscription/email-subscription.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SubscriptionsComponent,
     HomeDetailsComponent,
     ItemDealsLinkComponent,
-    HotDealsComponent
+    HotDealsComponent,
+    EmailSubscriptionComponent
   ],
   imports: [
     BrowserModule,
