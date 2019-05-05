@@ -82,6 +82,10 @@ export class DataService {
   subscribeEmail(subscriptionsData: SubscriptionsData): Observable<ApiResponse> {
     return this.http.post<ApiResponse>(this.baseUrl + '/upload/subscribe' , subscriptionsData);
   }
+
+  getDealsDetails(): Observable<ApiResponse> {
+    return this.http.get<ApiResponse>(this.baseUrl + '/upload/getFileDetails');
+  }
 }
 // Access-Control-Allow-Origin: *
 // Control-Allow-Origin
