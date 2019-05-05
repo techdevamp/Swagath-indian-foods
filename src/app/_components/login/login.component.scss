@@ -1,6 +1,7 @@
-.mat-form-field {
+mat-form-field {
   width: 100%;
   min-width: 300px;
+  background-color: cadetblue;
 }
 
 mat-card-title,
@@ -22,8 +23,9 @@ mat-card-content {
 }
 .login-main{
   margin-top: 30%;
+  background-color: cadetblue;
 }
-mat-card{
+.mat-card{
   min-width: 40%;
-  background-color: blue;
+  background-color: cadetblue;
 }

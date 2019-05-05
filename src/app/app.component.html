@@ -1,19 +1,41 @@
-<mat-toolbar color="warn">
-    <mat-toolbar-row>
-      <span class="align-center">
+<mat-toolbar color="primary">
+  <div>
+     <a (click)="home('home')">Indian Grocery Store</a>
+  </div>
+  <div fxFlex fxLayout fxLayoutAlign="flex-end"  fxHide.xs>
+    <ul fxLayout fxLayoutGap="20px" class="navigation-items">
+        <li>
+            <span class="label">
+              <button mat-button (click)="adminScreen()" ><mat-icon > shopping_cart</mat-icon>View Your Cart</button>
+            </span>
+          </li>
+          <li>
+              <span class="label">
+                <button mat-button (click)="home('home')"><mat-icon>home</mat-icon>Home</button>
+              </span>
+            </li>
+      <li>
+        <span class="label">
           <button mat-button (click)="adminScreen()"><mat-icon > person_pin</mat-icon>Admin</button>
+        </span>
+      </li>
+      <li>
+        <span class="label">
           <button mat-button><mat-icon>phone</mat-icon>Contact</button>
-          <button mat-button (click)="home('home')"><mat-icon>home</mat-icon>Home</button>
-      </span>
-      <span class = "filler"></span>
-      <span class="align-right">
-          <button mat-button (click)="logout()" *ngIf='currentUser ; else loginButton'>Logout<mat-icon>arrow_right_alt</mat-icon></button>
+        </span>
+      </li>
+
+      <li>
+        <span class="label">
+          <button mat-button (click)="logout()" *ngIf='currentUser ; else loginButton'>Logout</button>
           <ng-template #loginButton>
-          <button mat-button  (click)="loginScreen()" >Login</button>
-        </ng-template>
-      </span>
-    </mat-toolbar-row>
-  </mat-toolbar>
+            <button mat-button  (click)="loginScreen()" >Login</button>
+          </ng-template>
+        </span>
+      </li>
+    </ul>
+  </div>
+</mat-toolbar>
 <!-- main app container -->
 <main>
     <div class="app-content">

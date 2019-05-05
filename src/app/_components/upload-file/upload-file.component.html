@@ -1,7 +1,7 @@
-<div>
-  <table>
+<div class="container-fluid">
+  <table class="table">
     <thead>
-    <tr>
+    <tr scope="col">
       <td>
           <label class="btn btn-outline-primary">
               <span>Select File</span>
@@ -14,23 +14,30 @@
     </thead>
     <tbody>
       <tr>
-        <th>
+        <th  scope="col">
           File Name
         </th>
 
-          <th>
+          <th  scope="col">
               File Upload Date
             </th>
+            <th  scope="col">
+                Actions
+              </th>
       </tr>
       <tr *ngFor="let fileDtl of fileDetails">
-        <td>
+        <td scope="row">
           <a (click)="getItemDetails(fileDtl.id)">{{fileDtl.fileNm}}</a>
         </td>
 
-          <td>
+          <td scope="row">
               <label>{{fileDtl.uploadDt | date }}</label>
             </td>
-
+            <td scope="row">
+                <button mat-icon-button (click)="deleteFile(fileDtl.id)">
+                    <mat-icon class="mat-18">delete</mat-icon>
+               </button>
+              </td>
       </tr>
     </tbody>
   </table>

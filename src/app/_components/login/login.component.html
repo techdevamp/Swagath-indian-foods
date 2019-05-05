@@ -1,12 +1,12 @@
 
 <div class="jumbotron fluid " >
-    <div class="container fluid text-center col-sm-5">
+    <div class="container fluid text-center col-sm-5 ">
 <mat-card >
     <mat-card-header>
 <mat-card-title>Login</mat-card-title>
 </mat-card-header>
 <mat-card-content fxLayout="row" align="middle">
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
 <p>
 <mat-form-field>
 <input type="text" matInput placeholder="Username" formControlName="userName" required>

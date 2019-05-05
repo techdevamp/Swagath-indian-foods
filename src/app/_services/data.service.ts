@@ -34,7 +34,6 @@ export class DataService {
   }
 
   deleteUser(id: number): Observable<ApiResponse> {
-    alert(this.baseUrl + '/deleteUser/' + id);
     return this.http.delete<ApiResponse>(this.baseUrl + '/userDetails/deleteUser/' + id);
   }
 
@@ -44,6 +43,10 @@ export class DataService {
 
   uploadFile(file: FormData, uploadType: string): Observable<ApiResponse> {
     return this.http.post<ApiResponse>(this.baseUrl + '/upload/' + uploadType, file);
+  }
+
+  deleteFile(id: number): Observable<ApiResponse> {
+    return this.http.delete<ApiResponse>(this.baseUrl + '/upload/deleteFile/' + id);
   }
 
   getFileDetails(uploadType: string): Observable<ApiResponse> {
@@ -77,7 +80,6 @@ export class DataService {
     return this.http.post<ApiResponse>(this.baseUrl + '/upload/sendEmail' , emailData);
   }
   subscribeEmail(subscriptionsData: SubscriptionsData): Observable<ApiResponse> {
-    alert(this.baseUrl + '/upload/subscribe')
     return this.http.post<ApiResponse>(this.baseUrl + '/upload/subscribe' , subscriptionsData);
   }
 }

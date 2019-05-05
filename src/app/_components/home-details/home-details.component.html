@@ -1,5 +1,6 @@
+  <div class="">
   <mat-sidenav-container fxFlex  >
-    <mat-sidenav  #sideNavItemDetails mode="side" >
+    <mat-sidenav  #sideNavItemDetails mode="side" class="w3l_offers">
       <mat-list *ngFor="let categ of productCategories">
         <a mat-list-item (click)='getItemDetails(categ.productCategoryNm)'>{{categ.productCategoryNm}}</a>
         <mat-divider><hr></mat-divider>
@@ -7,7 +8,10 @@
     </mat-sidenav>
 
     <mat-sidenav-content >
-        <p><button mat-button (click)="sideNavItemDetails.toggle()">CATEGORIES</button></p>
+        <button mat-raised-button
+        (click)="sideNavItemDetails.toggle()" color="accent">
+
+        CATEGORIES</button>
       <mat-grid-list cols="4" >
           <mat-grid-tile *ngFor="let item of itemDetails" >
             <figure>
@@ -21,7 +25,7 @@
                   </ng-template>
                   <span mat-line>{{item.productItemDesc}}</span>
                   <button mat-icon-button >
-                      <mat-icon>info</mat-icon>
+                      <mat-icon>add_shopping_cart</mat-icon>
                   </button>
               </mat-grid-tile-footer>
               </div>
@@ -30,3 +34,4 @@
         </mat-grid-list>
     </mat-sidenav-content>
   </mat-sidenav-container>
+</div>

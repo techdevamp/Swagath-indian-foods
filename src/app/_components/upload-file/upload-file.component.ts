@@ -1,7 +1,7 @@
 import { SubscriptionsData } from 'src/app/_models/subscription.data';
 import { FileDetails } from './../../_models/file.details';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Pipe } from '@angular/core';
 import { DataService, AlertService } from 'src/app/_services';
 import { first } from 'rxjs/operators';
 
@@ -62,5 +62,11 @@ export class UploadFileComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
    this.uploadType = null;
   }
-}
 
+  deleteFile(id: any) {
+    this.dataService.deleteFile(id).subscribe(res => {
+        alert(res.message);
+      }
+    );
+  }
+}
