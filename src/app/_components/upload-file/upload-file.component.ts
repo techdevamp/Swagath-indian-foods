@@ -17,6 +17,7 @@ export class UploadFileComponent implements OnInit, OnDestroy {
   fileDetails: FileDetails;
   displayDetails: string;
   uploadDt: any;
+  fileName: string;
   constructor(private dataService: DataService
     ,         private alertService: AlertService
     ,         private router: Router
@@ -34,6 +35,7 @@ export class UploadFileComponent implements OnInit, OnDestroy {
   }
 
   public getFileDetails() {
+    this.fileName = '';
     this.dataService.getFileDetails(this.uploadType).subscribe(res => {
       this.fileDetails = res.result;
       this.alertService.success(res.message, true);
@@ -42,6 +44,7 @@ export class UploadFileComponent implements OnInit, OnDestroy {
 
   public setFile(event: any): void {
     this.fileToUpload = event.target.files.item(0);
+    this.fileName = this.fileToUpload.name;
   }
 
   public uploadData(): void {

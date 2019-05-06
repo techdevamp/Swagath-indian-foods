@@ -2,12 +2,14 @@
   <table class="table">
     <thead>
     <tr scope="col">
-      <td>
+      <td colspan=2>
           <label class="btn btn-outline-primary">
               <span>Select File</span>
-          <input id="files" style="display: none;" name="uploadExcel"
+          <input id="files"  name="uploadExcel"
           type="file" (change)="setFile($event)" >
+
         </label>
+        {{fileName}}
       </td>
       <td><button type="button" class="btn btn-info" (click)="uploadData()" >Upload</button></td>
     </tr>
