@@ -15,6 +15,10 @@ fxLayoutGap.xs="0" fxFlex="100%" >
       <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
       <mat-cell *matCellDef="let sub">{{sub.email}}</mat-cell>
     </ng-container>
+    <ng-container matColumnDef="phone">
+        <mat-header-cell *matHeaderCellDef>Phone Number</mat-header-cell>
+        <mat-cell *matCellDef="let sub">{{sub.phone}}</mat-cell>
+      </ng-container>
     <ng-container matColumnDef="subscribed">
         <mat-header-cell *matHeaderCellDef> Subscribed </mat-header-cell>
         <mat-cell *matCellDef="let sub">{{sub.subscribed}}</mat-cell>

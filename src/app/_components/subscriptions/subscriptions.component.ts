@@ -29,7 +29,7 @@ export class SubscriptionsComponent implements OnInit, AfterViewInit {
   this.route.params.subscribe(params => {
   this.fileId = params.id;
   });
-  this.displayedColumnsSub = ['firstName', 'lastName', 'email', 'subscribed', 'select' ];
+  this.displayedColumnsSub = ['firstName', 'lastName', 'email', 'phone', 'subscribed', 'select' ];
   this.dataSourceSub = new SubscriptionsDataSource(this.dataService);
   this.dataSourceSub.loadSubscriptionsDetails(this.fileId);
   }

@@ -33,7 +33,7 @@ export class EmailSubscriptionComponent implements OnInit {
       this.subscriptionsData.phone = this.phoneNo.value;
       this.subscriptionsData.subscribed = true;
       this.dataService.subscribeEmail(this.subscriptionsData).pipe(first()).subscribe(res => {
-        alert(res.message)
+        alert(res.message);
       });
     }
   }

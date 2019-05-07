@@ -14,25 +14,21 @@
                 <button mat-button (click)="home('home')"><mat-icon>home</mat-icon>Home</button>
               </span>
             </li>
+                <li *ngIf='currentUser' >
+                    <span class="label">
+                      <button mat-button (click)="adminScreen()"><mat-icon > person_pin</mat-icon>Admin</button>
+                    </span>
+                  </li>
       <li>
         <span class="label">
-          <button mat-button (click)="adminScreen()"><mat-icon > person_pin</mat-icon>Admin</button>
-        </span>
-      </li>
-      <li>
-        <span class="label">
-          <button mat-button><mat-icon>phone</mat-icon>Contact</button>
-        </span>
-      </li>
-
-      <li>
-        <span class="label">
-          <button mat-button (click)="logout()" *ngIf='currentUser ; else loginButton'>Logout</button>
-          <ng-template #loginButton>
+          <button mat-button (click)="logout()" *ngIf='currentUser ; else loginButton '>Logout</button>
+          <ng-template #loginButton >
             <button mat-button  (click)="loginScreen()" >Login</button>
+
           </ng-template>
         </span>
       </li>
+
     </ul>
   </div>
 </mat-toolbar>

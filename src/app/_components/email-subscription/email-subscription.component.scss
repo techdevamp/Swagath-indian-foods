@@ -1,3 +1,4 @@
+
 .modal-newsletter {color: #999;font-size: 15px; display: flex;flex-direction: column; text-align: center}
 .modal-newsletter h4 {color: #000;font-size: 30px;margin: 0;font-weight: bold;text-align: center}
 .icon-box {font-size:80px;z-index: 9;text-align: center;margin: 10px 0;}
@@ -5,3 +6,27 @@
 .newsletter-form-field {display: inline-flexbox; flex-direction: row;justify-content: space-evenly}
 .newsletter-input {flex-basis: 40%;}
 .textField{border: 1px solid #000;}
+
+.agileits_social_icons li a i {
+  padding: 0.8em 0 0;
+}
+.agileits_social_icons li a.facebook:hover{
+background:#c8ccd4;
+border-color:#3b5998;
+}
+.agileits_social_icons li a.twitter:hover{
+background:#55acee;
+border-color:#55acee;
+}
+.agileits_social_icons li a.google:hover{
+background:#dd4b39;
+border-color:#dd4b39;
+}
+.agileits_social_icons li a.instagram:hover{
+background:#833ab4;
+border-color:#833ab4;
+}
+.agileits_social_icons li a.dribbble:hover{
+background:#ea4c89;
+border-color:#ea4c89;
+}

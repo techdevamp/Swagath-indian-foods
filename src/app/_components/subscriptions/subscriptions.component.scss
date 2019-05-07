@@ -1,15 +1,12 @@
-.example-container {
-  display: flex;
-  flex-direction: column;
-  min-width: 300px;
-  margin:10px;
-}
-
-.mat-table {
+mat-table {
   overflow: auto;
   max-height: 250px;
+  color: #f2f4f7;
+  background-color: rgb(25, 208, 221);
 }
-
+mat-paginator {
+  background-color: rgb(25, 208, 221);
+}
 mat-header-cell, mat-header-row, .mat-header-cell-def{
     background:#f2f4f7;
     min-height:15px;
