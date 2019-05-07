@@ -84,7 +84,7 @@ export class DataService {
   }
 
   getDealsDetails(): Observable<ApiResponse> {
-    return this.http.get<ApiResponse>(this.baseUrl + '/upload/getFileDetails');
+    return this.http.get<ApiResponse>(this.baseUrl + '/dealAndCupon/getDealDetails');
   }
 }
 // Access-Control-Allow-Origin: *
