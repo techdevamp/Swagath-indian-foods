@@ -1,6 +1,5 @@
 <section class="flex-container" fxLayout="column" fxLayoutAlign="center"
 fxLayoutGap.xs="0" fxFlex="100%" >
-<div class="example-container mat-elevation-z8">
   <mat-table [dataSource]="dataSourceSub"
   matSort matSortActive="firstName" matSortDirection="asc" matSortDisableClear >
     <ng-container matColumnDef="firstName">
@@ -46,6 +45,14 @@ fxLayoutGap.xs="0" fxFlex="100%" >
          [pageSize]="10"
          [pageSizeOptions]="[5, 10, 20]">
 </mat-paginator>
-<button mat-button (click)="sendEmail(selection.selected)" >Send</button>
+<div class="textsms">
+      <textarea matInput required [(ngModel)]="textMessage"
+                placeholder="Text Message"></textarea>
+                <button mat-button (click)="sendText(selection.selected)" >Send Text</button>
+
+    <textarea matInput required [(ngModel)]="emailMessage"
+              placeholder="Email Message"></textarea>
+              <button mat-button (click)="sendEmail(selection.selected)" >Send Email</button>
 </div>
+
 </section>

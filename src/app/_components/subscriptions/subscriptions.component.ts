@@ -6,6 +6,7 @@ import { SubscriptionsData } from 'src/app/_models/subscription.data';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatPaginator, MatSort } from '@angular/material';
 import { EmailData } from 'src/app/_models/email.data';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-subscriptions',
@@ -21,6 +22,8 @@ export class SubscriptionsComponent implements OnInit, AfterViewInit {
   fileId: string;
   displayedColumnsSub: string[];
   selection = new SelectionModel<SubscriptionsData>(true, []);
+  textMessage: string;
+  emailMessage: string;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -58,16 +61,29 @@ export class SubscriptionsComponent implements OnInit, AfterViewInit {
 
 
   public sendEmail(email: SubscriptionsData[]): void {
-
     const emailData: EmailData[] = [];
     let emailDataInd = new EmailData();
     email.forEach(element => {emailDataInd.to = element.email;
-                              emailDataInd.message = 'This is for you.... ';
-                              emailDataInd.subject = 'Test Email from angular sunil';
+                              emailDataInd.message = this.emailMessage;
+                              emailDataInd.subject = 'Test Email from sunil';
                               emailData.push(emailDataInd);
                               emailDataInd = new EmailData();
     });
 
-    this.dataService.sendEmail(emailData).subscribe(res => alert(res.result));
+    this.dataService.sendEmail(emailData).pipe(first()).subscribe(res => alert(res.result));
+  }
+
+  public sendText(text: SubscriptionsData[]): void {
+
+    const emailData: EmailData[] = [];
+    let emailDataInd = new EmailData();
+    text.forEach(element => {
+                              emailDataInd.message = this.textMessage;
+                              emailDataInd.phone = '+15179746194';
+                              emailData.push(emailDataInd);
+                              emailDataInd = new EmailData();
+    });
+
+    this.dataService.sendEmail(emailData).pipe(first()).subscribe(res => alert(res.result));
   }
 }

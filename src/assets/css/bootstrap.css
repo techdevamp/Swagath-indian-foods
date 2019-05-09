@@ -117,6 +117,7 @@ textarea {
   margin: 0;
   font: inherit;
   color: inherit;
+  border:1px solid #000;
 }
 button {
   overflow: visible;
