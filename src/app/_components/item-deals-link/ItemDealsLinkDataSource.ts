@@ -7,7 +7,7 @@ export class ItemDealsLinkDataSource extends MatTableDataSource<Deals> {
     super();
   }
   
-  loadDealDetails(fileId: any) {
+  public loadDealDetails(fileId: any) {
     this.dataService.getDealsDetails().subscribe(res => {
       this.data = res.result;
     });

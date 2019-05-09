@@ -7,7 +7,11 @@ fxLayoutGap.xs="0" fxFlex="100%" >
           matSort matSortActive="dealTypCd" matSortDirection="asc" matSortDisableClear >
             <ng-container matColumnDef="id">
               <mat-header-cell *matHeaderCellDef mat-sort-header>Deal Id</mat-header-cell>
-              <mat-cell *matCellDef="let deal">{{deal.id}}</mat-cell>
+              
+                <mat-cell *matCellDef="let deal">
+                    <a  (click)="getItemDetails()" >{{deal.id}}</a>
+                    </mat-cell>
+              
             </ng-container>
             <ng-container matColumnDef="dealTypCd">
               <mat-header-cell *matHeaderCellDef>Deal Code</mat-header-cell>

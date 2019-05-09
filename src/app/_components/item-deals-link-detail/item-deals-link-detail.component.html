@@ -1,0 +1,45 @@
+<section class="flex-container" fxLayout="column" fxLayoutAlign="center"
+fxLayoutGap.xs="0" fxFlex="100%" >
+
+    <!-- this flex item takes the rest of the screen in height -->
+<div>
+          <mat-table [dataSource]="dataSourceItems"
+          matSort matSortActive="itemName" matSortDirection="asc" matSortDisableClear >
+            <ng-container matColumnDef="itemId">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>Item Id</mat-header-cell>
+              <mat-cell *matCellDef="let item">{{item.id}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="itemName">
+              <mat-header-cell *matHeaderCellDef>Item Name</mat-header-cell>
+              <mat-cell *matCellDef="let item">{{item.productItemNm}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="itemDescription">
+              <mat-header-cell *matHeaderCellDef>Item Description</mat-header-cell>
+              <mat-cell *matCellDef="let item">{{item.productItemDesc}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="itemWeight">
+              <mat-header-cell *matHeaderCellDef>Item Weight</mat-header-cell>
+              <mat-cell *matCellDef="let item">{{item.productItemWeight}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="itemQuantity">
+              <mat-header-cell *matHeaderCellDef>Item Quantity</mat-header-cell>
+              <mat-cell *matCellDef="let item">{{item.productItemQnty}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="itemPrice">
+              <mat-header-cell *matHeaderCellDef>Item Price</mat-header-cell>
+              <mat-cell *matCellDef="let item">{{item.productItemUnitPrice}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="Image">
+                <mat-header-cell *matHeaderCellDef>Item Image</mat-header-cell>
+                <mat-cell *matCellDef="let item"><img src="../../../assets/images/{{item.productItemNm}}.png" alt="{{item.itemName}}"></mat-cell>
+              </ng-container>
+            <mat-header-row *matHeaderRowDef="displayedColumnsItems"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumnsItems"></mat-row>
+          </mat-table>
+          <mat-paginator #paginator
+            [pageSize]="10"
+            [pageSizeOptions]="[5, 10, 20]">
+            </mat-paginator>
+        </div>
+        </section>
+

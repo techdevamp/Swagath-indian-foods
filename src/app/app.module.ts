@@ -28,6 +28,7 @@ import { HomeDetailsComponent } from './_components/home-details/home-details.co
 import { ItemDealsLinkComponent } from './_components/item-deals-link/item-deals-link.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EmailSubscriptionComponent } from './_components/email-subscription/email-subscription.component';
+import { ItemDealsLinkDetailComponent } from './_components/item-deals-link-detail/item-deals-link-detail.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { EmailSubscriptionComponent } from './_components/email-subscription/ema
     HomeDetailsComponent,
     ItemDealsLinkComponent,
     HotDealsComponent,
-    EmailSubscriptionComponent
+    EmailSubscriptionComponent,
+    ItemDealsLinkDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -76,6 +76,9 @@ export class DataService {
   getSubscriptionDetails(): Observable<ApiResponse> {
     return this.http.get<ApiResponse>(this.baseUrl + '/upload/getSubscriptionsDetails');
   }
+  getAllItemDetails(): Observable<ApiResponse> {
+    return this.http.get<ApiResponse>(this.baseUrl + '/upload/getAllItemDetails');
+  }
   sendEmail(emailData: EmailData[]): Observable<ApiResponse> {
     return this.http.post<ApiResponse>(this.baseUrl + '/upload/sendEmail' , emailData);
   }

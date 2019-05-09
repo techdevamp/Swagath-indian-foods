@@ -14,6 +14,7 @@ import { SidenavListComponent } from './_components/sidenav-list/sidenav-list.co
 import { SubscriptionsComponent } from './_components/subscriptions/subscriptions.component';
 import { HomeDetailsComponent } from './_components/home-details/home-details.component';
 import { ItemDealsLinkComponent } from './_components/item-deals-link/item-deals-link.component';
+import { ItemDealsLinkDetailComponent } from './_components/item-deals-link-detail/item-deals-link-detail.component';
 
 const routes: Routes =
 [
@@ -74,7 +75,12 @@ const routes: Routes =
       path: 'item-link-deals/:id',
       outlet: 'sidemenu',
       component: ItemDealsLinkComponent
-    }]
+    },{
+      path: 'item-deals-link-detail',
+      outlet: 'sidemenu',
+      component: ItemDealsLinkDetailComponent
+    }
+  ]
   },
   {
     path: 'emailSubscription',
