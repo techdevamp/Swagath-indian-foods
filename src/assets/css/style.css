@@ -549,6 +549,11 @@ ul.dropdown-menu.drp-mnu li a i {
 	text-decoration:line-through;
 	padding-left:1em;
 }
+h3 span{
+  font-weight:300;
+  text-decoration:line-through;
+  padding-left:1em;
+  }
 /*-- cart --*/
 .product_list_header {
     float: left;

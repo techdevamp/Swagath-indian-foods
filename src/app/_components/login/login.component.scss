@@ -22,8 +22,10 @@ mat-card-content {
   justify-content: flex-end;
 }
 .login-main{
-  margin-top: 30%;
-  background-color: cadetblue;
+  align-items: center;
+  align-content: center;
+  align-self: center;
+  width: 40%;
 }
 mat-card{
   min-width: 40%;

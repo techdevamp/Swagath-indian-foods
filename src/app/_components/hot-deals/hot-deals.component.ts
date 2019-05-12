@@ -10,7 +10,7 @@ export class HotDealsComponent implements OnInit {
 
 constructor(private ngbCarouselConfig: NgbCarouselConfig) {
   this.ngbCarouselConfig.interval = 1000;
-
+  this.ngbCarouselConfig.showNavigationIndicators = false;
 }
 
 ngOnInit() {

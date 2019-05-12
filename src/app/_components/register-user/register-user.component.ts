@@ -66,6 +66,6 @@ get f() { return this.registerForm.controls; }
  );
   }
   goToUsersDetails(): void {
-    this.router.navigateByUrl('\home');
+    this.router.navigateByUrl('\login');
   }
 }
