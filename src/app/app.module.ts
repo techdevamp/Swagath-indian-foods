@@ -29,7 +29,7 @@ import { ItemDealsLinkComponent } from './_components/item-deals-link/item-deals
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EmailSubscriptionComponent } from './_components/email-subscription/email-subscription.component';
 import { ItemDealsLinkDetailComponent } from './_components/item-deals-link-detail/item-deals-link-detail.component';
-
+import { SwiperModule } from 'ngx-swiper-wrapper';
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,7 +74,8 @@ import { ItemDealsLinkDetailComponent } from './_components/item-deals-link-deta
     MatMenuModule,
     MatCheckboxModule,
     MatGridListModule,
-    NgbModule
+    NgbModule,
+    SwiperModule
 
   ],
   providers: [
