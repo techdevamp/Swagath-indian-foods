@@ -1,32 +1,16 @@
-<div  class="swiper-container" [swiper]="config">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">
-          <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
-              <img src="../../../assets/images/1.png" alt="First slide" class="img-fluid">
-              <div class="carousel-caption">
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide">
-            <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
-                <img src="../../../assets/images/2.png" alt="Second slide" class="img-fluid">
-                <div class="carousel-caption">
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-              <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
-                  <img src="../../../assets/images/3.png" alt="Third slide" class="img-fluid">
-                  <div class="carousel-caption">
-                    </div>
-                  </div>
-                </div>
+<ngb-carousel align="center">
+
+    <ng-template ngbSlide>
+      <img src="../../../assets/images/1.1.png" alt="Random first slide" class="img-fluid">
+      <div class="carousel-caption">
 
       </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <img src="../../../assets/images/2.2.png" alt="Random second slide" class="img-fluid">
+      <div class="carousel-caption">
 
-
-    <div class="swiper-pagination"></div>
-
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
-  </div>
+      </div>
+    </ng-template>
+   
+  </ngb-carousel>
