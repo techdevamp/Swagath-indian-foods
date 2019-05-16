@@ -30,6 +30,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EmailSubscriptionComponent } from './_components/email-subscription/email-subscription.component';
 import { ItemDealsLinkDetailComponent } from './_components/item-deals-link-detail/item-deals-link-detail.component';
 import { SwiperModule } from 'ngx-swiper-wrapper';
+import { NgMatSearchBarModule } from 'ng-mat-search-bar';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,7 +77,8 @@ import { SwiperModule } from 'ngx-swiper-wrapper';
     MatCheckboxModule,
     MatGridListModule,
     NgbModule,
-    SwiperModule
+    SwiperModule,
+    NgMatSearchBarModule
 
   ],
   providers: [

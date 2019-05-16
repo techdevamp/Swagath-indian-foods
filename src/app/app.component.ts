@@ -1,7 +1,8 @@
+import { DataTransferService } from './_services/data-transfer.service';
 import { Component } from '@angular/core';
 import { AuthenticationService } from './_services';
 import { RegisterUser } from './_models';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +11,17 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class AppComponent {
   currentUser: RegisterUser;
+  itemsCount: number;
 
     constructor(
         private router: Router,
         private authenticationService: AuthenticationService,
-        private route: ActivatedRoute
+        private dataTransferService: DataTransferService
     ) {
         this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+        this.dataTransferService
+        .getItemsInCart()
+        .subscribe((itemCount: any) => (this.itemsCount = itemCount));
     }
 
     logout() {

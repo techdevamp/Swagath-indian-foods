@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { DataTransferService } from './../../_services/data-transfer.service';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ItemDetails } from 'src/app/_models/item.details';
 import { DataService } from 'src/app/_services';
 import { first } from 'rxjs/operators';
 import { ProductCategory } from 'src/app/_models/product.category';
+import { OutletContext } from '@angular/router';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-home-details',
@@ -11,9 +14,13 @@ import { ProductCategory } from 'src/app/_models/product.category';
 })
 export class HomeDetailsComponent implements OnInit {
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private dataTransferService: DataTransferService) {
+    this.itemsCount = new BehaviorSubject(0);
+   }
   itemDetails: ItemDetails[];
   productCategories: ProductCategory[];
+
+  itemsCount: BehaviorSubject<number>;
 
   ngOnInit() {
     this.getProductCategories();
@@ -28,5 +35,10 @@ export class HomeDetailsComponent implements OnInit {
     this.dataService.getItemDetails(category).pipe(first()).subscribe(res => {
       this.itemDetails = res.result;
     });
+  }
+
+  addToCart(itemId: number) {
+    this.itemsCount.next(this.itemsCount.value + 1);
+    this.dataTransferService.setItemsInCart(this.itemsCount.asObservable());
   }
 }

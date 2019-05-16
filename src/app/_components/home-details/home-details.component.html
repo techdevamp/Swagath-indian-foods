@@ -1,34 +1,36 @@
   <mat-sidenav-container fxFlex  >
     <mat-sidenav  #sideNavItemDetails mode="side" >
-      <mat-list *ngFor="let categ of productCategories">
-        <a mat-list-item (click)='getItemDetails(categ.productCategoryNm)'>{{categ.productCategoryNm}}</a>
+      <mat-list *ngFor="let categ of productCategories" class="sideMenuItemsBG">
+        <a mat-list-item (click)='getItemDetails(categ.productCategoryNm)' class="gridHeaderFooter">{{categ.productCategoryNm}}</a>
         <mat-divider><hr></mat-divider>
       </mat-list>
     </mat-sidenav>
 
     <mat-sidenav-content >
-        <button mat-raised-button
-        (click)="sideNavItemDetails.toggle()" color="accent">
-
-        CATEGORIES</button>
-        <p>Available Items</p>
-      <mat-grid-list cols="4" >
-          <mat-grid-tile *ngFor="let item of itemDetails" >
-            <figure>
-              <div class="snipcart-thumb">
-              <img src="../../../assets/images/{{item.productItemNm}}.png" alt="model {{item.productItemNm}}" class="img-responsive">
-              <mat-grid-tile-footer class="snipcart-details">
-                  <h3 mat-line>{{item.productItemNm}}({{item.productItemWeight | number}} gm)</h3>
-                  <h3 *ngIf="item.productItemDscnt; else noDiscount">{{item.productItemDscnt | currency}}<span>{{item.productItemUnitPrice | currency}}</span></h3>
+        <button mat-raised-button (click)="sideNavItemDetails.toggle()" color="accent">CATEGORIES</button>
+      <mat-grid-list cols="5" role="list">
+          <mat-grid-tile *ngFor="let item of itemDetails" role="listitem">
+            <mat-grid-tile-header >
+                <h3 mat-line>{{item.productItemNm}}({{item.productItemWeight | number}} gm)</h3>
+                <h3 *ngIf="item.productItemDscnt; else noDiscount">{{item.productItemDscnt | currency}}<span>{{item.productItemUnitPrice | currency}}</span></h3>
                   <ng-template #noDiscount>
                     <h3>{{item.productItemUnitPrice | currency}}</h3>
                   </ng-template>
+            </mat-grid-tile-header >
+            <figure>
+              <div class="snipcart-item block">
+              <div class="snipcart-thumb">
+              <img src="../../../assets/images/{{item.productItemNm}}.png" alt="model {{item.productItemNm}}" class="img-responsive">
+              <mat-grid-tile-footer>
+                  <div class="snipcart-details">
                   <span mat-line>{{item.productItemDesc}}</span>
-                  <button mat-icon-button >
+                  <button mat-icon-button (click) ="addToCart(item.id)">
                       <mat-icon>add_shopping_cart</mat-icon>
                   </button>
+                </div>
               </mat-grid-tile-footer>
               </div>
+            </div>
             </figure>
           </mat-grid-tile>
         </mat-grid-list>

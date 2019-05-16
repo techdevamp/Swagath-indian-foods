@@ -1,5 +1,5 @@
 .toolbarCenter{
-  text-align: center;
+  align-content: center;
 }
 .toolbarLeft{
   text-align: left;
@@ -19,6 +19,9 @@
 }
 
 .toolbarbg{
-  background-color: #A54092;
+  background-color: rgb(62, 11, 180);
+}
 
+.searchbar{
+  margin-top: 5px;
 }
