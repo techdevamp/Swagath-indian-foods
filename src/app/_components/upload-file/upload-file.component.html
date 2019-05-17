@@ -1,10 +1,9 @@
-<div class="container-fluid">
-  <table class="table">
+  <table class="table table-striped table-bordered table-full-width  table-hover">
     <thead>
     <tr scope="col">
       <td colspan=2>
           <label class="btn btn-outline-primary">
-              <span>Select File</span>
+              <span>Select File For {{uploadType | uppercase}}</span>
           <input id="files"  name="uploadExcel"
           type="file" (change)="setFile($event)" >
 
@@ -44,4 +43,3 @@
     </tbody>
   </table>
 
-</div>

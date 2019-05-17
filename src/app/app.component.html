@@ -1,4 +1,4 @@
-<mat-toolbar class="toolbarbg">
+<mat-toolbar class="clientHeaderBG">
   <div fxFlex fxLayout fxLayoutAlign="flex-start">
       <ul fxLayout style="list-style-type:none;">
         <li>
@@ -12,7 +12,14 @@
   <div fxFlex fxLayout fxLayoutAlign="flex-end">
     <ul fxLayout style="list-style-type:none;">
         <li>
-              <mat-search-bar class="label searchbar" ></mat-search-bar>
+          <form class="form-inline md-form form-sm">
+              <input type="text" class="form-control" placeholder="Search...">
+              <div class="input-group-append">
+                <button class="btn btn-secondary" type="button">
+                  <i class="fa fa-search"></i>
+                </button>
+              </div>
+          </form>
         </li>
 
         <li>
@@ -25,7 +32,7 @@
                 <button mat-button (click)="home('home')"><mat-icon>home</mat-icon>Home</button>
               </span>
             </li>
-                <li *ngIf='currentUser' >
+                <li  >
                     <span class="label">
                       <button mat-button (click)="adminScreen()"><mat-icon > person_pin</mat-icon>Admin</button>
                     </span>

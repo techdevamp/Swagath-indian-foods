@@ -31,6 +31,7 @@ import { EmailSubscriptionComponent } from './_components/email-subscription/ema
 import { ItemDealsLinkDetailComponent } from './_components/item-deals-link-detail/item-deals-link-detail.component';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { NgMatSearchBarModule } from 'ng-mat-search-bar';
+import { AdBannerComponent } from './_components/ad-banner/ad-banner.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { NgMatSearchBarModule } from 'ng-mat-search-bar';
     ItemDealsLinkComponent,
     HotDealsComponent,
     EmailSubscriptionComponent,
-    ItemDealsLinkDetailComponent
+    ItemDealsLinkDetailComponent,
+    AdBannerComponent
   ],
   imports: [
     BrowserModule,

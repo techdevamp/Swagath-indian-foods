@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { SwiperConfigInterface, SwiperFadeEffectInterface, SwiperCubeEffectInterface } from 'ngx-swiper-wrapper';
 
 @Component({
-  selector: 'app-hot-deals',
-  templateUrl: './hot-deals.component.html',
-  styleUrls: ['./hot-deals.component.scss'],
+  selector: 'app-ad-banner',
+  templateUrl: './ad-banner.component.html',
+  styleUrls: ['./ad-banner.component.scss'],
 })
-export class HotDealsComponent implements OnInit {
+export class AdBannerComponent implements OnInit {
 
 
 constructor() {
@@ -19,14 +19,14 @@ public effect: SwiperFadeEffectInterface = {
 public config: SwiperConfigInterface  = {
   a11y: true,
   direction: 'horizontal',
-  slidesPerView: 1,
+  slidesPerView: 3,
   keyboard: true,
   mousewheel: true,
   scrollbar: false,
-  navigation: false,
+  navigation: true,
   pagination: true,
-  autoplay: true,
-  controller: false,
+  autoplay: false,
+  controller: true,
   speed: 500,
   loop: true,
   fadeEffect: this.effect
