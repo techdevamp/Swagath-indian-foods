@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 })
 export class DataTransferService {
   apiResponse: ApiResponse;
-  itemsInCart: Observable<number>;
+  itemsInCart: BehaviorSubject<number>;
   constructor() {
     this.itemsInCart = new BehaviorSubject(0);
   }
@@ -20,11 +20,11 @@ export class DataTransferService {
     return this.apiResponse;
   }
 
-  public setItemsInCart(itemsInCart: Observable<number>): void {
+  public setItemsInCart(itemsInCart: BehaviorSubject<number>): void {
     this.itemsInCart = itemsInCart;
   }
 
-  public getItemsInCart(): Observable<number> {
+  public getItemsInCart(): BehaviorSubject<number> {
     return this.itemsInCart;
   }
 }

@@ -1,13 +1,7 @@
-.example-container {
-  display: flex;
-  flex-direction: column;
-  min-width: 300px;
-  margin:10px;
-}
-
-.mat-table {
+mat-table {
   overflow: auto;
   max-height: 250px;
+
 }
 
 mat-header-cell, mat-header-row, .mat-header-cell-def{
@@ -16,22 +10,23 @@ mat-header-cell, mat-header-row, .mat-header-cell-def{
     font-family:Verdana,sans-serif;
     font-weight:bold;
     font-size:13px;
-    color: #1a084c;
+    color:black;
     margin-bottom:5px;
      top: 0;
     position: sticky;
     z-index: 1;
+    text-align: center;
 }
 
 mat-row{
     min-height:20px;
     font-family:Verdana,sans-serif;
     font-size:11px;
-    color: #1a084c;
+    color:white !important;
     }
 mat-cell{
     height:20px;
     font-family:Verdana,sans-serif;
     font-size:11px;
-    color: #1a084c;
+    color:white !important;
 }

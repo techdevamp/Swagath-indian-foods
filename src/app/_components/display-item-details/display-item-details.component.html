@@ -4,7 +4,7 @@ fxLayoutGap.xs="0" fxFlex="100%" >
     <!-- this flex item takes the rest of the screen in height -->
 <div>
           <mat-table [dataSource]="dataSourceItems"
-          matSort matSortActive="itemName" matSortDirection="asc" matSortDisableClear >
+          matSort matSortActive="itemName" matSortDirection="asc" matSortDisableClear class="adminMatTableBG">
             <ng-container matColumnDef="itemId">
               <mat-header-cell *matHeaderCellDef mat-sort-header>Item Id</mat-header-cell>
               <mat-cell *matCellDef="let item">{{item.id}}</mat-cell>

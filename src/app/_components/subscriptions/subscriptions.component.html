@@ -1,7 +1,7 @@
 <section class="flex-container" fxLayout="column" fxLayoutAlign="center"
-fxLayoutGap.xs="0" fxFlex="100%" >
+fxFlex="100%" class="tableMargins">
   <mat-table [dataSource]="dataSourceSub"
-  matSort matSortActive="firstName" matSortDirection="asc" matSortDisableClear >
+  matSort matSortActive="firstName" matSortDirection="asc" matSortDisableClear class="adminMatTableBG">
     <ng-container matColumnDef="firstName">
       <mat-header-cell *matHeaderCellDef>First Name</mat-header-cell>
       <mat-cell *matCellDef="let sub">{{sub.firstName}}</mat-cell>
