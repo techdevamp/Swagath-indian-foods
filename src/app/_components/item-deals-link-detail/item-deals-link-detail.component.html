@@ -5,6 +5,35 @@ fxLayoutGap.xs="0" fxFlex="100%" >
 <div>
           <mat-table [dataSource]="dataSourceItems"
           matSort matSortActive="itemName" matSortDirection="asc" matSortDisableClear >
+           <!-- Checkbox Column -->
+        <ng-container matColumnDef="hotDeal">
+          <mat-header-cell *matHeaderCellDef>Hot Deal
+            <mat-checkbox (change)="$event ? masterToggle('hot') : null"
+                          [checked]="hotSelection.hasValue() && isAllSelected('hot')"
+                          [indeterminate]="hotSelection.hasValue() && !isAllSelected('hot')">
+            </mat-checkbox>
+          </mat-header-cell>
+          <mat-cell *matCellDef="let item">
+            <mat-checkbox (click)="$event.stopPropagation()"
+                          (change)="onChange(item.productItemNm,$event.target.checked)"
+                          [checked]="hotSelection.isSelected(item)">
+            </mat-checkbox>
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="dailyDeal">
+            <mat-header-cell *matHeaderCellDef>Daily Deal
+              <mat-checkbox (change)="$event ? masterToggle('daily') : null"
+                            [checked]="dailySelection.hasValue() && isAllSelected('daily')"
+                            [indeterminate]="dailySelection.hasValue() && !isAllSelected('daily')">
+              </mat-checkbox>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let item">
+              <mat-checkbox (click)="$event.stopPropagation()"
+                            (change)="$event ? dailySelection.toggle(item) : null"
+                            [checked]="dailySelection.isSelected(item)">
+              </mat-checkbox>
+            </mat-cell>
+          </ng-container>
             <ng-container matColumnDef="itemId">
               <mat-header-cell *matHeaderCellDef mat-sort-header>Item Id</mat-header-cell>
               <mat-cell *matCellDef="let item">{{item.id}}</mat-cell>
@@ -29,6 +58,10 @@ fxLayoutGap.xs="0" fxFlex="100%" >
               <mat-header-cell *matHeaderCellDef>Item Price</mat-header-cell>
               <mat-cell *matCellDef="let item">{{item.productItemUnitPrice}}</mat-cell>
             </ng-container>
+            <ng-container matColumnDef="deals">
+                <mat-header-cell *matHeaderCellDef>Linked Deals</mat-header-cell>
+                <mat-cell *matCellDef="let item">{{item.deals}}</mat-cell>
+              </ng-container>
             <ng-container matColumnDef="Image">
                 <mat-header-cell *matHeaderCellDef>Item Image</mat-header-cell>
                 <mat-cell *matCellDef="let item"><img src="../../../assets/images/{{item.productItemNm}}.png" alt="{{item.itemName}}"></mat-cell>
@@ -41,5 +74,7 @@ fxLayoutGap.xs="0" fxFlex="100%" >
             [pageSizeOptions]="[5, 10, 20]">
             </mat-paginator>
         </div>
-        </section>
+      <div> <button mat-button (click)="sendEmail(selection.selected)" >Save Changes</button></div>  
+      </section>
+
 
