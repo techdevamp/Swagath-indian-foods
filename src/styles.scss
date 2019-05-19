@@ -7,31 +7,63 @@
 @import "~font-awesome/css/font-awesome.css";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import '~swiper/dist/css/swiper.min.css';
+
+:root {
+
+  --topColor: #3C698D;
+  --bodyColor: #71F0E5;
+}
+
 a{
   cursor: pointer;
 }
 
 
 .clientHeaderBG{
-  background-color: rgb(60, 105, 141);
+  background-color: var(--topColor);
+  color:white;
 }
 
 .clientFooterBG{
-  background-color: rgb(60, 105, 141);
+  background-color:var(--bodyColor);
+  color:white;
 }
 
 .clientAdBannerBG{
-  background-color: rgba(113, 240, 229, 0.863);
+  background-color:var(--bodyColor);
+  color:white;
 }
 
 .clientHotDealsBG{
-  background-color: rgba(113, 240, 229, 0.863);
+  background-color:var(--bodyColor);
+  color:white;
 }
 
 .clientItemDetailsBG{
-  background-color: rgb(60, 105, 141);
+  background-color:var(--bodyColor);
+  color:white;
 }
 
 .clientSubscriptionBG{
-  background-color: rgba(113, 240, 229, 0.863);
+  background-color:var(--bodyColor);
+  color:white;
+}
+.clientSideMenuItemsBG{
+  background-color:var(--bodyColor);
+  color:white;
+}
+
+.clientGridFooterBG{
+  background-color:var(--bodyColor)!important;
+  color:white !important;
+}
+
+.adminSideNavBG{
+  background-color:var(--bodyColor) !important;
+  color:white !important;
+}
+
+.adminMatTableBG{
+  background-color:var(--bodyColor) !important;
+  color:white !important;
 }

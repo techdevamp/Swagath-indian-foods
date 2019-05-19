@@ -1,14 +1,14 @@
 <div class="Jumbotron">
   <mat-drawer-container class="sidenav-container">
-    <mat-drawer #sideNav mode="side" opened="true" class="sidenav">
+    <mat-drawer #sideNav mode="side" opened="true" class="sidenav adminSideNavBG">
       <mat-divider><hr></mat-divider>
-      <a mat-list-item (click)="navigate('upload-file','items')">Upload Items File</a>
+      <a mat-list-item (click)="navigate('upload-file','items')" class="sideNavItems adminSideNavBG">Upload Items File</a>
       <mat-divider><hr></mat-divider>
-      <a mat-list-item (click)="navigate('upload-file','subscriptions')">Upload Subscription File</a>
+      <a mat-list-item (click)="navigate('upload-file','subscriptions')" class="sideNavItems adminSideNavBG">Upload Subscription File</a>
       <mat-divider><hr></mat-divider>
-      <a mat-list-item (click)="navigate('subscriptions','')">Subscription Details</a>
+      <a mat-list-item (click)="navigate('subscriptions','')" class="sideNavItems adminSideNavBG">Subscription Details</a>
       <mat-divider><hr></mat-divider>
-      <a mat-list-item (click)="navigate('item-link-deals','deals')">Link Deals To Items</a>
+      <a mat-list-item (click)="navigate('item-link-deals','deals')" class="sideNavItems adminSideNavBG">Link Deals To Items</a>
       <mat-divider><hr></mat-divider>
     </mat-drawer>
     <mat-drawer-content>

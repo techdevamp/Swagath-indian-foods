@@ -3,18 +3,17 @@
   position: fixed;
   left: 0%;
   right: 0%;
-  background: #3f51b550;
+  background: white;
   }
   .sidenav {
-  width: 300px;
-  background: #3f86b5;
+  width: 200px;
   }
-  .sidenav .mat-toolbar {
-  background: #3f51b5;
-  }
+
   .mat-toolbar.mat-primary {
   position: sticky;
   top: 0;
   z-index: 1;
   }
-
+.sideNavItems{
+  text-align: center;
+}

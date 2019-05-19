@@ -2,7 +2,7 @@
 <div class="col-sm-5 ">
   <h4 mat-dialog-title>Subscribe to get the latest updates</h4>
     <form>
-      <mat-icon color="warn">email</mat-icon>
+      <mat-icon color="warn" style="vertical-align: middle;">email</mat-icon>
       <mat-form-field class="newsletter-form-field">
         <mat-label>Email</mat-label>
         <input matInput [formControl]="emailAddress" >
@@ -11,7 +11,7 @@
         </mat-error>
 
       </mat-form-field>
-      <mat-icon color="warn">sms</mat-icon>
+      <mat-icon color="warn" style="vertical-align: middle;">sms</mat-icon>
       <mat-form-field class="newsletter-form-field">
           <mat-label>Text</mat-label>
           <input matInput [formControl]="phoneNo" >
@@ -22,7 +22,7 @@
               Phone number must not excees 10 digits
             </mat-error>
         </mat-form-field>
-      <button mat-raised-button color="primary" (click)="subscribe()"  type="submit">Subscribe</button>
+      <button (click)="subscribe()"  type="submit" class="btn btn-info">Subscribe</button>
     </form>
 </div>
 
@@ -30,14 +30,16 @@
     <div class="w3_footer_grid_bottom">
       <h5>Follow us</h5>
       <ul class="agileits_social_icons">
-        <li><a href="https://www.facebook.com/Swagathfoods/" class="facebook" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-        <li><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+        <li ><a href="https://www.facebook.com/Swagathfoods/" class="facebook" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+        <li style="margin-left: 2%;"><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
       </ul>
     </div>
   </div>
-  <div class="w3ls_logo_products_left1">
-      <ul class="phone_email">
-        <li><i class="fa fa-phone" aria-hidden="true"></i>(+1)517-xxx-xxxx</li>
-        <li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@swagath.com">store@grocery.com</a></li>
+  <div class="w3_footer_grid_bottom">
+      <h5>Contact us</h5>
+      <ul class="phone_email" style="list-style-type:none;">
+        <li><i class="fa fa-phone" aria-hidden="true"></i>(517) 381-3400</li>
+        <li><i class="fa fa-envelope" aria-hidden="true"></i>store@swagath.com</li>
+        <li><i class="fa fa-home" aria-hidden="true"></i> 1723 W Grand River Ave, Okemos, MI 48864</li>
       </ul>
     </div>

@@ -46,3 +46,7 @@
   pointer-events: none;
   color: #aaa;
 }
+.form-control::placeholder  {
+  font-family: FontAwesome;
+
+}

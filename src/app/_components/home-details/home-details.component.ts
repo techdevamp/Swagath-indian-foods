@@ -15,7 +15,6 @@ import { Observable, BehaviorSubject } from 'rxjs';
 export class HomeDetailsComponent implements OnInit {
 
   constructor(private dataService: DataService, private dataTransferService: DataTransferService) {
-    this.itemsCount = new BehaviorSubject(0);
    }
   itemDetails: ItemDetails[];
   productCategories: ProductCategory[];
@@ -38,7 +37,8 @@ export class HomeDetailsComponent implements OnInit {
   }
 
   addToCart(itemId: number) {
+    this.itemsCount = this.dataTransferService.getItemsInCart();
     this.itemsCount.next(this.itemsCount.value + 1);
-    this.dataTransferService.setItemsInCart(this.itemsCount.asObservable());
+    this.dataTransferService.setItemsInCart(this.itemsCount);
   }
 }
