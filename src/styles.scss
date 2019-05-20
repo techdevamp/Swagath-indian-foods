@@ -11,7 +11,7 @@
 :root {
 
   --topColor: #3C698D;
-  --bodyColor: #71F0E5;
+  --bodyColor: #87BED8;
 }
 
 a{
@@ -25,12 +25,12 @@ a{
 }
 
 .clientFooterBG{
-  background-color:var(--bodyColor);
+  background-color:var(--topColor);
   color:white;
 }
 
 .clientAdBannerBG{
-  background-color:var(--bodyColor);
+  background-color:white;
   color:white;
 }
 
@@ -55,7 +55,7 @@ a{
 
 .clientGridFooterBG{
   background-color:var(--bodyColor)!important;
-  color:white !important;
+  color:black !important;
 }
 
 .adminSideNavBG{

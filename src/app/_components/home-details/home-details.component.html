@@ -1,5 +1,5 @@
   <mat-sidenav-container fxFlex  >
-    <mat-sidenav  #sideNavItemDetails mode="over" opened="false">
+    <mat-sidenav  #sideNavItemDetails mode="side">
       <mat-list *ngFor="let categ of productCategories" class="clientSideMenuItemsBG">
         <a mat-list-item (click)='getItemDetails(categ.productCategoryNm)' class="gridHeaderFooter">{{categ.productCategoryNm}}</a>
         <mat-divider><hr></mat-divider>
@@ -8,9 +8,10 @@
 
     <mat-sidenav-content >
         <button mat-raised-button (click)="sideNavItemDetails.toggle()"  color="accent">CATEGORIES</button>
-      <mat-grid-list cols="5" role="list">
+      <mat-grid-list cols="6" role="list">
           <mat-grid-tile *ngFor="let item of itemDetails" role="listitem">
-            <figure>
+
+            <figure >
               <div class="snipcart-item block">
               <div class="snipcart-thumb">
               <img src="../../../assets/images/{{item.productItemNm}}.png" alt="model {{item.productItemNm}}" class="img-responsive">
