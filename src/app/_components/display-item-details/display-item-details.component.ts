@@ -15,7 +15,7 @@ export class DisplayItemDetailsComponent implements OnInit, AfterViewInit {
               private route: ActivatedRoute) { }
   itemDetails: ItemDetails[];
   dataSourceItems: ItemDetailsDataSource;
-  uploadDt: any;
+  fileId: any;
   displayedColumnsItems: string[];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -23,11 +23,11 @@ export class DisplayItemDetailsComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
       this.route.params.subscribe(params => {
-      this.uploadDt = params.id;
+      this.fileId = params.id;
       });
       this.displayedColumnsItems = ['itemName', 'itemDescription', 'itemWeight', 'itemQuantity', 'itemPrice', 'Image'];
       this.dataSourceItems = new ItemDetailsDataSource(this.dataService);
-      this.dataSourceItems.loadItemDetails(this.uploadDt);
+      this.dataSourceItems.loadItemDetails(this.fileId);
   }
   /**
    * Set the paginator after the view init since this component will
@@ -36,5 +36,11 @@ export class DisplayItemDetailsComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.dataSourceItems.paginator = this.paginator;
     this.dataSourceItems.sort = this.sort;
+  }
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+    this.dataSourceItems.filter = filterValue;
   }
 }

@@ -1,3 +1,5 @@
+import { ItemDetails } from 'src/app/_models/item.details';
+import { DataService } from 'src/app/_services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { SwiperConfigInterface, SwiperFadeEffectInterface, SwiperCubeEffectInterface } from 'ngx-swiper-wrapper';
 
@@ -8,20 +10,19 @@ import { SwiperConfigInterface, SwiperFadeEffectInterface, SwiperCubeEffectInter
 })
 export class AdBannerComponent implements OnInit {
 
+itemDetails: ItemDetails[];
 
-constructor() {
+constructor(private dataService: DataService) {
 
 }
-public effect: SwiperFadeEffectInterface = {
-  crossFade: true
-};
+
 
 public config: SwiperConfigInterface  = {
   a11y: true,
   direction: 'horizontal',
   slidesPerView: 3,
   keyboard: true,
-  mousewheel: true,
+  mousewheel: false,
   scrollbar: false,
   navigation: true,
   pagination: true,
@@ -29,12 +30,11 @@ public config: SwiperConfigInterface  = {
   controller: true,
   speed: 500,
   loop: true,
-  fadeEffect: this.effect
 };
 
 
 
 ngOnInit() {
-
+  this.dataService.getItemDetails('Grains').subscribe(res => this.itemDetails = res.result);
   }
 }

@@ -1,14 +1,23 @@
 <div  class="swiper-container" [swiper]="config">
 
     <div class="swiper-wrapper">
-      <div class="swiper-slide">
-          <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
-              <img src="../../../assets/images/1.png" alt="First slide" class="img-fluid">
-              <div class="carousel-caption" style="text-align: end;">
-                Dal(4 gm) $10.00 <mat-icon>add_shopping_cart</mat-icon>
+      <div class="swiper-slide" *ngFor="let item of itemDetails">
+          <div fxLayout="column" fxLayoutAlign="center center">
+              <img src="../../../assets/images/{{item.productItemNm}}.png" alt="{{item.id}} slide" class="img-fluid">
+              <div class="snipcart-details">
+                  <h6 mat-line>{{item.productItemNm}}({{item.productItemWeight | number}} gm)</h6>
+                  <h6 *ngIf="item.productItemDscnt; else noDiscount">{{item.productItemDscnt | currency}}<span>{{item.productItemUnitPrice | currency}}</span></h6>
+                    <ng-template #noDiscount>
+                      <h6>{{item.productItemUnitPrice | currency}}</h6>
+                    </ng-template>
+
+                  <span mat-line>{{item.productItemDesc}}</span>
+                  <button mat-icon-button >
+                      <mat-icon>add_shopping_cart</mat-icon>
+                  </button>
+                </div>
                 </div>
               </div>
-            </div>
             <div class="swiper-slide">
             <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
                 <img src="../../../assets/images/2.png" alt="Second slide" class="img-fluid">
