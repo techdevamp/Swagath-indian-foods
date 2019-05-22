@@ -1,44 +1,41 @@
-  <table class="table table-striped  table-full-width  table-hover ">
+  <table class="table table-striped  table-full-width  ">
     <thead >
     <tr scope="col">
-      <td >
+      <td>
           <label class="btn btn-outline-primary">
               <span>Select File To Upload For {{uploadType | titlecase}}</span>
-          <input id="files"  name="uploadExcel"
-          type="file" (change)="setFile($event)" >
+          <input id="files"  name="uploadExcel" type="file" (change)="setFile($event)" >
 
-        </label>
-        {{fileName}}
+        <span> {{fileName}}</span>
+      </label>
       </td>
       <td><button type="button" class="btn btn-info" (click)="uploadData()" >Upload</button></td>
     </tr>
     </thead>
-    <tbody >
-      <tr >
+    <tbody>
+      <tr>
         <th  scope="col">
           File Name
         </th>
-
-          <th  scope="col">
-              File Upload Date
-            </th>
-            <th  scope="col">
-                Actions
-              </th>
+        <th  scope="col">
+          File Upload Date
+        </th>
+        <th  scope="col">
+          Actions
+        </th>
       </tr>
       <tr *ngFor="let fileDtl of fileDetails" class="adminMatTableBG" scope="row">
-        <td >
+        <td>
           <a (click)="getItemDetails(fileDtl.id)">{{fileDtl.fileNm}}</a>
         </td>
-
-          <td >
-              <label>{{fileDtl.uploadDt | date }}</label>
-            </td>
-            <td>
-                <button mat-icon-button (click)="deleteFile(fileDtl.id)">
-                    <mat-icon>delete</mat-icon>
-               </button>
-              </td>
+        <td>
+          {{fileDtl.uploadDt | date }}
+        </td>
+        <td>
+          <a (click)="deleteFile(fileDtl.id)" >
+            <i class="fa fa-trash-o"></i>
+          </a>
+        </td>
       </tr>
     </tbody>
   </table>

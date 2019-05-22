@@ -86,4 +86,10 @@ export class SubscriptionsComponent implements OnInit, AfterViewInit {
 
     this.dataService.sendEmail(emailData).pipe(first()).subscribe(res => alert(res.result));
   }
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+    this.dataSourceSub.filter = filterValue;
+  }
 }

@@ -68,8 +68,8 @@ export class UploadFileComponent implements OnInit, OnDestroy {
 
   deleteFile(id: any) {
     this.dataService.deleteFile(id).subscribe(res => {
-        alert(res.message);
         this.getFileDetails();
+        alert(res.message);
       }
     );
   }
