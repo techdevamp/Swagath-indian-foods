@@ -20,9 +20,11 @@ export class HomeDetailsComponent implements OnInit {
   productCategories: ProductCategory[];
 
   itemsCount: BehaviorSubject<number>;
+  selectedCat: any;
 
   ngOnInit() {
     this.getProductCategories();
+    this.selectedCat = this.productCategories[0].productCategoryNm;
   }
   public getProductCategories() {
     this.dataService.getProductCategories().pipe(first()).subscribe(res => {
@@ -31,6 +33,7 @@ export class HomeDetailsComponent implements OnInit {
     });
   }
   public getItemDetails(category: string) {
+    this.selectedCat = category;
     this.dataService.getItemDetails(category).pipe(first()).subscribe(res => {
       this.itemDetails = res.result;
     });

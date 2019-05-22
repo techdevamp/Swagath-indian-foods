@@ -1,13 +1,18 @@
 <section class="flex-container" fxLayout="column" fxLayoutAlign="center"
 fxFlex="100%" class="tableMargins">
+<div class="example-header" fxLayout="row">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+    </mat-form-field>
+  </div>
   <mat-table [dataSource]="dataSourceSub"
   matSort matSortActive="firstName" matSortDirection="asc" matSortDisableClear class="adminMatTableBG">
     <ng-container matColumnDef="firstName">
-      <mat-header-cell *matHeaderCellDef>First Name</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>First Name</mat-header-cell>
       <mat-cell *matCellDef="let sub">{{sub.firstName}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="lastName">
-      <mat-header-cell *matHeaderCellDef>Last Name</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</mat-header-cell>
       <mat-cell *matCellDef="let sub">{{sub.lastName}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="email">
@@ -48,11 +53,12 @@ fxFlex="100%" class="tableMargins">
 <div class="textsms">
       <textarea matInput required [(ngModel)]="textMessage"
                 placeholder="Text Message"></textarea>
-                <button mat-button (click)="sendText(selection.selected)" >Send Text</button>
-
+      <button mat-raised-button color="primary" (click)="sendText(selection.selected)" class="tableMargins">Send Text</button>
+</div>
+<div class="textsms">
     <textarea matInput required [(ngModel)]="emailMessage"
               placeholder="Email Message"></textarea>
-              <button mat-button (click)="sendEmail(selection.selected)" >Send Email</button>
+    <button mat-line mat-raised-button color="primary" (click)="sendEmail(selection.selected)" class="tableMargins">Send Email</button>
 </div>
 
 </section>
