@@ -86,9 +86,6 @@ export class DataService {
     return this.http.post<ApiResponse>(this.baseUrl + '/upload/subscribe' , subscriptionsData);
   }
 
-  getDealsDetails(): Observable<ApiResponse> {
-    return this.http.get<ApiResponse>(this.baseUrl + '/dealAndCupon/getDealDetails');
-  }
 }
 // Access-Control-Allow-Origin: *
 // Control-Allow-Origin

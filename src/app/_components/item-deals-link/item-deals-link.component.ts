@@ -1,9 +1,9 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { Deals } from 'src/app/_models/deals';
-import { DataService } from 'src/app/_services';
 import { Router,ActivatedRoute } from '@angular/router';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { ItemDealsLinkDataSource } from './ItemDealsLinkDataSource';
+import { DataDealCuponService } from 'src/app/_services/data.deal.cupon.service';
 
 
 @Component({
@@ -14,7 +14,7 @@ import { ItemDealsLinkDataSource } from './ItemDealsLinkDataSource';
 export class ItemDealsLinkComponent  implements OnInit, AfterViewInit{
   
 
-  constructor(private dataService: DataService,
+  constructor(private dataService: DataDealCuponService,
     private route: ActivatedRoute
     ,private router: Router) { }
 itemDetails: Deals[];

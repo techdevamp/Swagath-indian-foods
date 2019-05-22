@@ -1,10 +1,10 @@
 import { ItemDealsLinkDetailDataSource } from './ItemDealsLinkDetailDataSource';
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { DataService } from 'src/app/_services';
 import { ActivatedRoute } from '@angular/router';
 import { MatPaginator, MatSort } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
 import { ItemDealDetails } from 'src/app/_models/item.deal.details';
+import { DataDealCuponService } from 'src/app/_services/data.deal.cupon.service';
 
 @Component({
   selector: 'app-item-deals-link-detail',
@@ -12,8 +12,9 @@ import { ItemDealDetails } from 'src/app/_models/item.deal.details';
   styleUrls: ['./item-deals-link-detail.component.scss']
 })
 export class ItemDealsLinkDetailComponent implements OnInit {
+  aoDealData: ItemDealDetails[] = [];
 
-  constructor(private dataService: DataService,
+  constructor(private dataService: DataDealCuponService,
     private route: ActivatedRoute) { }
 
 dataSourceItems: ItemDealsLinkDetailDataSource;
@@ -36,12 +37,33 @@ this.dataSourceItems = new ItemDealsLinkDetailDataSource(this.dataService);
 this.dataSourceItems.getAllItemDetails();
 }
 
-onChange(id: any,test : any) {
- alert(test);
- //// if (isChecked) {
-    let index = this.dataSourceItems.data.findIndex(x => x.id == id)
-    //this.dataSourceItems.data.forEach( row => )
- // }
+
+
+public onChange(id: any,dealTyp: String){
+  
+  let itemDealDtl = new ItemDealDetails();
+  itemDealDtl = this.dataSourceItems.data.find(x => x.id == id)
+  if(dealTyp=='hot'){
+    if(this.dataSourceItems.data.find(x => x.id == id).hotDeal.valueOf()==false){
+       this.dataSourceItems.data.find(x => x.id == id).hotDeal = true;
+    }else{
+     
+      this.dataSourceItems.data.find(x => x.id == id).hotDeal = false;
+     }
+  }else{
+    if(this.dataSourceItems.data.find(x => x.id == id).dailyDeal.valueOf()==false){
+      this.dataSourceItems.data.find(x => x.id == id).dailyDeal = true;
+   }else{
+     this.dataSourceItems.data.find(x => x.id == id).dailyDeal = false;
+   }
+  }
+ 
+ // this.dataService.sendEmail(dataSourceItems).pipe(first()).subscribe(res => alert(res.result));
+}
+
+public saveChanges(){
+  alert("Changes Saved Successfully!!")
+   this.dataService.saveDealLinkChanges(this.dataSourceItems.data).pipe().subscribe(res => alert(res.result));
 }
 
 /** Whether the number of selected elements matches the total number of rows. */
