@@ -1,3 +1,4 @@
+
   <mat-sidenav-container fxFlex  >
     <mat-sidenav  #sideNavItemDetails mode="side">
       <mat-list *ngFor="let categ of productCategories" class="clientSideMenuItemsBG">
@@ -7,25 +8,32 @@
     </mat-sidenav>
 
     <mat-sidenav-content >
+
         <button mat-raised-button (click)="sideNavItemDetails.toggle()"  color="accent">CATEGORIES</button>
-      <mat-grid-list cols="6" role="list">
-          <mat-grid-tile *ngFor="let item of itemDetails" role="listitem">
+        <div class="categories">
+            <h3>
+              {{selectedCat}}
+            </h3>
+          </div>
+        <mat-grid-list cols="6" role="list">
+          <mat-grid-tile *ngFor="let item of itemDetails" role="listitem" title="{{item.productItemNm | titlecase}}">
 
             <figure >
               <div class="snipcart-item block">
               <div class="snipcart-thumb">
-              <img src="../../../assets/images/{{item.productItemNm}}.png" alt="model {{item.productItemNm}}" class="img-responsive">
+              <img src="../../../assets/images/{{item.productItemNm}}.png" alt="model {{item.productItemNm}}" class="img-fluid">
               <mat-grid-tile-footer class="clientGridFooterBG">
-                  <h3 mat-line>{{item.productItemNm}}({{item.productItemWeight | number}} gm)</h3>
-                  <h3 *ngIf="item.productItemDscnt; else noDiscount">{{item.productItemDscnt | currency}}<span>{{item.productItemUnitPrice | currency}}</span></h3>
-                    <ng-template #noDiscount>
-                      <h3>{{item.productItemUnitPrice | currency}}</h3>
-                    </ng-template>
                   <div class="snipcart-details">
-                  <span mat-line>{{item.productItemDesc}}</span>
-                  <button mat-icon-button (click) ="addToCart(item.id)">
+                  <h6 mat-line>{{item.productItemNm | titlecase}}({{item.productItemWeight | number}} gm)</h6>
+                  <h6 mat-line *ngIf="item.productItemDscnt; else noDiscount">{{item.productItemDscnt | currency}}<span>{{item.productItemUnitPrice | currency}}</span></h6>
+                    <ng-template #noDiscount>
+                      <h6 mat-line>{{item.productItemUnitPrice | currency}}</h6>
+                    </ng-template>
+
+                  <span mat-line>{{item.productItemDesc |titlecase}}</span>
+                  <!--<button mat-icon-button (click) ="addToCart(item.id)">
                       <mat-icon>add_shopping_cart</mat-icon>
-                  </button>
+                  </button>-->
                 </div>
               </mat-grid-tile-footer>
               </div>

@@ -54,8 +54,12 @@ a{
 }
 
 .clientGridFooterBG{
-  background-color:var(--bodyColor)!important;
+  background-color:white!important;
   color:black !important;
+  height: 20% !important;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .adminSideNavBG{
