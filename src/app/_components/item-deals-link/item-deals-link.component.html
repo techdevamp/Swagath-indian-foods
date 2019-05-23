@@ -1,17 +1,21 @@
 <section class="flex-container" fxLayout="column" fxLayoutAlign="center"
 fxLayoutGap.xs="0" fxFlex="100%" >
-
+<div class="example-header" fxLayout="row">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+    </mat-form-field>
+</div>
     <!-- this flex item takes the rest of the screen in height -->
 <div>
           <mat-table [dataSource]="dataSourceItems"
           matSort matSortActive="dealTypCd" matSortDirection="asc" matSortDisableClear >
             <ng-container matColumnDef="id">
               <mat-header-cell *matHeaderCellDef mat-sort-header>Deal Id</mat-header-cell>
-              
+
                 <mat-cell *matCellDef="let deal">
                     <a  (click)="getItemDetails()" >{{deal.id}}</a>
                     </mat-cell>
-              
+
             </ng-container>
             <ng-container matColumnDef="dealTypCd">
               <mat-header-cell *matHeaderCellDef>Deal Code</mat-header-cell>

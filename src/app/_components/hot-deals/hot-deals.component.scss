@@ -1,20 +1,11 @@
 
-ng-template {
-
-  border: 1px solid #c3c3c3;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-align-content: center;
-  align-content: center;
-  align-self: center
+h6 span{
+  font-weight:300;
+  text-decoration:line-through;
+  padding-left:1em;
 }
 
-.carouselCaption{
-  text-align: right;
-  color: white;
-  font-family: cursive;
-  font-weight: bolder;
-  font-size: x-large;
+.slideItems{
+  margin-bottom: 1% !important;
 }
+

@@ -16,11 +16,11 @@ export class DataDealCuponService {
   constructor(private http: HttpClient) {
     this.baseUrl = AppConstants.baseURL;
   }
-  
+
   getAllDealItemDetails(): Observable<ApiResponse> {
     return this.http.get<ApiResponse>(this.baseUrl + '/dealAndCupon/getItemDealLinkDetails');
   }
-  
+
   getDealsDetails(): Observable<ApiResponse> {
     return this.http.get<ApiResponse>(this.baseUrl + '/dealAndCupon/getDealDetails');
   }

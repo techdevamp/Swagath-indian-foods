@@ -1,6 +1,10 @@
 <section class="flex-container" fxLayout="column" fxLayoutAlign="center"
 fxLayoutGap.xs="0" fxFlex="100%" >
-
+<div class="example-header" fxLayout="row">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+    </mat-form-field>
+</div>
     <!-- this flex item takes the rest of the screen in height -->
 <div>
           <mat-table [dataSource]="dataSourceItems"
@@ -74,7 +78,7 @@ fxLayoutGap.xs="0" fxFlex="100%" >
             [pageSizeOptions]="[5, 10, 20]">
             </mat-paginator>
         </div>
-      <div> <button mat-button (click)="saveChanges()" >Save Changes</button></div>  
+      <div> <button mat-button (click)="saveChanges()" >Save Changes</button></div>
       </section>
 
 

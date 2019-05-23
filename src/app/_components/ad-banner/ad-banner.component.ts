@@ -1,40 +1,29 @@
-import { ItemDetails } from 'src/app/_models/item.details';
-import { Component, OnInit } from '@angular/core';
-import { SwiperConfigInterface, SwiperFadeEffectInterface, SwiperCubeEffectInterface } from 'ngx-swiper-wrapper';
-import { DataDealCuponService } from 'src/app/_services/data.deal.cupon.service';
+import { Component } from '@angular/core';
+import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
 @Component({
   selector: 'app-ad-banner',
   templateUrl: './ad-banner.component.html',
   styleUrls: ['./ad-banner.component.scss'],
 })
-export class AdBannerComponent implements OnInit {
+export class AdBannerComponent  {
 
-itemDetails: ItemDetails[];
-
-constructor(private dataService: DataDealCuponService) {
+constructor() {
 
 }
 
+  public config: SwiperConfigInterface  = {
+    a11y: true,
+    direction: 'horizontal',
+    slidesPerView: 1,
+    keyboard: true,
+    mousewheel: false,
+    scrollbar: false,
+    pagination: true,
+    autoplay: true,
+    controller: true,
+    speed: 500,
+    loop: true
+  };
 
-public config: SwiperConfigInterface  = {
-  a11y: true,
-  direction: 'horizontal',
-  slidesPerView: 3,
-  keyboard: true,
-  mousewheel: false,
-  scrollbar: false,
-  navigation: true,
-  pagination: true,
-  autoplay: false,
-  controller: true,
-  speed: 500,
-  loop: true,
-};
-
-
-
-ngOnInit() {
-  this.dataService.getItemDetailsByDealTypCd('HOTDEAL').subscribe(res => this.itemDetails = res.result);
-  }
 }

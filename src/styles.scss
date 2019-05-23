@@ -30,13 +30,13 @@ a{
 }
 
 .clientAdBannerBG{
-  background-color:white;
-  color:rgb(11, 8, 58);
+  background-color:var(--bodyColor);
+  color:white;
 }
 
 .clientHotDealsBG{
-  background-color:var(--bodyColor);
-  color:white;
+  background-color:white;
+  color:rgb(11, 8, 58);
 }
 
 .clientItemDetailsBG{

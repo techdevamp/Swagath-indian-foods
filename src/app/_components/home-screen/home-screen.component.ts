@@ -8,13 +8,13 @@ import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './home-screen.component.html',
   styleUrls: ['./home-screen.component.scss']
 })
-export class HomeScreenComponent implements OnInit , AfterViewInit {
+export class HomeScreenComponent implements OnInit { // , AfterViewInit {
 
-  ngAfterViewInit(): void {
+  /*ngAfterViewInit(): void {
     this.router.navigate([{outlets: {homeDetails: ['home-details']}
     }],
       {relativeTo: this.route});
-  }
+  }*/
   constructor(private router: Router, private route: ActivatedRoute, config: NgbCarouselConfig) {
 
   }

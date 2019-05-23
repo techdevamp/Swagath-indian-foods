@@ -26,10 +26,13 @@ export class AppComponent {
 
     logout() {
         this.authenticationService.logout();
-        this.router.navigate(['login']);
+        this.loginScreen();
     }
 
     home(path: any) {
+      if (!this.currentUser ) {
+        this.logout();
+      }
       this.router.navigate([path]);
     }
 
@@ -38,6 +41,9 @@ export class AppComponent {
     }
 
     adminScreen() {
+      if (!this.currentUser) {
+        this.logout();
+      }
       this.router.navigate(['side-nav-list']);
     }
 }

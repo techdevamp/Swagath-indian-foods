@@ -12,7 +12,6 @@ import { UploadFileComponent } from './_components/upload-file/upload-file.compo
 import { DisplayItemDetailsComponent } from './_components/display-item-details/display-item-details.component';
 import { SidenavListComponent } from './_components/sidenav-list/sidenav-list.component';
 import { SubscriptionsComponent } from './_components/subscriptions/subscriptions.component';
-import { HomeDetailsComponent } from './_components/home-details/home-details.component';
 import { ItemDealsLinkComponent } from './_components/item-deals-link/item-deals-link.component';
 import { ItemDealsLinkDetailComponent } from './_components/item-deals-link-detail/item-deals-link-detail.component';
 
@@ -30,12 +29,7 @@ const routes: Routes =
   },
   {
     path: 'home',
-    component: HomeScreenComponent,
-    children: [{
-      path: 'home-details',
-      outlet: 'homeDetails',
-      component: HomeDetailsComponent
-    }]
+    component: HomeScreenComponent
   },
   {
     path: 'register',
@@ -75,7 +69,8 @@ const routes: Routes =
       path: 'item-link-deals/:id',
       outlet: 'sidemenu',
       component: ItemDealsLinkComponent
-    },{
+    },
+    {
       path: 'item-deals-link-detail',
       outlet: 'sidemenu',
       component: ItemDealsLinkDetailComponent

@@ -1,11 +1,10 @@
 import { DataTransferService } from './../../_services/data-transfer.service';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ItemDetails } from 'src/app/_models/item.details';
 import { DataService } from 'src/app/_services';
 import { first } from 'rxjs/operators';
 import { ProductCategory } from 'src/app/_models/product.category';
-import { OutletContext } from '@angular/router';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-home-details',

@@ -53,12 +53,12 @@ fxFlex="100%" class="tableMargins">
 <div class="textsms">
       <textarea matInput required [(ngModel)]="textMessage"
                 placeholder="Text Message"></textarea>
-      <button mat-raised-button color="primary" (click)="sendText(selection.selected)" class="tableMargins">Send Text</button>
+      <button (click)="sendText(selection.selected)" class="tableMargins btn btn-info">Send Text</button>
 </div>
 <div class="textsms">
     <textarea matInput required [(ngModel)]="emailMessage"
               placeholder="Email Message"></textarea>
-    <button mat-line mat-raised-button color="primary" (click)="sendEmail(selection.selected)" class="tableMargins">Send Email</button>
+    <button (click)="sendEmail(selection.selected)" class="tableMargins btn btn-info">Send Email</button>
 </div>
 
 </section>
