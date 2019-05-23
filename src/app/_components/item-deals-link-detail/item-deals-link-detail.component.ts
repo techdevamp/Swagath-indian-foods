@@ -57,13 +57,11 @@ public onChange(id: any, dealTyp: string) {
      this.dataSourceItems.data.find(x => x.id === id).dailyDeal = false;
    }
   }
-
- // this.dataService.sendEmail(dataSourceItems).pipe(first()).subscribe(res => alert(res.result));
 }
 
 public saveChanges() {
+  this.dataService.saveDealLinkChanges(this.dataSourceItems.data).subscribe();
   alert('Changes Saved Successfully!!');
-  this.dataService.saveDealLinkChanges(this.dataSourceItems.data).pipe().subscribe(res => alert(res.result));
 }
 
 /** Whether the number of selected elements matches the total number of rows. */

@@ -5,11 +5,11 @@ export class ItemDealsLinkDataSource extends MatTableDataSource<Deals> {
   constructor(private dataService: DataDealCuponService) {
     super();
   }
-  
+
   public loadDealDetails(fileId: any) {
     this.dataService.getDealsDetails().subscribe(res => {
       this.data = res.result;
     });
   }
-  
+
 }
