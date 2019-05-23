@@ -1,7 +1,7 @@
 import { ItemDetails } from 'src/app/_models/item.details';
-import { DataService } from 'src/app/_services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { SwiperConfigInterface, SwiperFadeEffectInterface, SwiperCubeEffectInterface } from 'ngx-swiper-wrapper';
+import { DataDealCuponService } from 'src/app/_services/data.deal.cupon.service';
 
 @Component({
   selector: 'app-ad-banner',
@@ -12,7 +12,7 @@ export class AdBannerComponent implements OnInit {
 
 itemDetails: ItemDetails[];
 
-constructor(private dataService: DataService) {
+constructor(private dataService: DataDealCuponService) {
 
 }
 
@@ -35,6 +35,6 @@ public config: SwiperConfigInterface  = {
 
 
 ngOnInit() {
-  this.dataService.getItemDetails('Grains').subscribe(res => this.itemDetails = res.result);
+  this.dataService.getItemDetailsByDealTypCd('HOTDEAL').subscribe(res => this.itemDetails = res.result);
   }
 }

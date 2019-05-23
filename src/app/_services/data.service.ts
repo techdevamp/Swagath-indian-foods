@@ -59,7 +59,7 @@ export class DataService {
     return this.http.get<ApiResponse>(this.baseUrl + '/upload/getItemDetails', { params });
   }
 
-  getItemDetailsByFileId(fileId: any): Observable<ApiResponse> {
+    getItemDetailsByFileId(fileId: any): Observable<ApiResponse> {
     const params = new HttpParams().set('fileId', fileId);
     return this.http.get<ApiResponse>(this.baseUrl + '/upload/getItemDetailsByFileId', { params });
   }

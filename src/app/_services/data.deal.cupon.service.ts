@@ -28,5 +28,10 @@ export class DataDealCuponService {
   saveDealLinkChanges(itemDealDetails: ItemDealDetails[]): Observable<ApiResponse> {
     return this.http.post<ApiResponse>(this.baseUrl + '/dealAndCupon/saveDealLinkChanges' , itemDealDetails);
   }
+
+  getItemDetailsByDealTypCd(dealTypCd: string): Observable<ApiResponse> {
+    const params = new HttpParams().set('dealTypCd', dealTypCd);
+    return this.http.get<ApiResponse>(this.baseUrl + '/dealAndCupon/getItemsByDealTypCd', { params });
+  }
 }
 
