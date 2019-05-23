@@ -2,13 +2,13 @@
     <thead >
     <tr scope="col">
       <td>
-          <label class="btn btn-outline-primary">
+          <label class="btn btn-outline-primary adminSideNavBG">
               <span>Select File To Upload For {{uploadType | titlecase}}</span>
           <input id="files"  name="uploadExcel" type="file" (change)="setFile($event)" >
-
-        <span> {{fileName}}</span>
       </label>
+      <span class="uploadFile"> {{fileName}}</span>
       </td>
+      
       <td><button type="button" class="btn btn-info" (click)="uploadData()" >Upload</button></td>
     </tr>
     </thead>

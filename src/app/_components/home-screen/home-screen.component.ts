@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
+import { AlertService } from 'src/app/_services';
 
 
 @Component({
@@ -15,13 +15,16 @@ export class HomeScreenComponent implements OnInit { // , AfterViewInit {
     }],
       {relativeTo: this.route});
   }*/
-  constructor(private router: Router, private route: ActivatedRoute, config: NgbCarouselConfig) {
+  constructor(private router: Router
+    , private route: ActivatedRoute
+    , private alertService: AlertService) {
 
   }
 
   ngOnInit() {
+    
   }
-
+  
   subscribeEmail() {
     this.router.navigate(['emailSubscription']);
   }

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { DataService } from 'src/app/_services';
+import { DataService, AlertService } from 'src/app/_services';
 import { ActivatedRoute } from '@angular/router';
 import { SubscriptionsDataSource } from './SubscriptionsDataSource';
 import { SubscriptionsData } from 'src/app/_models/subscription.data';
@@ -16,7 +16,8 @@ import { first } from 'rxjs/operators';
 export class SubscriptionsComponent implements OnInit, AfterViewInit {
 
   constructor(private dataService: DataService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private alertService: AlertService) { }
   dataSourceSub: SubscriptionsDataSource;
   subscriptions: SubscriptionsData[];
   fileId: string;
@@ -70,7 +71,7 @@ export class SubscriptionsComponent implements OnInit, AfterViewInit {
                               emailDataInd = new EmailData();
     });
 
-    this.dataService.sendEmail(emailData).pipe(first()).subscribe(res => alert(res.result));
+    this.dataService.sendEmail(emailData).pipe(first()).subscribe(res => this.alertService.success(res.message, false));
   }
 
   public sendText(text: SubscriptionsData[]): void {
@@ -84,7 +85,7 @@ export class SubscriptionsComponent implements OnInit, AfterViewInit {
                               emailDataInd = new EmailData();
     });
 
-    this.dataService.sendEmail(emailData).pipe(first()).subscribe(res => alert(res.result));
+    this.dataService.sendEmail(emailData).pipe(first()).subscribe(res =>  this.alertService.success(res.message, false));
   }
 
   applyFilter(filterValue: string) {

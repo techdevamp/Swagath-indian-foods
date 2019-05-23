@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
                     this.router.navigate(['side-nav-list']);
                   } else {
                     this.invalidLogin = true;
-                    alert(data.message);
+                    this.alertService.success(data.message);
                   }
                 },
                 error => {

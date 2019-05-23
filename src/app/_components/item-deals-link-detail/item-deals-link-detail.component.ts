@@ -5,6 +5,7 @@ import { MatPaginator, MatSort } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
 import { ItemDealDetails } from 'src/app/_models/item.deal.details';
 import { DataDealCuponService } from 'src/app/_services/data.deal.cupon.service';
+import { AlertService } from 'src/app/_services';
 
 @Component({
   selector: 'app-item-deals-link-detail',
@@ -15,7 +16,8 @@ export class ItemDealsLinkDetailComponent implements OnInit, AfterViewInit {
   aoDealData: ItemDealDetails[] = [];
 
   constructor(private dataService: DataDealCuponService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private alertService: AlertService) { }
 
 dataSourceItems: ItemDealsLinkDetailDataSource;
 uploadDt: any;
@@ -60,8 +62,9 @@ public onChange(id: any, dealTyp: string) {
 }
 
 public saveChanges() {
-  this.dataService.saveDealLinkChanges(this.dataSourceItems.data).subscribe();
-  alert('Changes Saved Successfully!!');
+  this.dataService.saveDealLinkChanges(this.dataSourceItems.data).subscribe(res=>
+    this.alertService.success(res.message)
+  );
 }
 
 /** Whether the number of selected elements matches the total number of rows. */
@@ -99,13 +102,13 @@ masterToggle(chk: any) {
   /*** Set the paginator after the view init since this component will
   * be able to query its view for the initialized paginator.
   */
-ngAfterViewInit() {
-this.dataSourceItems.paginator = this.paginator;
-this.dataSourceItems.sort = this.sort;
-}
-applyFilter(filterValue: string) {
-  filterValue = filterValue.trim(); // Remove whitespace
-  filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
-  this.dataSourceItems.filter = filterValue;
-}
+  ngAfterViewInit() {
+    this.dataSourceItems.paginator = this.paginator;
+    this.dataSourceItems.sort = this.sort;
+  }
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+    this.dataSourceItems.filter = filterValue;
+  }
 }
