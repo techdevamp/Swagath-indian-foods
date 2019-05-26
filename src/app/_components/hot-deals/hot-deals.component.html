@@ -15,13 +15,12 @@
                   </ng-template>
 
                   <span mat-line>{{item.productItemDesc | titlecase}}</span>
-                  <!--<button mat-icon-button >
+                  <button mat-icon-button (click) ="addToCart(item.id)">
                       <mat-icon>add_shopping_cart</mat-icon>
-                  </button>-->
+                  </button>
                 </div>
                 </div>
               </div>
-
     </div>
 
       <div class="swiper-button-prev "></div>

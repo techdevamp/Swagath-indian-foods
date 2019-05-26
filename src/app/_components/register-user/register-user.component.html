@@ -1,6 +1,6 @@
 <div class="jumbotron"  >
     <div class="container  login-main" >
-  <mat-card>
+  <mat-card class="adminLoginCardBG">
       <mat-card-header>
       <mat-card-title>Sign up to join us</mat-card-title>
       </mat-card-header>
@@ -31,6 +31,7 @@
 
 <mat-card-actions align="middle">
     <button type="submit"  mat-raised-button>Register</button>
+    <button (click)="goToUsersDetails()" mat-raised-button>Cancel</button>
     </mat-card-actions>
   </form>
 </mat-card-content>

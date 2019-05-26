@@ -3,6 +3,7 @@ import { DataService } from 'src/app/_services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
+import { AlertService } from 'src/app/_services';
 
 @Component({
   selector: 'app-email-subscription',
@@ -14,7 +15,7 @@ export class EmailSubscriptionComponent implements OnInit {
   emailAddress: FormControl;
   phoneNo: FormControl;
   subscriptionsData: SubscriptionsData;
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService, private alertService: AlertService) {}
 
   ngOnInit(): void {
     this.emailAddress = new FormControl('',  [
@@ -35,7 +36,7 @@ export class EmailSubscriptionComponent implements OnInit {
       this.dataService.subscribeEmail(this.subscriptionsData).pipe(first()).subscribe(res => {
         this.emailAddress.reset();
         this.phoneNo.reset();
-        alert(res.message);
+        this.alertService.success(res.message, false);
       });
     }
   }

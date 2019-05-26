@@ -66,12 +66,16 @@ export class SubscriptionsComponent implements OnInit, AfterViewInit {
     let emailDataInd = new EmailData();
     email.forEach(element => {emailDataInd.to = element.email;
                               emailDataInd.message = this.emailMessage;
-                              emailDataInd.subject = 'Test Email from sunil';
+                              emailDataInd.subject = 'Swagath Indian Grocery!';
                               emailData.push(emailDataInd);
                               emailDataInd = new EmailData();
     });
 
-    this.dataService.sendEmail(emailData).pipe(first()).subscribe(res => this.alertService.success(res.message, false));
+    this.dataService.sendEmail(emailData).pipe(first()).subscribe(res => {
+        this.alertService.success(res.result, false);
+        this.textMessage = '';
+        this.emailMessage = '';
+      });
   }
 
   public sendText(text: SubscriptionsData[]): void {
@@ -80,12 +84,16 @@ export class SubscriptionsComponent implements OnInit, AfterViewInit {
     let emailDataInd = new EmailData();
     text.forEach(element => {
                               emailDataInd.message = this.textMessage;
-                              emailDataInd.phone = '+15179746194';
+                              emailDataInd.phone = '+1' + element.phone;
                               emailData.push(emailDataInd);
                               emailDataInd = new EmailData();
     });
 
-    this.dataService.sendEmail(emailData).pipe(first()).subscribe(res =>  this.alertService.success(res.message, false));
+    this.dataService.sendEmail(emailData).pipe(first()).subscribe(res => {
+        this.alertService.success(res.result, false);
+        this.textMessage = '';
+        this.emailMessage = '';
+      });
   }
 
   applyFilter(filterValue: string) {

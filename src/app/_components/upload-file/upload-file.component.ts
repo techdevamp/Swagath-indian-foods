@@ -37,7 +37,6 @@ export class UploadFileComponent implements OnInit, OnDestroy {
     this.fileName = '';
     this.dataService.getFileDetails(this.uploadType).subscribe(res => {
       this.fileDetails = res.result;
-      this.alertService.success(res.message, false);
   });
   }
 
