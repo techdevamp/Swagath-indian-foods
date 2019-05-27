@@ -1,22 +1,14 @@
-import { EmailSubscriptionComponent } from './_components/email-subscription/email-subscription.component';
-import { EditUserComponent } from './_components/edit-user/edit-user.component';
+import { AuthenticationModule } from './modules/authentication/authentication.module';
 import { LoginComponent } from './_components/login/login.component';
-import { HomeScreenComponent } from './_components/home-screen/home-screen.component';
-import { RegisterUserComponent } from './_components/register-user/register-user.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './_guards';
-import { UserDetailsComponent } from './_components/user-details/user-details.component';
-import { ListUserComponent } from './_components/list-user/list-user.component';
-import { UploadFileComponent } from './_components/upload-file/upload-file.component';
-import { DisplayItemDetailsComponent } from './_components/display-item-details/display-item-details.component';
-import { SidenavListComponent } from './_components/sidenav-list/sidenav-list.component';
-import { SubscriptionsComponent } from './_components/subscriptions/subscriptions.component';
-import { ItemDealsLinkComponent } from './_components/item-deals-link/item-deals-link.component';
-import { ItemDealsLinkDetailComponent } from './_components/item-deals-link-detail/item-deals-link-detail.component';
+import { BuyerModule } from './modules/buyer/buyer.module';
+import { SellerModule } from './modules/seller/seller.module';
 
 const routes: Routes =
 [
+
   {
     path: '',
     redirectTo: '/login',
@@ -28,58 +20,16 @@ const routes: Routes =
     component: LoginComponent
   },
   {
-    path: 'home',
-    component: HomeScreenComponent
+    path: 'buyer',
+    loadChildren: () => BuyerModule
   },
   {
-    path: 'register',
-    component:  RegisterUserComponent
+    path: 'seller',
+    loadChildren: () => SellerModule
   },
   {
-    path: 'list-user',
-    component: ListUserComponent
-  },
-  {
-    path: 'edit-user',
-    component: EditUserComponent
-  },
-  {
-    path: 'add-userDetails',
-    component: UserDetailsComponent
-  },
-  {
-    path: 'side-nav-list',
-    component: SidenavListComponent,
-    children: [{
-      path: 'upload-file/:id',
-      outlet: 'sidemenu',
-      component: UploadFileComponent
-    },
-    {
-      path: 'display-item-details/:id',
-      outlet: 'sidemenu',
-      component: DisplayItemDetailsComponent
-    },
-    {
-      path: 'subscriptions/:id',
-      outlet: 'sidemenu',
-      component: SubscriptionsComponent
-    },
-    {
-      path: 'item-link-deals/:id',
-      outlet: 'sidemenu',
-      component: ItemDealsLinkComponent
-    },
-    {
-      path: 'item-deals-link-detail',
-      outlet: 'sidemenu',
-      component: ItemDealsLinkDetailComponent
-    }
-  ]
-  },
-  {
-    path: 'emailSubscription',
-    component: EmailSubscriptionComponent
+    path: 'admin',
+    loadChildren: () => AuthenticationModule
   },
 // otherwise redirect to home
   {

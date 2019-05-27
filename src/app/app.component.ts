@@ -44,6 +44,6 @@ export class AppComponent {
       if (!this.currentUser) {
         this.logout();
       }
-      this.router.navigate(['side-nav-list']);
+      this.router.navigate(['seller/side-nav-list']);
     }
 }

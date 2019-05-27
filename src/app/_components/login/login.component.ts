@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
     // convenience getter for easy access to form fields
     get f() { return this.loginForm.controls; }
     register() {
-      this.router.navigate(['register']);
+      this.router.navigate(['admin/register']);
     }
     onSubmit() {
         this.submitted = true;
@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
                     window.localStorage.setItem('token', data.result.token);
                     this.dataTransferService.setApiResponse(data);
                     // this.router.navigate(['add-userDetails']);
-                    this.router.navigate(['side-nav-list']);
+                    this.router.navigate(['seller/side-nav-list']);
                   } else {
                     this.invalidLogin = true;
                     this.alertService.success(data.message);
