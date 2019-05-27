@@ -1,5 +1,5 @@
+import { BuyerService } from './../../_services/buyer.service';
 import { SubscriptionsData } from 'src/app/_models/subscription.data';
-import { DataService } from 'src/app/_services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
@@ -15,7 +15,7 @@ export class EmailSubscriptionComponent implements OnInit {
   emailAddress: FormControl;
   phoneNo: FormControl;
   subscriptionsData: SubscriptionsData;
-  constructor(private dataService: DataService, private alertService: AlertService) {}
+  constructor(private buyerService: BuyerService, private alertService: AlertService) {}
 
   ngOnInit(): void {
     this.emailAddress = new FormControl('',  [
@@ -33,7 +33,7 @@ export class EmailSubscriptionComponent implements OnInit {
       this.subscriptionsData.email = this.emailAddress.value;
       this.subscriptionsData.phone = this.phoneNo.value;
       this.subscriptionsData.subscribed = true;
-      this.dataService.subscribeEmail(this.subscriptionsData).pipe(first()).subscribe(res => {
+      this.buyerService.subscribeEmail(this.subscriptionsData).pipe(first()).subscribe(res => {
         this.emailAddress.reset();
         this.phoneNo.reset();
         this.alertService.success(res.message, false);

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { DataService, AlertService } from 'src/app/_services';
+import { AlertService } from 'src/app/_services';
 import { ActivatedRoute } from '@angular/router';
 import { SubscriptionsDataSource } from './SubscriptionsDataSource';
 import { SubscriptionsData } from 'src/app/_models/subscription.data';
@@ -7,6 +7,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { MatPaginator, MatSort } from '@angular/material';
 import { EmailData } from 'src/app/_models/email.data';
 import { first } from 'rxjs/operators';
+import { SellerService } from 'src/app/_services/seller.service';
 
 @Component({
   selector: 'app-subscriptions',
@@ -15,7 +16,7 @@ import { first } from 'rxjs/operators';
 })
 export class SubscriptionsComponent implements OnInit, AfterViewInit {
 
-  constructor(private dataService: DataService,
+  constructor(private sellerService: SellerService,
               private route: ActivatedRoute,
               private alertService: AlertService) { }
   dataSourceSub: SubscriptionsDataSource;
@@ -34,7 +35,7 @@ export class SubscriptionsComponent implements OnInit, AfterViewInit {
   this.fileId = params.id;
   });
   this.displayedColumnsSub = ['firstName', 'lastName', 'email', 'phone', 'subscribed', 'select' ];
-  this.dataSourceSub = new SubscriptionsDataSource(this.dataService);
+  this.dataSourceSub = new SubscriptionsDataSource(this.sellerService);
   this.dataSourceSub.loadSubscriptionsDetails(this.fileId);
   }
 /*
@@ -71,7 +72,7 @@ export class SubscriptionsComponent implements OnInit, AfterViewInit {
                               emailDataInd = new EmailData();
     });
 
-    this.dataService.sendEmail(emailData).pipe(first()).subscribe(res => {
+    this.sellerService.sendEmail(emailData).pipe(first()).subscribe(res => {
         this.alertService.success(res.result, false);
         this.textMessage = '';
         this.emailMessage = '';
@@ -89,7 +90,7 @@ export class SubscriptionsComponent implements OnInit, AfterViewInit {
                               emailDataInd = new EmailData();
     });
 
-    this.dataService.sendEmail(emailData).pipe(first()).subscribe(res => {
+    this.sellerService.sendEmail(emailData).pipe(first()).subscribe(res => {
         this.alertService.success(res.result, false);
         this.textMessage = '';
         this.emailMessage = '';

@@ -1,11 +1,11 @@
 import { SubscriptionsData } from '../../_models/subscription.data';
-import { DataService } from '../../_services';
 import { first } from 'rxjs/operators';
 import { MatTableDataSource } from '@angular/material';
+import { SellerService } from 'src/app/_services/seller.service';
 
 export class SubscriptionsDataSource extends MatTableDataSource<SubscriptionsData> {
 
-  constructor(private dataService: DataService) {
+  constructor(private sellerService: SellerService) {
     super();
   }
   /*private subscriptionsData: SubscriptionsData[];
@@ -18,7 +18,7 @@ export class SubscriptionsDataSource extends MatTableDataSource<SubscriptionsDat
   }*/
 
   loadSubscriptionsDetails(fileId: any) {
-        this.dataService.getSubscriptionsByFileId(fileId).pipe(first()).subscribe(res => {
+        this.sellerService.getSubscriptionsByFileId(fileId).pipe(first()).subscribe(res => {
         this.data = (res.result);
       });
   }

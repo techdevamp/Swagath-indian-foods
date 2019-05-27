@@ -1,7 +1,8 @@
+import { SellerService } from 'src/app/_services/seller.service';
 import { FileDetails } from './../../_models/file.details';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { DataService, AlertService } from 'src/app/_services';
+import { AlertService } from 'src/app/_services';
 import { first } from 'rxjs/operators';
 
 @Component({
@@ -17,7 +18,7 @@ export class UploadFileComponent implements OnInit, OnDestroy {
   displayDetails: string;
   uploadDt: any;
   fileName: string;
-  constructor(private dataService: DataService
+  constructor(private sellerService: SellerService
     ,         private alertService: AlertService
     ,         private router: Router
     ,         private route: ActivatedRoute) {}
@@ -35,7 +36,7 @@ export class UploadFileComponent implements OnInit, OnDestroy {
 
   public getFileDetails() {
     this.fileName = '';
-    this.dataService.getFileDetails(this.uploadType).subscribe(res => {
+    this.sellerService.getFileDetails(this.uploadType).subscribe(res => {
       this.fileDetails = res.result;
   });
   }
@@ -49,7 +50,7 @@ export class UploadFileComponent implements OnInit, OnDestroy {
     // get data from file upload
     const formData = new FormData();
     formData.append('uploadExcel', this.fileToUpload, this.fileToUpload.name);
-    this.dataService.uploadFile(formData, this.uploadType).pipe(first()).subscribe(res => {
+    this.sellerService.uploadFile(formData, this.uploadType).pipe(first()).subscribe(res => {
       this.alertService.success(res.message, true),
       this.fileDetails = res.result;
       this.getFileDetails();
@@ -65,7 +66,7 @@ export class UploadFileComponent implements OnInit, OnDestroy {
   }
 
   deleteFile(id: any) {
-    this.dataService.deleteFile(id).subscribe(res => {
+    this.sellerService.deleteFile(id).subscribe(res => {
         this.getFileDetails();
         this.alertService.success(res.message, false);
       }

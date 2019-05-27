@@ -8,24 +8,14 @@ import { AlertService } from 'src/app/_services';
   templateUrl: './home-screen.component.html',
   styleUrls: ['./home-screen.component.scss']
 })
-export class HomeScreenComponent implements OnInit { // , AfterViewInit {
-
-  /*ngAfterViewInit(): void {
-    this.router.navigate([{outlets: {homeDetails: ['home-details']}
-    }],
-      {relativeTo: this.route});
-  }*/
+export class HomeScreenComponent implements OnInit {
   constructor(private router: Router
-    , private route: ActivatedRoute
-    , private alertService: AlertService) {
+            , private route: ActivatedRoute
+            , private alertService: AlertService) {
 
   }
 
   ngOnInit() {
-    
-  }
-  
-  subscribeEmail() {
-    this.router.navigate(['emailSubscription']);
+
   }
 }

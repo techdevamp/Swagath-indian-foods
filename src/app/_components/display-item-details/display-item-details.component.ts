@@ -1,9 +1,9 @@
 import { ItemDetailsDataSource } from './ItemDetailsDataSource';
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { ItemDetails } from 'src/app/_models/item.details';
-import { DataService } from 'src/app/_services';
 import { ActivatedRoute } from '@angular/router';
 import { MatPaginator, MatSort } from '@angular/material';
+import { SellerService } from 'src/app/_services/seller.service';
 
 @Component({
   selector: 'app-display-item-details',
@@ -11,7 +11,7 @@ import { MatPaginator, MatSort } from '@angular/material';
   styleUrls: ['./display-item-details.component.scss']
 })
 export class DisplayItemDetailsComponent implements OnInit, AfterViewInit {
-  constructor(private dataService: DataService,
+  constructor(private sellerService: SellerService,
               private route: ActivatedRoute) { }
   itemDetails: ItemDetails[];
   dataSourceItems: ItemDetailsDataSource;
@@ -26,7 +26,7 @@ export class DisplayItemDetailsComponent implements OnInit, AfterViewInit {
       this.fileId = params.id;
       });
       this.displayedColumnsItems = ['itemName', 'itemDescription', 'itemWeight', 'itemQuantity', 'itemPrice', 'Image'];
-      this.dataSourceItems = new ItemDetailsDataSource(this.dataService);
+      this.dataSourceItems = new ItemDetailsDataSource(this.sellerService);
       this.dataSourceItems.loadItemDetails(this.fileId);
   }
   /**

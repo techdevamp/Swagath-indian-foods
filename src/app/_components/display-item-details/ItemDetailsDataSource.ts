@@ -1,9 +1,9 @@
 import { MatTableDataSource } from '@angular/material';
-import { DataService } from '../../_services';
 import { ItemDetails } from 'src/app/_models/item.details';
 import { first } from 'rxjs/operators';
+import { SellerService } from 'src/app/_services/seller.service';
 export class ItemDetailsDataSource extends MatTableDataSource<ItemDetails> {
-  constructor(private dataService: DataService) {
+  constructor(private sellerService: SellerService) {
     super();
   }
   /*private itemDetails = new BehaviorSubject<ItemDetails[]>([]);
@@ -14,7 +14,7 @@ export class ItemDetailsDataSource extends MatTableDataSource<ItemDetails> {
     this.itemDetails.complete();
   }*/
   loadItemDetails(fileId: any) {
-    this.dataService.getItemDetailsByFileId(fileId).pipe(first()).subscribe(res => {
+    this.sellerService.getItemDetailsByFileId(fileId).pipe(first()).subscribe(res => {
       this.data = res.result;
     });
   }

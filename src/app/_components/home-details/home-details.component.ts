@@ -1,3 +1,5 @@
+import { SharedService } from './../../_services/shared.service';
+import { BuyerService } from './../../_services/buyer.service';
 import { DataTransferService } from './../../_services/data-transfer.service';
 import { Component, OnInit} from '@angular/core';
 import { ItemDetails } from 'src/app/_models/item.details';
@@ -13,7 +15,9 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class HomeDetailsComponent implements OnInit {
 
-  constructor(private dataService: DataService, private dataTransferService: DataTransferService) {
+  constructor(private buyerService: BuyerService
+            , private sharedService: SharedService
+            , private dataTransferService: DataTransferService) {
    }
   itemDetails: ItemDetails[];
   productCategories: ProductCategory[];
@@ -26,14 +30,14 @@ export class HomeDetailsComponent implements OnInit {
     this.selectedCat = this.productCategories[0].productCategoryNm;
   }
   public getProductCategories() {
-    this.dataService.getProductCategories().pipe(first()).subscribe(res => {
+    this.sharedService.getProductCategories().pipe(first()).subscribe(res => {
       this.productCategories = res.result;
       this.getItemDetails(this.productCategories[0].productCategoryNm);
     });
   }
   public getItemDetails(category: string) {
     this.selectedCat = category;
-    this.dataService.getItemDetails(category).pipe(first()).subscribe(res => {
+    this.buyerService.getItemDetailsByCategory(category).pipe(first()).subscribe(res => {
       this.itemDetails = res.result;
     });
   }
