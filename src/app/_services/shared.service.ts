@@ -16,6 +16,6 @@ export class SharedService {
   }
 
   getProductCategories(): Observable<ApiResponse> {
-    return this.http.get<ApiResponse>(this.baseUrl + '/upload/getProductCategories');
+    return this.http.get<ApiResponse>(this.baseUrl + '/readData/getProductCategories');
   }
 }

@@ -8,6 +8,7 @@ import { MatPaginator, MatSort } from '@angular/material';
 import { EmailData } from 'src/app/_models/email.data';
 import { first } from 'rxjs/operators';
 import { SellerService } from 'src/app/_services/seller.service';
+import { PhoneData } from 'src/app/_models/phone.data';
 
 @Component({
   selector: 'app-subscriptions',
@@ -74,26 +75,24 @@ export class SubscriptionsComponent implements OnInit, AfterViewInit {
 
     this.sellerService.sendEmail(emailData).pipe(first()).subscribe(res => {
         this.alertService.success(res.result, false);
-        this.textMessage = '';
         this.emailMessage = '';
       });
   }
 
   public sendText(text: SubscriptionsData[]): void {
 
-    const emailData: EmailData[] = [];
-    let emailDataInd = new EmailData();
+    const phoneData: PhoneData[] = [];
+    let phoneDataInd = new PhoneData();
     text.forEach(element => {
-                              emailDataInd.message = this.textMessage;
-                              emailDataInd.phone = '+1' + element.phone;
-                              emailData.push(emailDataInd);
-                              emailDataInd = new EmailData();
+      phoneDataInd.textBody = this.textMessage;
+      phoneDataInd.toPhone = '+1' + element.phone;
+      phoneData.push(phoneDataInd);
+      phoneDataInd = new PhoneData();
     });
 
-    this.sellerService.sendEmail(emailData).pipe(first()).subscribe(res => {
+    this.sellerService.sendText(phoneData).pipe(first()).subscribe(res => {
         this.alertService.success(res.result, false);
         this.textMessage = '';
-        this.emailMessage = '';
       });
   }
 

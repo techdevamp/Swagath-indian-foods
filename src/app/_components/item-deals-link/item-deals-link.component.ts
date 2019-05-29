@@ -3,7 +3,7 @@ import { Deals } from 'src/app/_models/deals';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { ItemDealsLinkDataSource } from './ItemDealsLinkDataSource';
-import { DataDealCuponService } from 'src/app/_services/data.deal.cupon.service';
+import { DataDealCouponService } from 'src/app/_services/data.deal.coupon.service';
 
 
 @Component({
@@ -14,7 +14,7 @@ import { DataDealCuponService } from 'src/app/_services/data.deal.cupon.service'
 export class ItemDealsLinkComponent  implements OnInit, AfterViewInit {
 
 
-  constructor(private dataService: DataDealCuponService,
+  constructor(private dataService: DataDealCouponService,
               private route: ActivatedRoute
     ,         private router: Router) { }
 itemDetails: Deals[];

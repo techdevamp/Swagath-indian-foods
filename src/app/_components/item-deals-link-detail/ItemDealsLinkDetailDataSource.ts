@@ -1,9 +1,9 @@
 import { MatTableDataSource } from '@angular/material';
 import { ItemDealDetails } from 'src/app/_models/item.deal.details';
 import { first } from 'rxjs/operators';
-import { DataDealCuponService } from 'src/app/_services/data.deal.cupon.service';
+import { DataDealCouponService } from 'src/app/_services/data.deal.coupon.service';
 export class ItemDealsLinkDetailDataSource extends MatTableDataSource<ItemDealDetails> {
-  constructor(private dataService: DataDealCuponService) {
+  constructor(private dataService: DataDealCouponService) {
     super();
   }
 

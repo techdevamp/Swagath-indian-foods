@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MatPaginator, MatSort } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
 import { ItemDealDetails } from 'src/app/_models/item.deal.details';
-import { DataDealCuponService } from 'src/app/_services/data.deal.cupon.service';
+import { DataDealCouponService } from 'src/app/_services/data.deal.coupon.service';
 import { AlertService } from 'src/app/_services';
 
 @Component({
@@ -15,7 +15,7 @@ import { AlertService } from 'src/app/_services';
 export class ItemDealsLinkDetailComponent implements OnInit, AfterViewInit {
   aoDealData: ItemDealDetails[] = [];
 
-  constructor(private dataService: DataDealCuponService,
+  constructor(private dataService: DataDealCouponService,
               private route: ActivatedRoute,
               private alertService: AlertService) { }
 
@@ -62,7 +62,7 @@ public onChange(id: any, dealTyp: string) {
 }
 
 public saveChanges() {
-  this.dataService.saveDealLinkChanges(this.dataSourceItems.data).subscribe(res=>
+  this.dataService.saveDealLinkChanges(this.dataSourceItems.data).subscribe(res =>
     this.alertService.success(res.message)
   );
 }

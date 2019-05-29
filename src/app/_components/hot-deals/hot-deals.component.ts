@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SwiperConfigInterface} from 'ngx-swiper-wrapper';
 import { ItemDetails } from 'src/app/_models/item.details';
-import { DataDealCuponService } from 'src/app/_services/data.deal.cupon.service';
+import { DataDealCouponService } from 'src/app/_services/data.deal.coupon.service';
 
 @Component({
   selector: 'app-hot-deals',
@@ -11,7 +11,7 @@ import { DataDealCuponService } from 'src/app/_services/data.deal.cupon.service'
 export class HotDealsComponent implements OnInit {
 itemDetails: ItemDetails[];
 
-constructor(private dataService: DataDealCuponService) {
+constructor(private dataService: DataDealCouponService) {
 
 }
 

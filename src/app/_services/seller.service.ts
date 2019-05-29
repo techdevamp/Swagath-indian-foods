@@ -4,6 +4,7 @@ import { AppConstants } from '../constants/AppConstants';
 import { Observable } from 'rxjs';
 import { ApiResponse } from '../_models/api.response';
 import { EmailData } from '../_models/email.data';
+import { PhoneData } from '../_models/phone.data';
 
 @Injectable({
   providedIn: 'root'
@@ -38,13 +39,20 @@ export class SellerService {
     const params = new HttpParams().set('fileId', fileId);
     return this.http.get<ApiResponse>(this.baseUrl + '/upload/getSubscriptionsByFileId', { params });
   }
+
   getSubscriptionDetails(): Observable<ApiResponse> {
     return this.http.get<ApiResponse>(this.baseUrl + '/upload/getSubscriptionsDetails');
   }
+
   getAllItemDetails(): Observable<ApiResponse> {
     return this.http.get<ApiResponse>(this.baseUrl + '/upload/getAllItemDetails');
   }
+
   sendEmail(emailData: EmailData[]): Observable<ApiResponse> {
     return this.http.post<ApiResponse>(this.baseUrl + '/upload/sendEmail' , emailData);
+  }
+
+  sendText(phoneData: PhoneData[]): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(this.baseUrl + '/upload/sendText' , phoneData);
   }
 }

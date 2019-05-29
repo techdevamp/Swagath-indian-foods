@@ -18,10 +18,10 @@ export class BuyerService {
 
   getItemDetailsByCategory(category: string): Observable<ApiResponse> {
     const params = new HttpParams().set('category', category);
-    return this.http.get<ApiResponse>(this.baseUrl + '/upload/getItemDetails', { params });
+    return this.http.get<ApiResponse>(this.baseUrl + '/readData/getItemDetailsByCategory', { params });
   }
 
   subscribeEmail(subscriptionsData: SubscriptionsData): Observable<ApiResponse> {
-    return this.http.post<ApiResponse>(this.baseUrl + '/upload/subscribe' , subscriptionsData);
+    return this.http.post<ApiResponse>(this.baseUrl + '/readData/subscribe' , subscriptionsData);
   }
 }

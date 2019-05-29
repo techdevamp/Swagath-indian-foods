@@ -5,12 +5,10 @@ import { Observable, of } from 'rxjs';
 import { ApiResponse } from '../_models/api.response';
 import { ItemDealDetails } from '../_models/item.deal.details';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
-export class DataDealCuponService {
+export class DataDealCouponService {
   baseUrl: string;
 
   constructor(private http: HttpClient) {
@@ -18,20 +16,20 @@ export class DataDealCuponService {
   }
 
   getAllDealItemDetails(): Observable<ApiResponse> {
-    return this.http.get<ApiResponse>(this.baseUrl + '/dealAndCupon/getItemDealLinkDetails');
+    return this.http.get<ApiResponse>(this.baseUrl + '/readData/getItemDealLinkDetails');
   }
 
   getDealsDetails(): Observable<ApiResponse> {
-    return this.http.get<ApiResponse>(this.baseUrl + '/dealAndCupon/getDealDetails');
+    return this.http.get<ApiResponse>(this.baseUrl + '/readData/getDealDetails');
   }
 
   saveDealLinkChanges(itemDealDetails: ItemDealDetails[]): Observable<ApiResponse> {
-    return this.http.post<ApiResponse>(this.baseUrl + '/dealAndCupon/saveDealLinkChanges' , itemDealDetails);
+    return this.http.post<ApiResponse>(this.baseUrl + '/dealAndCoupon/saveDealLinkChanges' , itemDealDetails);
   }
 
   getItemDetailsByDealTypCd(dealTypCd: string): Observable<ApiResponse> {
     const params = new HttpParams().set('dealTypCd', dealTypCd);
-    return this.http.get<ApiResponse>(this.baseUrl + '/dealAndCupon/getItemsByDealTypCd', { params });
+    return this.http.get<ApiResponse>(this.baseUrl + '/readData/getItemsByDealTypCd', { params });
   }
 }
 
