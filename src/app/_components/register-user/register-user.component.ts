@@ -4,7 +4,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { first } from 'rxjs/operators';
 import { AlertService, AuthenticationService } from './../../_services';
 
 @Component({
@@ -32,9 +31,33 @@ export class RegisterUserComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       userName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
-  });
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', Validators.required]
+    },
+    {
+      validator: this.MustMatch('password', 'confirmPassword')
+    });
 }
+MustMatch(controlName: string, matchingControlName: string) {
+  return (formGroup: FormGroup) => {
+    const control = formGroup.controls[controlName];
+    const matchingControl = formGroup.controls[matchingControlName];
+
+    if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+        // return if another validator has already found an error on the matchingControl
+        return;
+    }
+
+    // set error on matchingControl if validation fails
+    if (control.value !== matchingControl.value) {
+        matchingControl.setErrors({ mustMatch: true });
+    } else {
+        matchingControl.setErrors(null);
+    }
+  };
+}
+
+
 // convenience getter for easy access to form fields
 get f() { return this.registerForm.controls; }
 
@@ -46,9 +69,9 @@ get f() { return this.registerForm.controls; }
         return;
     }
     this.loading = true;
-    this.dataService.createUser(this.registerForm.value).pipe(first()).subscribe(res => {
+    this.dataService.createUser(this.registerForm.value).subscribe(res => {
       this.alertService.success('Registration successful', true);
-      this.goToUsersDetails();
+      this.goToLoginPage();
       const artcl: RegisterUser = res.result;
       console.log(artcl.userName);
     },
@@ -65,7 +88,7 @@ get f() { return this.registerForm.controls; }
     }
  );
   }
-  goToUsersDetails(): void {
+  goToLoginPage(): void {
     this.router.navigateByUrl('\login');
   }
 }

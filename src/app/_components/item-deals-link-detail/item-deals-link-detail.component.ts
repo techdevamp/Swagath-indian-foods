@@ -35,7 +35,7 @@ this.route.params.subscribe(params => {
 this.uploadDt = params.id;
 });
 this.displayedColumnsItems = ['hotDeal', 'dailyDeal', 'itemName', 'itemDescription', 'itemWeight', 'itemQuantity', 'itemPrice', 'Image'];
-this.dataSourceItems = new ItemDealsLinkDetailDataSource(this.dataService);
+this.dataSourceItems = new ItemDealsLinkDetailDataSource(this.dataService, this.alertService);
 this.dataSourceItems.getAllItemDetails();
 }
 
@@ -63,7 +63,8 @@ public onChange(id: any, dealTyp: string) {
 
 public saveChanges() {
   this.dataService.saveDealLinkChanges(this.dataSourceItems.data).subscribe(res =>
-    this.alertService.success(res.message)
+    this.alertService.success(res.message, false)
+    , error => this.alertService.error(error)
   );
 }
 

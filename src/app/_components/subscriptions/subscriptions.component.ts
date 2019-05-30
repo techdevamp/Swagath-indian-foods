@@ -36,7 +36,7 @@ export class SubscriptionsComponent implements OnInit, AfterViewInit {
   this.fileId = params.id;
   });
   this.displayedColumnsSub = ['firstName', 'lastName', 'email', 'phone', 'subscribed', 'select' ];
-  this.dataSourceSub = new SubscriptionsDataSource(this.sellerService);
+  this.dataSourceSub = new SubscriptionsDataSource(this.sellerService, this.alertService);
   this.dataSourceSub.loadSubscriptionsDetails(this.fileId);
   }
 /*
@@ -73,10 +73,11 @@ export class SubscriptionsComponent implements OnInit, AfterViewInit {
                               emailDataInd = new EmailData();
     });
 
-    this.sellerService.sendEmail(emailData).pipe(first()).subscribe(res => {
+    this.sellerService.sendEmail(emailData).subscribe(res => {
         this.alertService.success(res.result, false);
         this.emailMessage = '';
-      });
+      }
+      , error => this.alertService.error(error));
   }
 
   public sendText(text: SubscriptionsData[]): void {
@@ -90,10 +91,11 @@ export class SubscriptionsComponent implements OnInit, AfterViewInit {
       phoneDataInd = new PhoneData();
     });
 
-    this.sellerService.sendText(phoneData).pipe(first()).subscribe(res => {
+    this.sellerService.sendText(phoneData).subscribe(res => {
         this.alertService.success(res.result, false);
         this.textMessage = '';
-      });
+      }
+      , error => this.alertService.error(error));
   }
 
   applyFilter(filterValue: string) {

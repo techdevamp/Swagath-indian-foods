@@ -1,3 +1,4 @@
+import { AlertService } from './../../_services/alert.service';
 import { SubscriptionsData } from '../../_models/subscription.data';
 import { first } from 'rxjs/operators';
 import { MatTableDataSource } from '@angular/material';
@@ -5,7 +6,7 @@ import { SellerService } from 'src/app/_services/seller.service';
 
 export class SubscriptionsDataSource extends MatTableDataSource<SubscriptionsData> {
 
-  constructor(private sellerService: SellerService) {
+  constructor(private sellerService: SellerService, private alertService: AlertService) {
     super();
   }
   /*private subscriptionsData: SubscriptionsData[];
@@ -20,6 +21,7 @@ export class SubscriptionsDataSource extends MatTableDataSource<SubscriptionsDat
   loadSubscriptionsDetails(fileId: any) {
         this.sellerService.getSubscriptionsByFileId(fileId).pipe(first()).subscribe(res => {
         this.data = (res.result);
-      });
+      },
+      error => this.alertService.error(error));
   }
 }

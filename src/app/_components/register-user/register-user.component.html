@@ -18,20 +18,20 @@
       <input type="password" matInput formControlName="password" placeholder="Password" name="password"  id="password" required>
       </mat-form-field>
     </p>
+    <p>
+      <mat-form-field>
 
+    <input type="password" matInput formControlName="confirmPassword" placeholder="Confirm Password" name="confirmPassword"  id="confirmPassword" required>
+    </mat-form-field>
+  </p>
     <p>
         <mat-form-field>
       <input type="text" matInput formControlName="email" placeholder="Email" name="email"  id="email" required>
   </mat-form-field>
 </p>
-<!--<p *ngIf="error" class="error">
-{{ error }}
-</p>-->
-
-
 <mat-card-actions align="middle">
     <button type="submit"  mat-raised-button>Register</button>
-    <button (click)="goToUsersDetails()" mat-raised-button>Cancel</button>
+    <button (click)="goToLoginPage()" mat-raised-button>Cancel</button>
     </mat-card-actions>
   </form>
 </mat-card-content>

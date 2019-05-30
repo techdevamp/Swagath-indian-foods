@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { ItemDealsLinkDataSource } from './ItemDealsLinkDataSource';
 import { DataDealCouponService } from 'src/app/_services/data.deal.coupon.service';
+import { AlertService } from 'src/app/_services';
 
 
 @Component({
@@ -16,9 +17,9 @@ export class ItemDealsLinkComponent  implements OnInit, AfterViewInit {
 
   constructor(private dataService: DataDealCouponService,
               private route: ActivatedRoute
-    ,         private router: Router) { }
+            , private router: Router
+            , private alertService: AlertService) { }
 itemDetails: Deals[];
-uploadDt: any;
 displayedColumnsItems: string[];
 dataSourceItems: ItemDealsLinkDataSource;
 displayItemDetails: string;
@@ -27,13 +28,10 @@ displayItemDetails: string;
 @ViewChild(MatSort) sort: MatSort;
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-    this.uploadDt = params.id;
-    });
     this.displayItemDetails = 'item-deals-link-detail';
     this.displayedColumnsItems = ['id', 'dealTypCd', 'dealTypDesc'];
-    this.dataSourceItems = new ItemDealsLinkDataSource(this.dataService);
-    this.dataSourceItems.loadDealDetails(this.uploadDt);
+    this.dataSourceItems = new ItemDealsLinkDataSource(this.dataService, this.alertService);
+    this.dataSourceItems.loadDealDetails();
 
      }
      public getItemDetails(): void {

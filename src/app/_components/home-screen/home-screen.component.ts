@@ -9,9 +9,7 @@ import { AlertService } from 'src/app/_services';
   styleUrls: ['./home-screen.component.scss']
 })
 export class HomeScreenComponent implements OnInit {
-  constructor(private router: Router
-            , private route: ActivatedRoute
-            , private alertService: AlertService) {
+  constructor() {
 
   }
 

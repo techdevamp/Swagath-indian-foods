@@ -3,7 +3,6 @@ import { FileDetails } from './../../_models/file.details';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AlertService } from 'src/app/_services';
-import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-upload-file',
@@ -38,7 +37,8 @@ export class UploadFileComponent implements OnInit, OnDestroy {
     this.fileName = '';
     this.sellerService.getFileDetails(this.uploadType).subscribe(res => {
       this.fileDetails = res.result;
-  });
+    },
+    error => this.alertService.error(error));
   }
 
   public setFile(event: any): void {
@@ -50,11 +50,12 @@ export class UploadFileComponent implements OnInit, OnDestroy {
     // get data from file upload
     const formData = new FormData();
     formData.append('uploadExcel', this.fileToUpload, this.fileToUpload.name);
-    this.sellerService.uploadFile(formData, this.uploadType).pipe(first()).subscribe(res => {
+    this.sellerService.uploadFile(formData, this.uploadType).subscribe(res => {
       this.alertService.success(res.message, true),
       this.fileDetails = res.result;
       this.getFileDetails();
-    });
+    },
+    error => this.alertService.error(error));
   }
 
   public getItemDetails(fileId: any): void {
@@ -69,7 +70,8 @@ export class UploadFileComponent implements OnInit, OnDestroy {
     this.sellerService.deleteFile(id).subscribe(res => {
         this.getFileDetails();
         this.alertService.success(res.message, false);
-      }
+      },
+      error => this.alertService.error(error)
     );
   }
 }

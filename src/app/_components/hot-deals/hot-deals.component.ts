@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SwiperConfigInterface} from 'ngx-swiper-wrapper';
 import { ItemDetails } from 'src/app/_models/item.details';
 import { DataDealCouponService } from 'src/app/_services/data.deal.coupon.service';
+import { AlertService } from 'src/app/_services';
 
 @Component({
   selector: 'app-hot-deals',
@@ -11,7 +12,7 @@ import { DataDealCouponService } from 'src/app/_services/data.deal.coupon.servic
 export class HotDealsComponent implements OnInit {
 itemDetails: ItemDetails[];
 
-constructor(private dataService: DataDealCouponService) {
+constructor(private dataService: DataDealCouponService, private alertService: AlertService) {
 
 }
 
@@ -31,6 +32,15 @@ public config: SwiperConfigInterface  = {
 };
 
   ngOnInit() {
-  this.dataService.getItemDetailsByDealTypCd('HOTDEAL').subscribe(res => this.itemDetails = res.result);
+    this.getItemsByDeals();
+  }
+
+  getItemsByDeals() {
+    this.dataService.getItemDetailsByDealTypCd('HOTDEAL')
+    .pipe()
+    .subscribe(
+          res => this.itemDetails = res.result
+        , error => this.alertService.error(error)
+        );
   }
 }
