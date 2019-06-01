@@ -14,6 +14,8 @@ export class LoginComponent implements OnInit {
     submitted = false;
     returnUrl: string;
     invalidLogin = false;
+    @Input()
+    error: string | null;
     constructor(
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
@@ -63,11 +65,10 @@ export class LoginComponent implements OnInit {
                   if (data.status === 200) {
                     window.localStorage.setItem('token', data.result.token);
                     this.dataTransferService.setApiResponse(data);
-                    // this.router.navigate(['add-userDetails']);
                     this.router.navigate(['seller/side-nav-list']);
                   } else {
                     this.invalidLogin = true;
-                    this.alertService.success(data.message);
+                    this.alertService.error(data.message);
                   }
                 },
                 error => {
@@ -75,5 +76,4 @@ export class LoginComponent implements OnInit {
                     this.loading = false;
                 });
     }
-    @Input() error: string | null;
 }

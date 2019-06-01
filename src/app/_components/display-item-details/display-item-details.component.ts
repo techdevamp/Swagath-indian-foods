@@ -4,6 +4,7 @@ import { ItemDetails } from 'src/app/_models/item.details';
 import { ActivatedRoute } from '@angular/router';
 import { MatPaginator, MatSort } from '@angular/material';
 import { SellerService } from 'src/app/_services/seller.service';
+import { AlertService } from 'src/app/_services';
 
 @Component({
   selector: 'app-display-item-details',
@@ -12,7 +13,8 @@ import { SellerService } from 'src/app/_services/seller.service';
 })
 export class DisplayItemDetailsComponent implements OnInit, AfterViewInit {
   constructor(private sellerService: SellerService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private alertService: AlertService) { }
   itemDetails: ItemDetails[];
   dataSourceItems: ItemDetailsDataSource;
   fileId: any;
@@ -23,9 +25,9 @@ export class DisplayItemDetailsComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
       this.route.params.subscribe(params => {
-      this.fileId = params.id;
+        this.fileId = params.id;
       });
-      this.displayedColumnsItems = ['itemName', 'itemDescription', 'itemWeight', 'itemQuantity', 'itemPrice', 'Image'];
+      this.displayedColumnsItems = ['itemName', 'itemDescription', 'itemWeight', 'itemQuantity', 'itemPrice', 'Image', 'Edit', 'Delete'];
       this.dataSourceItems = new ItemDetailsDataSource(this.sellerService);
       this.dataSourceItems.loadItemDetails(this.fileId);
   }
@@ -36,6 +38,24 @@ export class DisplayItemDetailsComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.dataSourceItems.paginator = this.paginator;
     this.dataSourceItems.sort = this.sort;
+  }
+
+  editItem(itemId: number) {
+    this.sellerService.editItem(itemId).subscribe(
+      res => {this.alertService.success(res.message, false);
+              this.dataSourceItems.loadItemDetails(this.fileId);
+      },
+      error => this.alertService.error(error)
+    );
+  }
+
+  deleteItem(itemId: number) {
+    this.sellerService.deleteItem(itemId).subscribe(
+      res => {this.alertService.success(res.message, false);
+              this.dataSourceItems.loadItemDetails(this.fileId);
+            },
+      error => this.alertService.error(error)
+    );
   }
 
   applyFilter(filterValue: string) {

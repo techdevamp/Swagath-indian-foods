@@ -36,6 +36,20 @@ fxFlex="100%" >
                 <mat-header-cell *matHeaderCellDef mat-sort-header>Item Image</mat-header-cell>
                 <mat-cell *matCellDef="let item"><img src="../../../assets/images/{{item.productItemNm}}.png" alt="{{item.itemName}}"></mat-cell>
               </ng-container>
+              <ng-container matColumnDef="Edit" >
+                <mat-header-cell *matHeaderCellDef>Edit</mat-header-cell>
+                <mat-cell *matCellDef="let item">
+                  <button mat-button (click)="editItem(item.id)">Browse</button>
+                </mat-cell>
+              </ng-container>
+            <ng-container matColumnDef="Delete" >
+                <mat-header-cell *matHeaderCellDef >Delete</mat-header-cell>
+                <mat-cell *matCellDef="let item">
+                    <a (click)="deleteItem(item.id)" >
+                        <i class="fa fa-trash-o"></i>
+                    </a>
+                </mat-cell>
+              </ng-container>
             <mat-header-row *matHeaderRowDef="displayedColumnsItems"></mat-header-row>
           <mat-row *matRowDef="let item; columns: displayedColumnsItems"></mat-row>
           </mat-table>

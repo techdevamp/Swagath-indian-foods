@@ -48,6 +48,16 @@ export class SellerService {
     return this.http.get<ApiResponse>(this.baseUrl + '/upload/getAllItemDetails');
   }
 
+  editItem(itemId: any): Observable<ApiResponse> {
+    const params = new HttpParams().set('itemId', itemId);
+    return this.http.get<ApiResponse>(this.baseUrl + '/upload/editItem', {params});
+  }
+
+  deleteItem(itemId: any): Observable<ApiResponse> {
+    const params = new HttpParams().set('itemId', itemId);
+    return this.http.delete<ApiResponse>(this.baseUrl + '/upload/deleteItem', {params});
+  }
+
   sendEmail(emailData: EmailData[]): Observable<ApiResponse> {
     return this.http.post<ApiResponse>(this.baseUrl + '/upload/sendEmail' , emailData);
   }
