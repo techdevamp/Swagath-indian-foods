@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import { AlertService, AuthenticationService, DataTransferService } from './../../_services';
+import { Roles } from 'src/app/_models/roles';
+import { RegisterUser } from 'src/app/_models';
 
 @Component({templateUrl: 'login.component.html',
 selector: 'app-login',
@@ -14,6 +16,7 @@ export class LoginComponent implements OnInit {
     submitted = false;
     returnUrl: string;
     invalidLogin = false;
+    currentUser: RegisterUser;
     @Input()
     error: string | null;
     constructor(
@@ -65,7 +68,13 @@ export class LoginComponent implements OnInit {
                   if (data.status === 200) {
                     window.localStorage.setItem('token', data.result.token);
                     this.dataTransferService.setApiResponse(data);
+                  //  this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+                   if(data.result.role == Roles.Seller || data.result.role == Roles.Admin){
                     this.router.navigate(['seller/side-nav-list']);
+                   }else{
+                    this.router.navigate(['buyer/home']);
+                   }
+                    
                   } else {
                     this.invalidLogin = true;
                     this.alertService.error(data.message);

@@ -3,5 +3,6 @@ export class RegisterUser {
     userName: string;
     email: string;
     password: string;
-    token: string;
+    token?: string;
+    role: string;
 }

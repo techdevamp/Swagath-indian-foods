@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { AuthenticationService } from './_services';
 import { RegisterUser } from './_models';
 import { Router } from '@angular/router';
+import { Roles } from './_models/roles';
 
 @Component({
   selector: 'app-root',
@@ -38,6 +39,10 @@ export class AppComponent {
 
     loginScreen() {
       this.router.navigate(['login']);
+    }
+
+    get isSeller() {
+      return this.currentUser && this.currentUser.role === Roles.Seller;
     }
 
     adminScreen() {
