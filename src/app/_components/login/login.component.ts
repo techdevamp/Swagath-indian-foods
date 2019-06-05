@@ -69,12 +69,12 @@ export class LoginComponent implements OnInit {
                     window.localStorage.setItem('token', data.result.token);
                     this.dataTransferService.setApiResponse(data);
                   //  this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
-                   if(data.result.role == Roles.Seller || data.result.role == Roles.Admin){
+                    if (data.result.role === Roles.Seller || data.result.role === Roles.Admin) {
                     this.router.navigate(['seller/side-nav-list']);
-                   }else{
+                   } else {
                     this.router.navigate(['buyer/home']);
                    }
-                    
+
                   } else {
                     this.invalidLogin = true;
                     this.alertService.error(data.message);

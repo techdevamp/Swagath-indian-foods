@@ -1,9 +1,9 @@
+import { AlertService } from './../../_services/alert.service';
 import { SharedService } from './../../_services/shared.service';
 import { BuyerService } from './../../_services/buyer.service';
 import { DataTransferService } from './../../_services/data-transfer.service';
 import { Component, OnInit} from '@angular/core';
 import { ItemDetails } from 'src/app/_models/item.details';
-import { DataService } from 'src/app/_services';
 import { first } from 'rxjs/operators';
 import { ProductCategory } from 'src/app/_models/product.category';
 import { BehaviorSubject } from 'rxjs';
@@ -17,7 +17,8 @@ export class HomeDetailsComponent implements OnInit {
 
   constructor(private buyerService: BuyerService
             , private sharedService: SharedService
-            , private dataTransferService: DataTransferService) {
+            , private dataTransferService: DataTransferService
+            , private alertService: AlertService) {
    }
   itemDetails: ItemDetails[];
   productCategories: ProductCategory[];
@@ -27,13 +28,16 @@ export class HomeDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.getProductCategories();
-    this.selectedCat = this.productCategories[0].productCategoryNm;
   }
   public getProductCategories() {
     this.sharedService.getProductCategories().pipe(first()).subscribe(res => {
       this.productCategories = res.result;
+      this.selectedCat = this.productCategories[0].productCategoryNm;
       this.getItemDetails(this.productCategories[0].productCategoryNm);
-    });
+    },
+    error => {this.alertService.error(error);
+              }
+    );
   }
   public getItemDetails(category: string) {
     this.selectedCat = category;
