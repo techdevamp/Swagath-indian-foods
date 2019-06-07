@@ -1,4 +1,3 @@
-import { AuthenticationModule } from './modules/authentication/authentication.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -10,13 +9,13 @@ import { MatButtonModule, MatCardModule, MatListModule, MatToolbarModule
   , MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,
   MatSortModule, MatTableModule, MatSidenavModule, MatIconModule, MatMenuModule,
   MatDialogModule, MatCheckboxModule, MatGridListModule} from '@angular/material';
-import { JwtInterceptor, ErrorInterceptor } from './_helpers';
+import { JwtInterceptor, ErrorInterceptor } from './helpers';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { NgMatSearchBarModule } from 'ng-mat-search-bar';
-import { LoginComponent } from './_components/login/login.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "AuthenticMarketplace": {
+    "IndianGroceryStore": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/AuthenticMarketplace",
+            "outputPath": "dist/IndianGroceryStore",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -64,18 +64,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "AuthenticMarketplace:build"
+            "browserTarget": "IndianGroceryStore:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "AuthenticMarketplace:build:production"
+              "browserTarget": "IndianGroceryStore:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "AuthenticMarketplace:build"
+            "browserTarget": "IndianGroceryStore:build"
           }
         },
         "test": {
@@ -112,7 +112,7 @@
         }
       }
     },
-    "AuthenticMarketplace-e2e": {
+    "IndianGroceryStore-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -121,11 +121,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "AuthenticMarketplace:serve"
+            "devServerTarget": "IndianGroceryStore:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "AuthenticMarketplace:serve:production"
+              "devServerTarget": "IndianGroceryStore:serve:production"
             }
           }
         },
@@ -141,5 +141,5 @@
       }
     }
   },
-  "defaultProject": "AuthenticMarketplace"
+  "defaultProject": "IndianGroceryStore"
 }

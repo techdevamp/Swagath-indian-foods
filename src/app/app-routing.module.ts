@@ -1,8 +1,8 @@
 import { AuthenticationModule } from './modules/authentication/authentication.module';
-import { LoginComponent } from './_components/login/login.component';
+import { LoginComponent } from './components/login/login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuard } from './_guards';
+import { AuthGuard } from './guards';
 import { BuyerModule } from './modules/buyer/buyer.module';
 import { SellerModule } from './modules/seller/seller.module';
 

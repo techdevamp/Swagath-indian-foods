@@ -1,0 +1,30 @@
+<div class="col-md-6 user-container">
+    <h2 class="text-center">Edit Item Details</h2>
+    <form [formGroup]="editItemDetailsForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="username">Item Name:</label>
+        <input type="text" formControlName="productItemNm" placeholder="Item Name" class="form-control">
+      </div>
+      <div class="form-group">
+          <label for="username">Item Description:</label>
+          <input type="text" formControlName="productItemDesc" placeholder="Item Description" class="form-control">
+      </div>
+      <div class="form-group">
+          <label for="username">Item Price:</label>
+          <input type="text" formControlName="productItemUnitPrice" placeholder="Item Price" class="form-control">
+      </div>
+      <div class="form-group">
+          <label for="username">Discount Price:</label>
+          <input type="text" formControlName="productItemDscnt" placeholder="Discount Price" class="form-control">
+      </div>
+      <div class="form-group">
+          <label for="username">Item Weight:</label>
+          <input type="text" formControlName="productItemWeight" placeholder="Item Weight" class="form-control">
+      </div>
+      <div class="form-group">
+          <label for="username">Item Quantity:</label>
+          <input type="text" formControlName="productItemQnty" placeholder="Item Quantity" class="form-control">
+      </div>
+      <button class="btn btn-success">Update</button>
+    </form>
+  </div>

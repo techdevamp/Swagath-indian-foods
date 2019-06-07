@@ -1,4 +1,4 @@
-import { AlertComponent } from 'src/app/_components';
+import { AlertComponent } from 'src/app/components';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 

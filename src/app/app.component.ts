@@ -1,9 +1,9 @@
-import { DataTransferService } from './_services/data-transfer.service';
+import { DataTransferService } from './services/data-transfer.service';
 import { Component } from '@angular/core';
-import { AuthenticationService } from './_services';
-import { RegisterUser } from './_models';
+import { AuthenticationService } from './services';
+import { RegisterUser } from './models';
 import { Router } from '@angular/router';
-import { Roles } from './_models/roles';
+import { Roles } from './models/roles';
 
 @Component({
   selector: 'app-root',
