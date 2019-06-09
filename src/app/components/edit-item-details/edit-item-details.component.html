@@ -1,4 +1,4 @@
-<div class="col-md-6 user-container">
+<div class="col-sm-7 jumbotron">
     <h2 class="text-center">Edit Item Details</h2>
     <form [formGroup]="editItemDetailsForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
@@ -24,6 +24,14 @@
       <div class="form-group">
           <label for="username">Item Quantity:</label>
           <input type="text" formControlName="productItemQnty" placeholder="Item Quantity" class="form-control">
+      </div>
+      <div class="form-group">
+          <label for="username">Item Image:</label>
+          <label class="btn btn-outline-primary ">
+                  <img src={{imgUrl}} alt="productItemNm">
+                  <input id="files"  name="uploadImage" type="file" (change)="onImageClick($event)" class="fileInput">
+                  <span>Browse</span>
+          </label>
       </div>
       <button class="btn btn-success">Update</button>
     </form>

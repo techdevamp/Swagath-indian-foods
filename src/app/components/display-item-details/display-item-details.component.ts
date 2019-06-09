@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatPaginator, MatSort } from '@angular/material';
 import { SellerService } from 'src/app/services/seller.service';
 import { AlertService, DataTransferService } from 'src/app/services';
+import { AppConstants } from 'src/app/constants/AppConstants';
 
 @Component({
   selector: 'app-display-item-details',
@@ -22,6 +23,7 @@ export class DisplayItemDetailsComponent implements OnInit, AfterViewInit {
   dataSourceItems: ItemDetailsDataSource;
   fileId: any;
   displayedColumnsItems: string[];
+  imgUrl = '../../../assets/images/';
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -33,6 +35,7 @@ export class DisplayItemDetailsComponent implements OnInit, AfterViewInit {
       this.displayedColumnsItems = ['itemName', 'itemDescription', 'itemWeight', 'itemQuantity', 'itemPrice', 'Image', 'Edit', 'Delete'];
       this.dataSourceItems = new ItemDetailsDataSource(this.sellerService);
       this.dataSourceItems.loadItemDetails(this.fileId);
+
   }
   /**
    * Set the paginator after the view init since this component will
