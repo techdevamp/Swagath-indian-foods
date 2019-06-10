@@ -11,15 +11,18 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./hot-deals.component.scss'],
 })
 export class HotDealsComponent implements OnInit {
-itemDetails: ItemDetails[];
 
-constructor(private dataService: DataDealCouponService
-          , private alertService: AlertService
-          , private dataTransferService: DataTransferService) {
+  hotDealsItems: ItemDetails[];
+  itemsCount: BehaviorSubject<number>;
+  itemsAvailable: boolean;
+  imgUrl = '../../../assets/images/';
+
+  constructor(private dataService: DataDealCouponService
+          ,   private alertService: AlertService
+          ,   private dataTransferService: DataTransferService) {
 
 }
-itemsCount: BehaviorSubject<number>;
-itemsAvailable: boolean;
+
 public config: SwiperConfigInterface  = {
   a11y: true,
   direction: 'horizontal',
@@ -41,10 +44,9 @@ public config: SwiperConfigInterface  = {
 
   getItemsByDeals() {
     this.dataService.getItemDetailsByDealTypCd('HOTDEAL')
-    .pipe()
     .subscribe(
-          res => {this.itemDetails = res.result;
-                  if (this.itemDetails.length > 0) {
+          res => {this.hotDealsItems = res.result;
+                  if (this.hotDealsItems.length > 0) {
                     this.itemsAvailable = true;
                   } else {
                     this.itemsAvailable = false;

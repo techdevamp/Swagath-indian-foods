@@ -1,8 +1,9 @@
 <div  class="swiper-container" [swiper]="config">
     <div class="swiper-wrapper slideItems" >
-      <div class="swiper-slide" *ngFor="let item of itemDetails">
+      <div class="hidden">{{hotDealsItems.length}}</div>
+        <div class="swiper-slide" *ngFor="let item of hotDealsItems" >
           <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill >
-              <img src="../../../assets/images/{{item.productItemNm}}.png" alt="{{item.id}} slide" class="img-responsive">
+              <img src="{{imgUrl}}{{item.productItemNm}}.png" alt="{{item.id}} slide" class="img-responsive">
               <div class="snipcart-details">
                   <h6 mat-line>{{item.productItemNm | titlecase}}({{item.productItemWeight | number}} gm)</h6>
                   <h6 mat-line *ngIf="item.productItemDscnt; else noDiscount">{{item.productItemDscnt | currency}}
@@ -19,9 +20,9 @@
                       <mat-icon>add_shopping_cart</mat-icon>
                   </button>-->
                 </div>
-                </div>
               </div>
-    </div>
+            </div>
+      </div>
 
       <div class="swiper-button-prev " *ngIf="itemsAvailable"></div>
       <div class="swiper-button-next " *ngIf="itemsAvailable"></div>
