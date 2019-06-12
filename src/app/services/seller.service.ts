@@ -21,6 +21,15 @@ export class SellerService {
     return this.http.post<ApiResponse>(this.baseUrl + '/upload/' + uploadType, file);
   }
 
+  uploadImage(file: FormData, fileName: string): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(this.baseUrl + '/upload/image/' + fileName, file);
+  }
+
+  getImage(imageName: any): Observable<ApiResponse> {
+    const params = new HttpParams().set('imageName', imageName);
+    return this.http.get<ApiResponse>(this.baseUrl + '/upload/getImageByImageName', { params });
+  }
+
   deleteFile(id: number): Observable<ApiResponse> {
     return this.http.delete<ApiResponse>(this.baseUrl + '/upload/deleteFile/' + id);
   }
