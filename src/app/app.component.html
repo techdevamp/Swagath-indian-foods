@@ -27,7 +27,7 @@
                 <button mat-button (click)="home('buyer/home')"><mat-icon>home</mat-icon>Home</button>
               </span>
             </li>
-                <li  >
+            <li  *ngIf="isSeller">
                     <span class="label">
                       <button mat-button (click)="adminScreen()"><mat-icon > person_pin</mat-icon>Admin</button>
                     </span>
