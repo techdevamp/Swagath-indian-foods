@@ -28,7 +28,7 @@
       <div class="form-group">
           <label for="username">Item Image:</label>
           <label class="btn btn-outline-primary ">
-                  <img [src]="imgUrl" alt='editItemDetailsForm.controls.productItemNm'>
+                  <img [src]="imgUrl" alt='{{productItemNm}}'>
                   <input id="files"  name="uploadImage" type="file" (change)="onImageClick($event)" class="fileInput">
                   <span>Browse</span>
                   <button type="button" class="btn btn-info" (click)="onUpload()" >Upload</button>
