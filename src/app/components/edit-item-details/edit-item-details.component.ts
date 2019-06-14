@@ -1,3 +1,4 @@
+import { AppConstants } from 'src/app/constants/AppConstants';
 import { DataTransferService, AlertService } from 'src/app/services';
 import { SellerService } from './../../services/seller.service';
 import { Component, OnInit, SecurityContext } from '@angular/core';
@@ -41,7 +42,7 @@ export class EditItemDetailsComponent implements OnInit {
     });
     this.editItemDetailsForm.setValue(this.dataTransferService.getApiResponse().result);
     this.productItemNm = this.editItemDetailsForm.controls.productItemNm.value.concat('.png');
-    this.imgUrl = 'http://localhost:8080/readData/getImageByImageName/'.concat(this.productItemNm);
+    this.imgUrl = AppConstants.baseURL.concat('/readData/getImageByImageName/'.concat(this.productItemNm));
   }
 
   getImageFromService() {
