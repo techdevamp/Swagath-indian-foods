@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { AppConstants } from '../constants/AppConstants';
 import { Observable } from 'rxjs';
 import { ApiResponse } from '../models/api.response';
 import { EmailData } from '../models/email.data';
 import { PhoneData } from '../models/phone.data';
+import { Url } from 'url';
 
 @Injectable({
   providedIn: 'root'
@@ -25,9 +26,8 @@ export class SellerService {
     return this.http.post<ApiResponse>(this.baseUrl + '/upload/image/' + fileName, file);
   }
 
-  getImage(imageName: any): Observable<ApiResponse> {
-    const params = new HttpParams().set('imageName', imageName);
-    return this.http.get<ApiResponse>(this.baseUrl + '/upload/getImageByImageName', { params });
+  getImage(imageName: any): Observable<Blob> {
+    return this.http.get<Blob>(this.baseUrl + '/readData/getImageByImageName/'.concat(imageName));
   }
 
   deleteFile(id: number): Observable<ApiResponse> {
