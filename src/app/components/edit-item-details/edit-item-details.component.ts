@@ -40,7 +40,7 @@ export class EditItemDetailsComponent implements OnInit {
       imageName: ['']
     });
     this.editItemDetailsForm.setValue(this.dataTransferService.getApiResponse().result);
-    this.productItemNm = this.editItemDetailsForm.controls.productItemNm.value.concat('.png');
+    this.productItemNm = this.editItemDetailsForm.controls.imageName.value.concat('.png');
     this.imgUrl = AppConstants.imageURL.concat(this.productItemNm);
   }
 
@@ -86,7 +86,7 @@ export class EditItemDetailsComponent implements OnInit {
     // get data from file upload
     const formData = new FormData();
     formData.append('uploadImage', this.fileToUpload);
-    this.sellerService.uploadImage(formData, this.productItemNm).subscribe(res => {
+    this.sellerService.uploadImage(formData, this.fileToUpload.name).subscribe(res => {
     this.alertService.success(res.message, false);
 
     this.router.navigate([{outlets: {sidemenu: ['edit-item-details']}}],

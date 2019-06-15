@@ -35,7 +35,7 @@ fxFlex="100%" >
             <ng-container matColumnDef="Image" >
                 <mat-header-cell *matHeaderCellDef mat-sort-header>Item Image</mat-header-cell>
                 <mat-cell *matCellDef="let item">
-                  <img src={{imgUrl}}{{item.productItemNm}}.png alt="{{item.productItemNm}}">
+                  <img src={{imgUrl}}{{item.imageName}}.png alt="{{item.productItemNm}}">
                 </mat-cell>
               </ng-container>
               <ng-container matColumnDef="Edit" >
