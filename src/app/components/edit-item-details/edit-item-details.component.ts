@@ -1,10 +1,9 @@
 import { AppConstants } from 'src/app/constants/AppConstants';
 import { DataTransferService, AlertService } from 'src/app/services';
 import { SellerService } from './../../services/seller.service';
-import { Component, OnInit, SecurityContext } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { DomSanitizer, SafeHtml, SafeStyle, SafeScript, SafeUrl, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-edit-item-details',
@@ -24,7 +23,7 @@ export class EditItemDetailsComponent implements OnInit {
             , private dataTransferService: DataTransferService
             , private route: ActivatedRoute
             , private alertService: AlertService
-            , public domsanitizer: DomSanitizer) { }
+            ) { }
 
 
   ngOnInit() {
@@ -38,18 +37,18 @@ export class EditItemDetailsComponent implements OnInit {
       productItemQnty: ['', Validators.required],
       productCategoryRefId: [''],
       fileUploadId: [''],
-      imageUploadId: ['']
+      imageName: ['']
     });
     this.editItemDetailsForm.setValue(this.dataTransferService.getApiResponse().result);
     this.productItemNm = this.editItemDetailsForm.controls.productItemNm.value.concat('.png');
-    this.imgUrl = AppConstants.baseURL.concat('/readData/getImageByImageName/'.concat(this.productItemNm));
+    this.imgUrl = AppConstants.imageURL.concat(this.productItemNm);
   }
 
   getImageFromService() {
     // this.isImageLoading = true;
     this.sellerService.getImage(this.productItemNm).subscribe(res => {
 
-      //this.createImageFromBlob(this.dataURItoBlob(res.result));
+      // this.createImageFromBlob(this.dataURItoBlob(res.result));
       this.imgUrl = res;
 
       // this.isImageLoading = false;

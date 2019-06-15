@@ -1,3 +1,4 @@
+import { AppConstants } from 'src/app/constants/AppConstants';
 import { AlertService } from './../../services/alert.service';
 import { SharedService } from './../../services/shared.service';
 import { BuyerService } from './../../services/buyer.service';
@@ -25,6 +26,7 @@ export class HomeDetailsComponent implements OnInit {
 
   itemsCount: BehaviorSubject<number>;
   selectedCat: any;
+  imgUrl = AppConstants.imageURL;
 
   ngOnInit() {
     this.getProductCategories();

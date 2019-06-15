@@ -1,3 +1,4 @@
+import { ImageManagerComponent } from './../../components/image-manager/image-manager.component';
 import { AlertModule } from './../alert/alert.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -24,7 +25,8 @@ import { EditItemDetailsComponent } from 'src/app/components/edit-item-details/e
     SubscriptionsComponent,
     ItemDealsLinkComponent,
     ItemDealsLinkDetailComponent,
-    EditItemDetailsComponent
+    EditItemDetailsComponent,
+    ImageManagerComponent
   ],
   imports: [
     CommonModule,

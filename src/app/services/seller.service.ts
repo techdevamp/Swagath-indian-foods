@@ -30,6 +30,10 @@ export class SellerService {
     return this.http.get<Blob>(this.baseUrl + '/readData/getImageByImageName/'.concat(imageName));
   }
 
+  getAllImages(): Observable<ApiResponse> {
+    return this.http.get<ApiResponse>(this.baseUrl + '/readData/getAllImages');
+  }
+
   deleteFile(id: number): Observable<ApiResponse> {
     return this.http.delete<ApiResponse>(this.baseUrl + '/upload/deleteFile/' + id);
   }

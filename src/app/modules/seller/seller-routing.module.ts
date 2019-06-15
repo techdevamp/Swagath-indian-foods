@@ -1,3 +1,4 @@
+import { ImageManagerComponent } from './../../components/image-manager/image-manager.component';
 import { EditItemDetailsComponent } from './../../components/edit-item-details/edit-item-details.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -41,7 +42,12 @@ const routes: Routes = [
       path: 'item-deals-link-detail',
       outlet: 'sidemenu',
       component: ItemDealsLinkDetailComponent
-    }
+    },
+    {
+      path: 'imageManager/:id',
+      outlet: 'sidemenu',
+      component: ImageManagerComponent
+    },
   ]
   }
 ];

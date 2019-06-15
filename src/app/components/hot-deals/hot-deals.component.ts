@@ -1,3 +1,4 @@
+import { AppConstants } from 'src/app/constants/AppConstants';
 import { Component, OnInit } from '@angular/core';
 import { SwiperConfigInterface} from 'ngx-swiper-wrapper';
 import { ItemDetails } from 'src/app/models/item.details';
@@ -15,7 +16,7 @@ export class HotDealsComponent implements OnInit {
   hotDealsItems: ItemDetails[];
   itemsCount: BehaviorSubject<number>;
   itemsAvailable: boolean;
-  imgUrl = '../../../assets/images/';
+  imgUrl = AppConstants.imageURL;
 
   constructor(private dataService: DataDealCouponService
           ,   private alertService: AlertService

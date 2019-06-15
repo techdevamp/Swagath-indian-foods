@@ -23,7 +23,7 @@ export class DisplayItemDetailsComponent implements OnInit, AfterViewInit {
   dataSourceItems: ItemDetailsDataSource;
   fileId: any;
   displayedColumnsItems: string[];
-  imgUrl = '../../../assets/images/';
+  imgUrl = this.imgUrl = AppConstants.imageURL;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;

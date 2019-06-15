@@ -1,0 +1,25 @@
+<div fxFlex>
+<div class="form-group">
+    <label for="username"> Image:</label>
+    <img *ngIf='imgToUpload' src={{imgToUpload}} alt='Image to upload'>
+    <label class="btn btn-outline-primary ">
+
+      <input id="files"  name="uploadImage" type="file" (change)="onImageClick($event)" class="fileInput">
+
+            <span>Browse</span>
+
+    </label>
+    <button type="button" class="btn btn-info" (click)="onUpload()">Upload</button>
+</div>
+<mat-grid-list cols="5" role="list">
+    <mat-grid-tile *ngFor="let image of imagesList" role="listitem" title="{{image | titlecase}}">
+
+        <img src="{{imgUrl}}{{image}}" alt="{{image}}" class="img-fluid">
+        <mat-grid-tile-footer class="clientGridFooterBG">
+            <div class="snipcart-details">
+            <span mat-line>{{image |titlecase}}</span>
+          </div>
+        </mat-grid-tile-footer>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
