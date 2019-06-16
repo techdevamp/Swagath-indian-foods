@@ -16,6 +16,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { NgMatSearchBarModule } from 'ng-mat-search-bar';
 import { LoginComponent } from './components/login/login.component';
+import { AlertModule } from './modules/alert/alert.module';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { LoginComponent } from './components/login/login.component';
     MatGridListModule,
     NgbModule,
     SwiperModule,
-    NgMatSearchBarModule
+    NgMatSearchBarModule,
+    AlertModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

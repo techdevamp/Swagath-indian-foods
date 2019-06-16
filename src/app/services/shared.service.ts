@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AppConstants } from '../constants/AppConstants';
 import { Observable } from 'rxjs';
 import { ApiResponse } from '../models/api.response';
+import { InterceptorSkipHeader } from '../helpers/jwt.interceptor';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,8 @@ export class SharedService {
   }
 
   getProductCategories(): Observable<ApiResponse> {
-    return this.http.get<ApiResponse>(this.baseUrl + '/readData/getProductCategories');
+    const headers = new HttpHeaders().set(InterceptorSkipHeader, '');
+
+    return this.http.get<ApiResponse>(this.baseUrl + '/readData/getProductCategories',{headers});
   }
 }

@@ -70,21 +70,25 @@ get f() { return this.registerForm.controls; }
     }
     this.loading = true;
     this.dataService.createUser(this.registerForm.value).subscribe(res => {
-      this.alertService.success('Registration successful', true);
+      this.alertService.success(res.message, true);
       this.goToLoginPage();
       const artcl: RegisterUser = res.result;
       console.log(artcl.userName);
     },
-(err: HttpErrorResponse) => {
-      if (err.error instanceof Error) {
-        // A client-side or network error occurred.
-        this.alertService.error(err.error.message);
-      } else {
-        // Backend returns unsuccessful response codes such as 404, 500 etc.
-        this.alertService.error('Backend returned status code: ' + err.status.toString());
-        this.alertService.error('Response body:' + err.error);
-      }
+    error => {
+      if(error instanceof HttpErrorResponse){
+        if (error.error instanceof Error) {
+          // A client-side or network error occurred.
+          this.alertService.error(error.error.message);
+        } else {
+          // Backend returns unsuccessful response codes such as 404, 500 etc.
+          this.alertService.error('Backend returned status code: ' + error.status.toString());
+          this.alertService.error('Response body:' + error.error);
+        }
+      }else{
+      this.alertService.error(error);
       this.loading = false;
+    }
     }
  );
   }

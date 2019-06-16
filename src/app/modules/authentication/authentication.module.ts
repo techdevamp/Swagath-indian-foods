@@ -14,6 +14,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { NgMatSearchBarModule } from 'ng-mat-search-bar';
+import { AlertModule } from '../alert/alert.module';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { NgMatSearchBarModule } from 'ng-mat-search-bar';
     MatGridListModule,
     NgbModule,
     SwiperModule,
-    NgMatSearchBarModule
+    NgMatSearchBarModule,
+    AlertModule
   ]
 })
 export class AuthenticationModule { }

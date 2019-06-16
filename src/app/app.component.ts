@@ -31,9 +31,9 @@ export class AppComponent {
     }
 
     home(path: any) {
-      if (!this.currentUser ) {
+     /*if (!this.currentUser ) {
         this.logout();
-      }
+      }*/
       this.router.navigate([path]);
     }
 

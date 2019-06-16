@@ -3,7 +3,8 @@ import { AppConstants } from '../constants/AppConstants';
 import { Observable } from 'rxjs';
 import { ApiResponse } from '../models/api.response';
 import { SubscriptionsData } from '../models/subscription.data';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
+import { InterceptorSkipHeader } from '../helpers/jwt.interceptor';
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +15,14 @@ export class BuyerService {
 
   constructor(private http: HttpClient) {
     this.baseUrl = AppConstants.baseURL;
+
   }
 
   getItemDetailsByCategory(category: string): Observable<ApiResponse> {
     const params = new HttpParams().set('category', category);
-    return this.http.get<ApiResponse>(this.baseUrl + '/readData/getItemDetailsByCategory', { params });
+    const headers = new HttpHeaders().set(InterceptorSkipHeader, '');
+
+    return this.http.get<ApiResponse>(this.baseUrl + '/readData/getItemDetailsByCategory',{headers,params});
   }
 
   subscribeEmail(subscriptionsData: SubscriptionsData): Observable<ApiResponse> {
