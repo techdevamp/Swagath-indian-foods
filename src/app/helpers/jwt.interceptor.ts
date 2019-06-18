@@ -28,8 +28,8 @@ export class JwtInterceptor implements HttpInterceptor {
                 });
             } else {
             this.authenticationService.logout();
-            //  this.router.navigate(['/login']);
-            this.router.navigate(['buyer/home']);
+              this.router.navigate(['/login']);
+          //  this.router.navigate(['buyer/home']);
             }
 
             return next.handle(request);

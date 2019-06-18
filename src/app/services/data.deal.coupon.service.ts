@@ -1,9 +1,10 @@
 import { AppConstants } from '../constants/AppConstants';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { ApiResponse } from '../models/api.response';
 import { ItemDealDetails } from '../models/item.deal.details';
+import { InterceptorSkipHeader } from '../helpers/jwt.interceptor';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +30,9 @@ export class DataDealCouponService {
 
   getItemDetailsByDealTypCd(dealTypCd: string): Observable<ApiResponse> {
     const params = new HttpParams().set('dealTypCd', dealTypCd);
-    return this.http.get<ApiResponse>(this.baseUrl + '/readData/getItemsByDealTypCd', { params });
+    const headers = new HttpHeaders().set(InterceptorSkipHeader, '');
+
+    return this.http.get<ApiResponse>(this.baseUrl + '/readData/getItemsByDealTypCd', { headers,params });
   }
 }
 

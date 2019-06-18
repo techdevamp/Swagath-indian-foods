@@ -1,10 +1,11 @@
 import { AppConstants } from './../constants/AppConstants';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { RegisterUser } from '../models/registerUser';
 import { ApiResponse } from '../models/api.response';
 import { UsersDetails } from '../models/usersDetails';
+import { InterceptorSkipHeader } from '../helpers/jwt.interceptor';
 
 
 @Injectable({
@@ -25,7 +26,8 @@ export class DataService {
   }
 
   createUser(user: RegisterUser): Observable<ApiResponse> {
-    return this.http.post<ApiResponse>(this.baseUrl + '/registeration/registerUser', user);
+    const headers = new HttpHeaders().set(InterceptorSkipHeader, '');
+    return this.http.post<ApiResponse>(this.baseUrl + '/registeration/registerUser',user,{headers});
   }
   updateUser(user: RegisterUser): Observable<ApiResponse> {
     return this.http.put<ApiResponse>(this.baseUrl + '/userDetails/updateUserDetails', user);
