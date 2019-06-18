@@ -19,6 +19,6 @@ export class SharedService {
   getProductCategories(): Observable<ApiResponse> {
     const headers = new HttpHeaders().set(InterceptorSkipHeader, '');
 
-    return this.http.get<ApiResponse>(this.baseUrl + '/readData/getProductCategories',{headers});
+    return this.http.get<ApiResponse>(this.baseUrl + '/readData/getProductCategories', {headers});
   }
 }

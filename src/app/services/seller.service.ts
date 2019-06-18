@@ -1,3 +1,4 @@
+import { ImageUpload } from './../models/image.upload';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { AppConstants } from '../constants/AppConstants';
@@ -26,8 +27,8 @@ export class SellerService {
     return this.http.post<ApiResponse>(this.baseUrl + '/upload/image/' + fileName, file);
   }
 
-  getImage(imageName: any): Observable<Blob> {
-    return this.http.get<Blob>(this.baseUrl + '/readData/getImageByImageName/'.concat(imageName));
+  saveImage(imgUpload: ImageUpload): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(this.baseUrl + '/upload/saveImage' , imgUpload);
   }
 
   getAllImages(): Observable<ApiResponse> {

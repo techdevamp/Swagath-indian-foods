@@ -44,20 +44,6 @@ export class EditItemDetailsComponent implements OnInit {
     this.imgUrl = AppConstants.imageURL.concat(this.productItemNm);
   }
 
-  getImageFromService() {
-    // this.isImageLoading = true;
-    this.sellerService.getImage(this.productItemNm).subscribe(res => {
-
-      // this.createImageFromBlob(this.dataURItoBlob(res.result));
-      this.imgUrl = res;
-
-      // this.isImageLoading = false;
-    }, error => {
-      // this.isImageLoading = false;
-        this.alertService.error(error);
-    });
-  }
-
   dataURItoBlob(dataURI: string) {
     const byteString = window.atob(dataURI);
     const arrayBuffer = new ArrayBuffer(byteString.length);

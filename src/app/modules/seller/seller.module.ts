@@ -16,6 +16,7 @@ import { MatButtonModule, MatCardModule, MatListModule, MatToolbarModule, MatInp
   , MatIconModule, MatDialogModule, MatMenuModule, MatCheckboxModule, MatGridListModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { EditItemDetailsComponent } from 'src/app/components/edit-item-details/edit-item-details.component';
+import { AdBannerManagerComponent } from 'src/app/components/ad-banner-manager/ad-banner-manager.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { EditItemDetailsComponent } from 'src/app/components/edit-item-details/e
     ItemDealsLinkComponent,
     ItemDealsLinkDetailComponent,
     EditItemDetailsComponent,
-    ImageManagerComponent
+    ImageManagerComponent,
+    AdBannerManagerComponent
   ],
   imports: [
     CommonModule,

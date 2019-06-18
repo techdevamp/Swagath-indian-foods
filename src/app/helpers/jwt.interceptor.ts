@@ -18,7 +18,7 @@ export class JwtInterceptor implements HttpInterceptor {
         if (request.headers.has(InterceptorSkipHeader)) {
             const headers = request.headers.delete(InterceptorSkipHeader);
             return next.handle(request.clone({ headers }));
-        }else{
+        } else {
             const currentUser = this.authenticationService.currentUserValue;
             if (currentUser && currentUser.token) {
                 request = request.clone({
@@ -28,7 +28,7 @@ export class JwtInterceptor implements HttpInterceptor {
                 });
             } else {
             this.authenticationService.logout();
-              this.router.navigate(['/login']);
+            this.router.navigate(['/login']);
           //  this.router.navigate(['buyer/home']);
             }
 

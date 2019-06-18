@@ -1,22 +1,14 @@
 <div  class="swiper-container" [swiper]="config">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">
+    <div class="swiper-wrapper" >
+        <div class="hidden" >{{adBanners.length}}</div>
+      <div *ngFor="let banner of adBanners" class="swiper-slide" >
           <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill >
-              <img src="../../../assets/images/1.1.png" alt="First slide" class="img-fluid">
-              <div class="carousel-caption">
-                </div>
+              <img src="{{imgUrl}}{{banner.imgNm}}" alt={{banner.imgNm}} class="img-fluid">
+              <div class="carousel-caption carouselCaption">
+                  <label> {{banner.imageText}}</label>
               </div>
-            </div>
-            <div class="swiper-slide">
-            <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
-                <img src="../../../assets/images/2.2.png" alt="Second slide" class="img-fluid">
-                <div class="carousel-caption carouselCaption">
-                  <label> Fresh Produce Every Monday & Friday</label>
-                  </div>
-                </div>
               </div>
+          </div>
       </div>
       <div class="swiper-pagination"></div>
-
-
     </div>

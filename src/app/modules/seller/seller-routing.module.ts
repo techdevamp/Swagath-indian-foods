@@ -1,3 +1,4 @@
+import { AdBannerManagerComponent } from './../../components/ad-banner-manager/ad-banner-manager.component';
 import { ImageManagerComponent } from './../../components/image-manager/image-manager.component';
 import { EditItemDetailsComponent } from './../../components/edit-item-details/edit-item-details.component';
 import { NgModule } from '@angular/core';
@@ -47,6 +48,11 @@ const routes: Routes = [
       path: 'imageManager/:id',
       outlet: 'sidemenu',
       component: ImageManagerComponent
+    },
+    {
+      path: 'addBannerManager/:id',
+      outlet: 'sidemenu',
+      component: AdBannerManagerComponent
     },
   ]
   }

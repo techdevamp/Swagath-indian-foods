@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { ImageUpload } from './../../models/image.upload';
+import { AppConstants } from 'src/app/constants/AppConstants';
+import { AlertService } from 'src/app/services';
+import { BuyerService } from './../../services/buyer.service';
+import { Component, OnInit } from '@angular/core';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
 @Component({
@@ -6,13 +10,17 @@ import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
   templateUrl: './ad-banner.component.html',
   styleUrls: ['./ad-banner.component.scss'],
 })
-export class AdBannerComponent  {
+export class AdBannerComponent  implements OnInit {
 
-constructor() {
+adBanners: ImageUpload[];
+imgUrl = AppConstants.imageURL;
+
+constructor(private buyerService: BuyerService
+          , private alertService: AlertService ) {
 
 }
 
-  public config: SwiperConfigInterface  = {
+    config: SwiperConfigInterface  = {
     a11y: true,
     direction: 'horizontal',
     slidesPerView: 1,
@@ -25,5 +33,10 @@ constructor() {
     speed: 500,
     loop: true
   };
+
+  ngOnInit(): void {
+    this.buyerService.getImageByImageType('AdBanner').subscribe(res => this.adBanners = res.result,
+      error => this.alertService.error(error));
+  }
 
 }

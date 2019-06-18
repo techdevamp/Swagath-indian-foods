@@ -1,0 +1,51 @@
+<div class="container  login-main" >
+  <h2 class="text-center">
+    Ad Banner Manager
+  </h2>
+  <table class="table table-striped  table-full-width  ">
+    <thead >
+      <tr scope="col">
+        <th>
+          Banner Image Name
+        </th>
+        <th>
+          Banner Image Text
+        </th>
+        <th>
+          Delete
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let banner of adBanners" class="adminMatTableBG" scope="row">
+            <td>
+              {{banner.imgNm}}
+            </td>
+            <td>
+              {{banner.imageText}}
+            </td>
+            <td>
+              <a (click)="deleteAdBanner(banner)" >
+                <i class="fa fa-trash-o"></i>
+              </a>
+            </td>
+          </tr>
+    </tbody>
+</table>
+  <form [formGroup]="adBannerImageForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <select formControlName="selectedImage" id="selectedImage" (change)="onSelect($event.target.value)">
+        <option value="" disabled selected>Select An Image</option>
+        <option *ngFor="let item of imageList" [value]="item">{{item}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+        <label for="username">Banner Text:</label>
+        <input type="text" formControlName="bannerText" placeholder="Banner Text" class="form-control">
+      </div>
+    <button type="submit">Submit</button>
+  </form>
+  <div>
+    <img src='{{imgUrl}}' alt='{{selectedValue}}' *ngIf='imgUrl'>
+  </div>
+</div>
