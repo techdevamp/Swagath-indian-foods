@@ -2,37 +2,42 @@
     <h2 class="text-center">Edit Item Details</h2>
     <form [formGroup]="editItemDetailsForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <label for="username">Item Name:</label>
+        <label for="productItemNm">Item Name:</label>
         <input type="text" formControlName="productItemNm" placeholder="Item Name" class="form-control">
       </div>
       <div class="form-group">
-          <label for="username">Item Description:</label>
+          <label for="productItemDesc">Item Description:</label>
           <input type="text" formControlName="productItemDesc" placeholder="Item Description" class="form-control">
       </div>
       <div class="form-group">
-          <label for="username">Item Price:</label>
+          <label for="productItemUnitPrice">Item Price:</label>
           <input type="text" formControlName="productItemUnitPrice" placeholder="Item Price" class="form-control">
       </div>
       <div class="form-group">
-          <label for="username">Discount Price:</label>
+          <label for="productItemDscnt">Discount Price:</label>
           <input type="text" formControlName="productItemDscnt" placeholder="Discount Price" class="form-control">
       </div>
       <div class="form-group">
-          <label for="username">Item Weight:</label>
+          <label for="productItemWeight">Item Weight:</label>
           <input type="text" formControlName="productItemWeight" placeholder="Item Weight" class="form-control">
       </div>
       <div class="form-group">
-          <label for="username">Item Quantity:</label>
+          <label for="productItemQnty">Item Quantity:</label>
           <input type="text" formControlName="productItemQnty" placeholder="Item Quantity" class="form-control">
       </div>
       <div class="form-group">
-          <label for="username">Item Image:</label>
+          <label for="imageName">Image Name:</label>
+          <input type="text" formControlName="imageName" placeholder="Image Name" class="form-control" readonly='readonly'>
+      </div>
+      <div class="form-group">
+          <label for="uploadImage">Item Image:</label>
           <label class="btn btn-outline-primary ">
                   <img src={{imgUrl}} alt='{{productItemNm}}'>
                   <input id="files"  name="uploadImage" type="file" (change)="onImageClick($event)" class="fileInput">
                   <span>Browse</span>
                   <button type="button" class="btn btn-info" (click)="onUpload()" >Upload</button>
           </label>
+          <img src={{imgExists}} alt='{{productItemNm}}' *ngIf='imgExists'>
       </div>
       <button class="btn btn-success">Update</button>
     </form>

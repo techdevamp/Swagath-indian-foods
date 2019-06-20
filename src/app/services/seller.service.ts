@@ -23,8 +23,8 @@ export class SellerService {
     return this.http.post<ApiResponse>(this.baseUrl + '/upload/' + uploadType, file);
   }
 
-  uploadImage(file: FormData, fileName: string): Observable<ApiResponse> {
-    return this.http.post<ApiResponse>(this.baseUrl + '/upload/image/' + fileName, file);
+  uploadImage(file: FormData, itemId: string): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(this.baseUrl + '/upload/image/' + itemId, file);
   }
 
   saveImage(imgUpload: ImageUpload): Observable<ApiResponse> {

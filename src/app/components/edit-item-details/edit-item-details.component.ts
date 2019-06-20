@@ -16,7 +16,7 @@ export class EditItemDetailsComponent implements OnInit {
   imgUrl: any;
   fileToUpload: File;
   productItemNm: string;
-
+  imgExists: string;
   constructor(private formBuilder: FormBuilder
             , private router: Router
             , private sellerService: SellerService
@@ -40,7 +40,7 @@ export class EditItemDetailsComponent implements OnInit {
       imageName: ['']
     });
     this.editItemDetailsForm.setValue(this.dataTransferService.getApiResponse().result);
-    this.productItemNm = this.editItemDetailsForm.controls.imageName.value.concat('.png');
+    this.productItemNm = this.editItemDetailsForm.controls.imageName.value;
     this.imgUrl = AppConstants.imageURL.concat(this.productItemNm);
   }
 
@@ -66,15 +66,16 @@ export class EditItemDetailsComponent implements OnInit {
   onImageClick(imageFile: any) {
       this.fileToUpload = imageFile.target.files.item(0);
       this.createImageFromBlob(this.fileToUpload);
+      this.imgExists = AppConstants.imageURL.concat(this.fileToUpload.name);
   }
 
   onUpload() {
     // get data from file upload
     const formData = new FormData();
     formData.append('uploadImage', this.fileToUpload);
-    this.sellerService.uploadImage(formData, this.fileToUpload.name).subscribe(res => {
+    this.sellerService.uploadImage(formData, this.editItemDetailsForm.controls.id.value).subscribe(res => {
     this.alertService.success(res.message, false);
-
+    this.imgExists = null;
     this.router.navigate([{outlets: {sidemenu: ['edit-item-details']}}],
             {relativeTo: this.route.parent});
     },
@@ -88,6 +89,7 @@ export class EditItemDetailsComponent implements OnInit {
           if (res.status === 200) {
             this.alertService.success(res.message, false),
             this.editItemDetailsForm.setValue(res.result);
+            this.imgExists = null;
             this.router.navigate([{outlets: {sidemenu: ['edit-item-details']}}],
                                   {relativeTo: this.route.parent});
           } else {
