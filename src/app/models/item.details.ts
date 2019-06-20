@@ -8,5 +8,5 @@ export class ItemDetails {
     productCategoryRefId: number;
     productItemDscnt: number;
     fileUploadId: number;
-    imageName: string;
+    imageName: string[];
 }

@@ -16,6 +16,7 @@ export class EditItemDetailsComponent implements OnInit {
   imgUrl: any;
   fileToUpload: File;
   productItemNm: string;
+  imagesName: string[];
   imgExists: string;
   constructor(private formBuilder: FormBuilder
             , private router: Router
@@ -40,7 +41,8 @@ export class EditItemDetailsComponent implements OnInit {
       imageName: ['']
     });
     this.editItemDetailsForm.setValue(this.dataTransferService.getApiResponse().result);
-    this.productItemNm = this.editItemDetailsForm.controls.imageName.value;
+    this.imagesName = this.editItemDetailsForm.controls.imageName.value;
+    this.productItemNm = this.imagesName[0];
     this.imgUrl = AppConstants.imageURL.concat(this.productItemNm);
   }
 
