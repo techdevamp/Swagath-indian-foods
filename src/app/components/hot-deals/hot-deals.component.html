@@ -3,7 +3,8 @@
       <div class="hidden" >{{hotDealsItems.length}}</div>
         <div class="swiper-slide" *ngFor="let item of hotDealsItems" >
           <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill >
-              <img src="{{imgUrl}}{{item.imageName}}.png" alt="{{item.productItemNm}}" class="img-responsive">
+
+              <img src="{{imgUrl}}{{item.imageName[0]}}" alt="{{item.imageName}}" class="img-responsive">
               <div class="snipcart-details">
                   <h6 mat-line>{{item.productItemNm | titlecase}}({{item.productItemWeight | number}} gm)</h6>
                   <h6 mat-line *ngIf="item.productItemDscnt; else noDiscount">{{item.productItemDscnt | currency}}

@@ -17,6 +17,8 @@ import { MatButtonModule, MatCardModule, MatListModule, MatToolbarModule, MatInp
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { EditItemDetailsComponent } from 'src/app/components/edit-item-details/edit-item-details.component';
 import { AdBannerManagerComponent } from 'src/app/components/ad-banner-manager/ad-banner-manager.component';
+// search module
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,8 @@ import { AdBannerManagerComponent } from 'src/app/components/ad-banner-manager/a
     MatMenuModule,
     MatCheckboxModule,
     MatGridListModule,
-    AlertModule
+    AlertModule,
+    Ng2SearchPipeModule
   ]
 })
 export class SellerModule { }

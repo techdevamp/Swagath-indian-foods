@@ -18,14 +18,14 @@ export class ImageManagerComponent implements OnInit {
     ) { }
 
   imagesList: string[];
+  searchText: string;
   imgUrl = AppConstants.imageURL;
   fileToUpload: File;
   imgToUpload: any;
 
   ngOnInit() {
     this.sellerService.getAllImages().subscribe(res => {
-    this.imagesList = res.result;
-    this.alertService.success(res.message, false);
+      this.imagesList = res.result;
     }
     , error => this.alertService.error(error)
     );
