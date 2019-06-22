@@ -1,15 +1,16 @@
 <div fxFlex>
-
+    <h2 class="text-center">
+        Image Manager
+      </h2>
 <div class="form-group">
-    <div class="search-hero">
-        <input class="form-control" type="text" name="search"
-        [(ngModel)]="searchText" autocomplete="on"
-        placeholder="Start searching for images">
-      </div>
+  <div class="example-header" fxLayout="row">
+    <mat-form-field>
+     <input matInput [(ngModel)]="searchText" placeholder="Search Image">
+    </mat-form-field>
+</div>
     <label for="username"> Image:</label>
     <img *ngIf='imgToUpload' src={{imgToUpload}} alt='Image to upload'>
     <label class="btn btn-outline-primary ">
-
       <input id="files"  name="uploadImage" type="file" (change)="onImageClick($event)" class="fileInput">
             <span>Browse</span>
     </label>

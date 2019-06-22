@@ -18,7 +18,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { EditItemDetailsComponent } from 'src/app/components/edit-item-details/edit-item-details.component';
 import { AdBannerManagerComponent } from 'src/app/components/ad-banner-manager/ad-banner-manager.component';
 // search module
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { FilterPipe } from 'src/app/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     ItemDealsLinkDetailComponent,
     EditItemDetailsComponent,
     ImageManagerComponent,
-    AdBannerManagerComponent
+    AdBannerManagerComponent,
+    FilterPipe
   ],
   imports: [
     CommonModule,
@@ -53,8 +54,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     MatMenuModule,
     MatCheckboxModule,
     MatGridListModule,
-    AlertModule,
-    Ng2SearchPipeModule
+    AlertModule
   ]
 })
 export class SellerModule { }
