@@ -20,9 +20,11 @@
         <th  scope="col">
           File Upload Date
         </th>
+      
         <th  scope="col">
           Actions
         </th>
+        
       </tr>
       <tr *ngFor="let fileDtl of fileDetails" class="adminMatTableBG" scope="row">
         <td>
@@ -32,10 +34,15 @@
           {{fileDtl.uploadDt | date }}
         </td>
         <td>
+          <!--  <button class="btn btn-info" (click)="saveChanges()" >Approve</button> -->
+          <a (click)="approveFile(fileDtl.id)" >
+              Approve
+            </a> / 
           <a (click)="deleteFile(fileDtl.id)" >
             <i class="fa fa-trash-o"></i>
           </a>
         </td>
+        
       </tr>
     </tbody>
   </table>

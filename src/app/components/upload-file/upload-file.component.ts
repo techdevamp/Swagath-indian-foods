@@ -74,4 +74,12 @@ export class UploadFileComponent implements OnInit, OnDestroy {
       error => this.alertService.error(error)
     );
   }
+  approveFile(id: any) {
+    this.sellerService.approveFile(id).subscribe(res => {
+        this.getFileDetails();
+        this.alertService.success(res.message, false);
+      },
+      error => this.alertService.error(error)
+    );
+  }
 }

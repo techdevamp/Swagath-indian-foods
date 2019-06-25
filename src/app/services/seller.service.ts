@@ -39,6 +39,13 @@ export class SellerService {
     return this.http.delete<ApiResponse>(this.baseUrl + '/upload/deleteFile/' + id);
   }
 
+  approveFile(id: string): Observable<ApiResponse> {
+    const params = new HttpParams().set('fileId', id);
+    return this.http.get<ApiResponse>(this.baseUrl + '/upload/approve',  {params});
+   //return this.http.get<ApiResponse>(this.baseUrl + '/upload/getFileDetails', {params});
+   }
+
+
   getFileDetails(uploadType: string): Observable<ApiResponse> {
     const params = new HttpParams().set('fileType', uploadType);
     return this.http.get<ApiResponse>(this.baseUrl + '/upload/getFileDetails', {params});
