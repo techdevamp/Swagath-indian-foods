@@ -42,7 +42,6 @@ export class SellerService {
   approveFile(id: string): Observable<ApiResponse> {
     const params = new HttpParams().set('fileId', id);
     return this.http.get<ApiResponse>(this.baseUrl + '/upload/approve',  {params});
-   //return this.http.get<ApiResponse>(this.baseUrl + '/upload/getFileDetails', {params});
    }
 
 

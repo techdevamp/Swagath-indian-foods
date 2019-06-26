@@ -35,9 +35,13 @@
         </td>
         <td>
           <!--  <button class="btn btn-info" (click)="saveChanges()" >Approve</button> -->
-          <a (click)="approveFile(fileDtl.id)" >
-              Approve
-            </a> / 
+          <a *ngIf="fileDtl.approvedInd; else elseBlock" (click)="approveFile(fileDtl.id)" >
+               UnApprove
+            </a>
+            <ng-template #elseBlock><a (click)="approveFile(fileDtl.id)" >
+                Approve
+             </a></ng-template>
+             / 
           <a (click)="deleteFile(fileDtl.id)" >
             <i class="fa fa-trash-o"></i>
           </a>
