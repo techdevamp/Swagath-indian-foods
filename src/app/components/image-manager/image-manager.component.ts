@@ -47,7 +47,7 @@ onUpload() {
   // get data from file upload
   const formData = new FormData();
   formData.append('uploadImage', this.fileToUpload);
-  this.sellerService.uploadImage(formData, this.fileToUpload .name).subscribe(res => {
+  this.sellerService.uploadImage(formData, '0').subscribe(res => {
   this.alertService.success(res.message, false);
 
   this.router.navigate([{outlets: {sidemenu: ['imageManager', '' ] }}],
