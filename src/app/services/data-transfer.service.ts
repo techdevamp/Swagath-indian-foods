@@ -8,8 +8,10 @@ import { Injectable } from '@angular/core';
 export class DataTransferService {
   apiResponse: ApiResponse;
   itemsInCart: BehaviorSubject<number>;
+  apiResponseSub: BehaviorSubject<ApiResponse>;
   constructor() {
     this.itemsInCart = new BehaviorSubject(0);
+    this.apiResponseSub =  new BehaviorSubject<ApiResponse>(new ApiResponse());
   }
 
   public setApiResponse(apiResponse: ApiResponse): void {
@@ -27,4 +29,13 @@ export class DataTransferService {
   public getItemsInCart(): BehaviorSubject<number> {
     return this.itemsInCart;
   }
+
+  public setApiResponseSub(apiResponseSub: BehaviorSubject<ApiResponse>): void {
+    this.apiResponseSub = apiResponseSub;
+  }
+
+  public getApiResponseSub(): BehaviorSubject<ApiResponse> {
+    return this.apiResponseSub;
+  }
+
 }

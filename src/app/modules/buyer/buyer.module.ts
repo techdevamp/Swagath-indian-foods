@@ -16,7 +16,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { NgMatSearchBarModule } from 'ng-mat-search-bar';
 import { AlertModule } from '../alert/alert.module';
-import { SearchComponent } from 'src/app/components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +23,7 @@ import { SearchComponent } from 'src/app/components/search/search.component';
     HomeDetailsComponent,
     AdBannerComponent,
     HotDealsComponent,
-    EmailSubscriptionComponent,
-    SearchComponent
+    EmailSubscriptionComponent
   ],
   imports: [
     CommonModule,

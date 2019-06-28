@@ -58,9 +58,10 @@ body {
   position: absolute;
   left: 25%;
   top: calc(50% + 25px);
-  max-height: calc(50% + 15px);
+  max-height: calc(50% + 150px);
   overflow-y: auto;
-  background: black;
+  background: white;
+  z-index: 2;
 }
 .filter-select-list img {
   margin-right: 30px;

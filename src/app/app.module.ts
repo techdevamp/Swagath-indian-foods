@@ -17,11 +17,13 @@ import { SwiperModule } from 'ngx-swiper-wrapper';
 import { NgMatSearchBarModule } from 'ng-mat-search-bar';
 import { LoginComponent } from './components/login/login.component';
 import { AlertModule } from './modules/alert/alert.module';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
