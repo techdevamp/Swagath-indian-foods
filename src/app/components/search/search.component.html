@@ -1,0 +1,12 @@
+<section class="filter-wrapper">
+    <div class="keyword-wrapper">
+   <input [formControl]="queryField" (keyup)="searchItem()" type="text" id="keyword" placeholder="Search..." autofocus class="form-control"/>
+     </div>
+   <ul class='filter-select' *ngIf='results'>
+     <li class='filter-select-list' *ngFor="let result of results" >
+       <img src="{{imgUrl}}{{result.imageName[0]}}" alt="" width="50" height="50">
+       <p class="item-name">
+        {{result.productItemNm}}</p>
+   <!--<span class="tags" *ngFor='let genre of result?.genres | slice:0:6'>{{genre}}</span>-->
+   </ul>
+   </section>

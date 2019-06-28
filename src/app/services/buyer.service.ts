@@ -53,4 +53,10 @@ export class BuyerService {
     params.append('activeInd', activeInd);
     return this.http.get<ApiResponse>(this.baseUrl + '/readData/getImageByImageType', { headers, params});
   }
+
+  searchItemByItemName(itemName: string): Observable<ApiResponse> {
+    const headers = new HttpHeaders().set(InterceptorSkipHeader, '');
+    return this.http.get<ApiResponse>(this.baseUrl + '/readData/searchItem/'+ itemName, { headers});
+  }
+
 }
