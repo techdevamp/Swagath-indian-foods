@@ -27,15 +27,15 @@ export class SearchComponent implements OnInit {
     this.queryField.setValue('');
   }
 
-  onBlur(){    
+  onBlur() {
       this.displayList = false;
   }
 
-  onFocus(){
+  onFocus() {
     if (this.queryField.value === '') {
       this.displayList = false;
       this.results = null;
-    }else{
+    } else {
       this.displayList = true;
     }
   }
@@ -47,8 +47,8 @@ export class SearchComponent implements OnInit {
     }
     this.queryField.valueChanges.pipe(
     debounceTime(200)
-    ,distinctUntilChanged()
-    ,switchMap((query) =>
+    , distinctUntilChanged()
+    , switchMap((query) =>
              this.buyerService.searchItemByItemName(query)))
               .subscribe( res => {
                 if (res.status === 400) {
