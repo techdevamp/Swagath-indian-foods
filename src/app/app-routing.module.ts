@@ -18,15 +18,15 @@ const routes: Routes =
   },
   {
     path: 'buyer',
-    loadChildren: '../app/modules/buyer/buyer.module.ts'
+    loadChildren: '../app/modules/buyer/buyer.module#BuyerModule'
   },
   {
     path: 'seller',
-    loadChildren: '../app/modules/seller/seller.module.ts'
+    loadChildren: '../app/modules/seller/seller.module#SellerModule'
   },
   {
     path: 'admin',
-    loadChildren: '../app/modules/authentication/authentication.module.ts'
+    loadChildren: '../app/modules/authentication/authentication.module#AuthenticationModule'
   },
 // otherwise redirect to home
   {
