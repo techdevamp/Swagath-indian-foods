@@ -1,10 +1,7 @@
-import { AuthenticationModule } from './modules/authentication/authentication.module';
 import { LoginComponent } from './components/login/login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './guards';
-import { BuyerModule } from './modules/buyer/buyer.module';
-import { SellerModule } from './modules/seller/seller.module';
 
 const routes: Routes =
 [
@@ -21,15 +18,15 @@ const routes: Routes =
   },
   {
     path: 'buyer',
-    loadChildren: () => BuyerModule
+    loadChildren: '../app/modules/buyer/BuyerModule'
   },
   {
     path: 'seller',
-    loadChildren: () => SellerModule
+    loadChildren: '../app/modules/seller/SellerModule'
   },
   {
     path: 'admin',
-    loadChildren: () => AuthenticationModule
+    loadChildren: '../app/modules/AuthenticationModule'
   },
 // otherwise redirect to home
   {
