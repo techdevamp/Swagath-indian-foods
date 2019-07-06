@@ -14,7 +14,6 @@ import { MatButtonModule, MatCardModule, MatListModule, MatToolbarModule, MatInp
   , MatGridListModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SwiperModule } from 'ngx-swiper-wrapper';
-import { NgMatSearchBarModule } from 'ng-mat-search-bar';
 import { AlertModule } from '../alert/alert.module';
 
 @NgModule({
@@ -47,7 +46,6 @@ import { AlertModule } from '../alert/alert.module';
     MatCheckboxModule,
     MatGridListModule,
     SwiperModule,
-    NgMatSearchBarModule,
     AlertModule
   ]
 })
