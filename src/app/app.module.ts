@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCardModule, MatListModule, MatToolbarModule
   , MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,
   MatSortModule, MatTableModule, MatSidenavModule, MatIconModule, MatMenuModule,
-  MatDialogModule, MatCheckboxModule, MatGridListModule} from '@angular/material';
+  MatDialogModule, MatCheckboxModule, MatGridListModule, MatAutocompleteModule} from '@angular/material';
 import { JwtInterceptor, ErrorInterceptor } from './helpers';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CommonModule } from '@angular/common';
@@ -50,7 +50,8 @@ import { SearchComponent } from './components/search/search.component';
     MatGridListModule,
     NgbModule,
     SwiperModule,
-    AlertModule
+    AlertModule,
+    MatAutocompleteModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
