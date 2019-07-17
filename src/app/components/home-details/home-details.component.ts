@@ -24,7 +24,7 @@ export class HomeDetailsComponent implements OnInit {
                 .subscribe(res => {
                   this.itemDetails = [];
                   this.selectedCat = '';
-                  this.itemDetails.push(res);
+                  this.itemDetails = res;
                   }
                 );
    }

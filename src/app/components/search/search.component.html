@@ -1,8 +1,9 @@
 <section class="filter-wrapper" >
   <div class="keyword-wrapper">
+    <form (submit)="onSubmit()">
   <mat-form-field >
     <input matInput [formControl]="queryField" (keyup)="searchItem()" (focus)="onFocus()" (blur)='onBlur()'
-    type="text" placeholder="Search..."
+    type="search" placeholder="Search..."
     [matAutocomplete]="auto"/>
 
   <mat-autocomplete #auto="matAutocomplete" class='filter-select' >
@@ -15,6 +16,7 @@
     </mat-option>
   </mat-autocomplete>
 </mat-form-field>
+</form>
 </div>
   <!--<ul class='filter-select' *ngIf='displayList'>
     <li class='filter-select-list' *ngFor="let result of results" >

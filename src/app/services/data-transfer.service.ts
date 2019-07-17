@@ -10,11 +10,11 @@ export class DataTransferService {
   apiResponse: ApiResponse;
   itemsInCart: BehaviorSubject<number>;
   apiResponseSub: BehaviorSubject<ApiResponse>;
-  itemDetails: BehaviorSubject<ItemDetails>;
+  itemDetails: BehaviorSubject<ItemDetails[]>;
   constructor() {
     this.itemsInCart = new BehaviorSubject(0);
     this.apiResponseSub =  new BehaviorSubject<ApiResponse>(new ApiResponse());
-    this.itemDetails = new BehaviorSubject<ItemDetails>(new ItemDetails());
+    this.itemDetails = new BehaviorSubject<ItemDetails[]>([]);
   }
 
   public setApiResponse(apiResponse: ApiResponse): void {
@@ -41,11 +41,11 @@ export class DataTransferService {
     return this.apiResponseSub;
   }
 
-  public setItemDetails(itemDetails: BehaviorSubject<ItemDetails>): void {
+  public setItemDetails(itemDetails: BehaviorSubject<ItemDetails[]>): void {
     this.itemDetails = itemDetails;
   }
 
-  public getItemDetails(): BehaviorSubject<ItemDetails> {
+  public getItemDetails(): BehaviorSubject<ItemDetails[]> {
     return this.itemDetails;
   }
 }
