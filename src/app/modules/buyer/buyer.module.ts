@@ -15,6 +15,7 @@ import { MatButtonModule, MatCardModule, MatListModule, MatToolbarModule, MatInp
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { AlertModule } from '../alert/alert.module';
+import { UnsubscribeComponent } from 'src/app/components/unsubscribe/unsubscribe.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AlertModule } from '../alert/alert.module';
     HomeDetailsComponent,
     AdBannerComponent,
     HotDealsComponent,
-    EmailSubscriptionComponent
+    EmailSubscriptionComponent,
+    UnsubscribeComponent
   ],
   imports: [
     CommonModule,
