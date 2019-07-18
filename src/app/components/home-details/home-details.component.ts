@@ -3,7 +3,7 @@ import { AlertService } from './../../services/alert.service';
 import { SharedService } from './../../services/shared.service';
 import { BuyerService } from './../../services/buyer.service';
 import { DataTransferService } from './../../services/data-transfer.service';
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { ItemDetails } from 'src/app/models/item.details';
 import { first } from 'rxjs/operators';
 import { ProductCategory } from 'src/app/models/product.category';
@@ -20,7 +20,15 @@ export class HomeDetailsComponent implements OnInit {
             , private sharedService: SharedService
             , private dataTransferService: DataTransferService
             , private alertService: AlertService) {
+              this.dataTransferService.getItemDetails()
+                .subscribe(res => {
+                  this.itemDetails = [];
+                  this.selectedCat = '';
+                  this.itemDetails = res;
+                  }
+                );
    }
+
   itemDetails: ItemDetails[];
   productCategories: ProductCategory[];
 

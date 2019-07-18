@@ -8,13 +8,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCardModule, MatListModule, MatToolbarModule
   , MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,
   MatSortModule, MatTableModule, MatSidenavModule, MatIconModule, MatMenuModule,
-  MatDialogModule, MatCheckboxModule, MatGridListModule} from '@angular/material';
+  MatDialogModule, MatCheckboxModule, MatGridListModule, MatAutocompleteModule} from '@angular/material';
 import { JwtInterceptor, ErrorInterceptor } from './helpers';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SwiperModule } from 'ngx-swiper-wrapper';
-import { NgMatSearchBarModule } from 'ng-mat-search-bar';
 import { LoginComponent } from './components/login/login.component';
 import { AlertModule } from './modules/alert/alert.module';
 import { SearchComponent } from './components/search/search.component';
@@ -51,8 +50,8 @@ import { SearchComponent } from './components/search/search.component';
     MatGridListModule,
     NgbModule,
     SwiperModule,
-    NgMatSearchBarModule,
-    AlertModule
+    AlertModule,
+    MatAutocompleteModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

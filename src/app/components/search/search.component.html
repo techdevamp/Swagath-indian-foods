@@ -1,13 +1,31 @@
-<section class="filter-wrapper">
-    <div class="keyword-wrapper">
-   <input [formControl]="queryField" (keyup)="searchItem()" (focus)="onFocus()"
-   (blur) = 'onBlur()' type="text" id="keyword" placeholder="Search..." autofocus class="form-control"/>
-     </div>
-   <ul class='filter-select' *ngIf='displayList'>
-     <li class='filter-select-list' *ngFor="let result of results" >
-       <img src="{{imgUrl}}{{result.imageName[0]}}" alt="" width="50" height="50">
-       <p class="item-name">
-        {{result.productItemNm}}</p>
-   <!--<span class="tags" *ngFor='let genre of result?.genres | slice:0:6'>{{genre}}</span>-->
-   </ul>
-   </section>
+<section class="filter-wrapper" >
+  <div class="keyword-wrapper">
+    <form (submit)="onSubmit()">
+  <mat-form-field >
+    <input matInput [formControl]="queryField" (keyup)="searchItem()" (focus)="onFocus()" (blur)='onBlur()'
+    type="search" placeholder="Search..."
+    [matAutocomplete]="auto"/>
+
+  <mat-autocomplete #auto="matAutocomplete" class='filter-select' >
+    <mat-option *ngFor="let result of results" [value]="result.productItemNm" class='filter-select-list'>
+      <img src="{{imgUrl}}{{result.imageName[0]}}" alt="{{result.productItemNm}}"
+        width="50" height="50" (click)='searchResults(result)'>
+        <p class="item-name">
+          {{result.productItemNm}}
+        </p>
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
+</form>
+</div>
+  <!--<ul class='filter-select' *ngIf='displayList'>
+    <li class='filter-select-list' *ngFor="let result of results" >
+      <img src="{{imgUrl}}{{result.imageName[0]}}" alt="{{result.productItemNm}}"
+        width="50" height="50" (click)='searchResults(result)'>
+        <p class="item-name">
+          {{result.productItemNm}}
+        </p>
+        <span class="tags" *ngFor='let genre of result?.genres | slice:0:6'>{{genre}}</span>
+      </li>
+  </ul>-->
+</section>

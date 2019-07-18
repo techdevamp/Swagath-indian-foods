@@ -18,8 +18,9 @@ export class SearchComponent implements OnInit {
   constructor(private buyerService: BuyerService,
               private dataTransferService: DataTransferService,
               private alertService: AlertService) { }
-  itemDetails: BehaviorSubject<ApiResponse>;
+  itemDetails: BehaviorSubject<ItemDetails[]>;
   results: ItemDetails[];
+  selectedItems: ItemDetails[] = [];
   queryField: FormControl = new FormControl();
   imgUrl = AppConstants.imageURL;
   displayList: boolean;
@@ -32,12 +33,7 @@ export class SearchComponent implements OnInit {
   }
 
   onFocus() {
-    if (this.queryField.value === '') {
-      this.displayList = false;
-      this.results = null;
-    } else {
-      this.displayList = true;
-    }
+    this.searchItem();
   }
 
   searchItem() {
@@ -65,5 +61,26 @@ export class SearchComponent implements OnInit {
               }
 
         });
+  }
+
+  searchResults(itemDetail: any) {
+    this.selectedItems.push(itemDetail);
+    this.itemDetails = this.dataTransferService.getItemDetails();
+    this.itemDetails.next(this.selectedItems);
+    this.dataTransferService.setItemDetails(this.itemDetails);
+    this.displayList = false;
+    this.queryField.setValue('');
+    this.itemDetails = null;
+    this.results = null;
+  }
+
+  onSubmit(){
+    this.itemDetails = this.dataTransferService.getItemDetails();
+    this.itemDetails.next(this.results);
+    this.dataTransferService.setItemDetails(this.itemDetails);
+    this.displayList = false;
+    this.queryField.setValue('');
+    this.itemDetails = null;
+    this.results = null;
   }
 }
