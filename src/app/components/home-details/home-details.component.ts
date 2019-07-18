@@ -25,6 +25,7 @@ export class HomeDetailsComponent implements OnInit {
                   this.itemDetails = [];
                   this.selectedCat = '';
                   this.itemDetails = res;
+                  this.getData({pageIndex: this.page, pageSize: this.size});
                   }
                 );
    }
@@ -35,24 +36,28 @@ export class HomeDetailsComponent implements OnInit {
   itemsCount: BehaviorSubject<number>;
   selectedCat: any;
   imgUrl = AppConstants.imageURL;
-
+  data: ItemDetails[];
+  page = 0;
+  size = 10;
+  pageSizeOptions = [10, 20, 30];
   ngOnInit() {
     this.getProductCategories();
   }
+
   public getProductCategories() {
     this.sharedService.getProductCategories().pipe(first()).subscribe(res => {
       this.productCategories = res.result;
       this.selectedCat = this.productCategories[0].productCategoryNm;
       this.getItemDetails(this.productCategories[0].productCategoryNm);
     },
-    error => {this.alertService.error(error);
-              }
+    error => {this.alertService.error(error); }
     );
   }
   public getItemDetails(category: string) {
     this.selectedCat = category;
     this.buyerService.getItemDetailsByCategory(category).pipe(first()).subscribe(res => {
       this.itemDetails = res.result;
+      this.getData({pageIndex: this.page, pageSize: this.size});
     });
   }
 
@@ -60,5 +65,16 @@ export class HomeDetailsComponent implements OnInit {
     this.itemsCount = this.dataTransferService.getItemsInCart();
     this.itemsCount.next(this.itemsCount.value + 1);
     this.dataTransferService.setItemsInCart(this.itemsCount);
+  }
+
+  getData(obj: { pageIndex: any; pageSize: any; }) {
+    let index = 0;
+    const startingIndex = obj.pageIndex * obj.pageSize;
+    const endingIndex = startingIndex + obj.pageSize;
+
+    this.data = this.itemDetails.filter(() => {
+      index++;
+      return (index > startingIndex && index <= endingIndex) ? true : false;
+    });
   }
 }

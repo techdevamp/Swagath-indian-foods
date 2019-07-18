@@ -17,7 +17,7 @@
     <button type="button" class="btn btn-info" (click)="onUpload()">Upload</button>
 </div>
 <mat-grid-list cols="5" role="list">
-    <mat-grid-tile *ngFor="let image of imagesList | filter:searchText" role="listitem" title="{{image | titlecase}}">
+    <mat-grid-tile *ngFor="let image of imagesNames | filter:searchText" role="listitem" title="{{image | titlecase}}">
 
         <img src="{{imgUrl}}{{image}}" alt="{{image}}" class="img-fluid">
         <mat-grid-tile-footer class="clientGridFooterBG">
@@ -27,4 +27,10 @@
         </mat-grid-tile-footer>
     </mat-grid-tile>
   </mat-grid-list>
+  <mat-paginator [length]="imagesList.length"
+  [pageSize]="size"
+  [pageIndex]="page"
+  [pageSizeOptions]="pageSizeOptions"
+  (page)="getData($event)">
+</mat-paginator>
 </div>

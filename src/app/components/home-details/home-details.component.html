@@ -16,16 +16,17 @@
             </h3>
           </div>
         <mat-grid-list cols="6" role="list">
-          <mat-grid-tile *ngFor="let item of itemDetails" role="listitem" title="{{item.productItemNm | titlecase}}">
+          <mat-grid-tile *ngFor="let item of data" role="listitem" title="{{item.productItemNm | titlecase}}">
 
-            <figure >
-              <div class="snipcart-item block">
-              <div class="snipcart-thumb">
-              <img src="{{imgUrl}}{{item.imageName[0]}}" alt="{{item.productItemNm}}" class="img-fluid">
-              <mat-grid-tile-footer class="clientGridFooterBG">
+            
+             
+              <img src="{{imgUrl}}{{item.imageName[0]}}" alt="{{item.productItemNm}}" >
+            
+            <mat-grid-tile-footer class="clientGridFooterBG">
                   <div class="snipcart-details">
                   <h6 mat-line>{{item.productItemNm | titlecase}}({{item.productItemWeight | number}} gm)</h6>
-                  <h6 mat-line *ngIf="item.productItemDscnt; else noDiscount">{{item.productItemDscnt | currency}}<span>{{item.productItemUnitPrice | currency}}</span></h6>
+                  <h6 mat-line *ngIf="item.productItemDscnt; else noDiscount">{{item.productItemDscnt | currency}}
+                    <span>{{item.productItemUnitPrice | currency}}</span></h6>
                     <ng-template #noDiscount>
                       <h6 mat-line>{{item.productItemUnitPrice | currency}}</h6>
                     </ng-template>
@@ -36,10 +37,15 @@
                   </button>-->
                 </div>
               </mat-grid-tile-footer>
-              </div>
-            </div>
-            </figure>
+            
+            
           </mat-grid-tile>
         </mat-grid-list>
+        <mat-paginator [length]="itemDetails.length"
+                [pageSize]="size"
+                [pageIndex]="page"
+                [pageSizeOptions]="pageSizeOptions"
+                (page)="getData($event)">
+  </mat-paginator>
     </mat-sidenav-content>
   </mat-sidenav-container>
