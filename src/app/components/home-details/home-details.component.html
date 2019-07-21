@@ -30,12 +30,12 @@
                     alt="{{item.productItemNm}}" class="img-responsive">
 
                         <p mat-line>{{item.productItemNm | titlecase}}({{item.productItemWeight | number}} gm)</p>
-                        <h6 mat-line *ngIf="item.productItemDscnt; else noDiscount">
+                        <h3 mat-line *ngIf="item.productItemDscnt; else noDiscount">
                         <span>{{item.productItemUnitPrice | currency}}</span>
                         {{item.productItemDscnt | currency}}
-                        </h6>
+                        </h3>
                         <ng-template #noDiscount>
-                            <h6 mat-line>{{item.productItemUnitPrice | currency}}</h6>
+                            <h3 mat-line>{{item.productItemUnitPrice | currency}}</h3>
                         </ng-template>
 
                         <span mat-line>{{item.productItemDesc |titlecase}}</span>
