@@ -15,30 +15,39 @@
               {{selectedCat}}
             </h3>
           </div>
-        <mat-grid-list cols="6" role="list">
-          <mat-grid-tile *ngFor="let item of data" role="listitem" title="{{item.productItemNm | titlecase}}">
+        <mat-grid-list [cols]='colsize' role="list">
 
-            
-             
-              <img src="{{imgUrl}}{{item.imageName[0]}}" alt="{{item.productItemNm}}" >
-            
-            <mat-grid-tile-footer class="clientGridFooterBG">
-                  <div class="snipcart-details">
-                  <h6 mat-line>{{item.productItemNm | titlecase}}({{item.productItemWeight | number}} gm)</h6>
-                  <h6 mat-line *ngIf="item.productItemDscnt; else noDiscount">{{item.productItemDscnt | currency}}
-                    <span>{{item.productItemUnitPrice | currency}}</span></h6>
-                    <ng-template #noDiscount>
-                      <h6 mat-line>{{item.productItemUnitPrice | currency}}</h6>
-                    </ng-template>
 
-                  <span mat-line>{{item.productItemDesc |titlecase}}</span>
-                  <!--<button mat-icon-button (click) ="addToCart(item.id)">
-                      <mat-icon>add_shopping_cart</mat-icon>
-                  </button>-->
+          <mat-grid-tile *ngFor="let item of data" role="listitem"
+          title="{{item.productItemNm | titlecase}}">
+          <div class="hover14 column">
+            <div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+              <figure>
+                <div class="snipcart-item block">
+                  <div class="snipcart-thumb">
+
+                    <img id="{{item.id}}" src="{{imgUrl}}{{item.imageName[0]}}"
+                    alt="{{item.productItemNm}}" class="img-responsive"
+                    data-okimage>
+
+                        <p mat-line>{{item.productItemNm | titlecase}}({{item.productItemWeight | number}} gm)</p>
+                        <h6 mat-line *ngIf="item.productItemDscnt; else noDiscount">
+                        <span>{{item.productItemUnitPrice | currency}}</span>
+                        {{item.productItemDscnt | currency}}
+                        </h6>
+                        <ng-template #noDiscount>
+                            <h6 mat-line>{{item.productItemUnitPrice | currency}}</h6>
+                        </ng-template>
+
+                        <span mat-line>{{item.productItemDesc |titlecase}}</span>
+                      <!--<button mat-icon-button (click) ="addToCart(item.id)">
+                          <mat-icon>add_shopping_cart</mat-icon>
+                      </button>-->
+                  </div>
                 </div>
-              </mat-grid-tile-footer>
-            
-            
+              </figure>
+            </div>
+           </div>
           </mat-grid-tile>
         </mat-grid-list>
         <mat-paginator [length]="itemDetails.length"
@@ -46,6 +55,6 @@
                 [pageIndex]="page"
                 [pageSizeOptions]="pageSizeOptions"
                 (page)="getData($event)">
-  </mat-paginator>
+        </mat-paginator>
     </mat-sidenav-content>
   </mat-sidenav-container>

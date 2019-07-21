@@ -8,6 +8,9 @@ import { ItemDetails } from 'src/app/models/item.details';
 import { first } from 'rxjs/operators';
 import { ProductCategory } from 'src/app/models/product.category';
 import { BehaviorSubject } from 'rxjs';
+import * as $ from '../../../assets/js/okzoom.js';
+
+declare var $: any;
 
 @Component({
   selector: 'app-home-details',
@@ -40,7 +43,17 @@ export class HomeDetailsComponent implements OnInit {
   page = 0;
   size = 10;
   pageSizeOptions = [10, 20, 30];
+  colsize: number;
+  private isMobileResolution: boolean;
+
   ngOnInit() {
+    if (window.innerWidth < 768) {
+      this.isMobileResolution = true;
+      this.colsize = 1;
+    } else {
+      this.isMobileResolution = false;
+      this.colsize = 5;
+    }
     this.getProductCategories();
   }
 
@@ -76,5 +89,18 @@ export class HomeDetailsComponent implements OnInit {
       index++;
       return (index > startingIndex && index <= endingIndex) ? true : false;
     });
+  }
+
+  onhover(id: any) {
+    $('#' + id).okzoom({
+      width: 150,
+      height: 150,
+      border: '1px solid black',
+      shadow: '0 0 5px #000'
+    });
+  }
+
+  onmouseout(){
+
   }
 }
