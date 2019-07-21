@@ -1,6 +1,6 @@
 
   <mat-sidenav-container fxFlex  >
-    <mat-sidenav  #sideNavItemDetails mode="side">
+    <mat-sidenav  #sideNavItemDetails mode="side" (blur)="sideNavItemDetails.toggle()">
       <mat-list *ngFor="let categ of productCategories" class="clientSideMenuItemsBG">
         <a mat-list-item (click)='getItemDetails(categ.productCategoryNm)' class="gridHeaderFooter">{{categ.productCategoryNm}}</a>
         <mat-divider><hr></mat-divider>
@@ -21,7 +21,7 @@
           <mat-grid-tile *ngFor="let item of data" role="listitem"
           title="{{item.productItemNm | titlecase}}">
           <div class="hover14 column">
-            <div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+            <div class="agile_top_brand_left_grid1 w3l_agile_top_brand_left_grid">
               <figure>
                 <div class="snipcart-item block">
                   <div class="snipcart-thumb">
@@ -29,16 +29,16 @@
                     <img id="{{item.id}}" src="{{imgUrl}}{{item.imageName[0]}}"
                     alt="{{item.productItemNm}}" class="img-responsive">
 
-                        <p mat-line>{{item.productItemNm | titlecase}}({{item.productItemWeight | number}} gm)</p>
-                        <h3 mat-line *ngIf="item.productItemDscnt; else noDiscount">
-                        <span>{{item.productItemUnitPrice | currency}}</span>
+                        <p >{{item.productItemNm | titlecase}}({{item.productItemWeight | number}} gm)</p>
+                        <h4  *ngIf="item.productItemDscnt; else noDiscount">
                         {{item.productItemDscnt | currency}}
-                        </h3>
+                        <span>{{item.productItemUnitPrice | currency}}</span>
+                        </h4>
                         <ng-template #noDiscount>
-                            <h3 mat-line>{{item.productItemUnitPrice | currency}}</h3>
+                            <h4 >{{item.productItemUnitPrice | currency}}</h4>
                         </ng-template>
 
-                        <span mat-line>{{item.productItemDesc |titlecase}}</span>
+                        <span >{{item.productItemDesc |titlecase}}</span>
                       <!--<button mat-icon-button (click) ="addToCart(item.id)">
                           <mat-icon>add_shopping_cart</mat-icon>
                       </button>-->
