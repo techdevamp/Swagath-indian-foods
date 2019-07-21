@@ -8,7 +8,6 @@ import { ItemDetails } from 'src/app/models/item.details';
 import { first } from 'rxjs/operators';
 import { ProductCategory } from 'src/app/models/product.category';
 import { BehaviorSubject } from 'rxjs';
-import * as $ from '../../../assets/js/okzoom.js';
 
 declare var $: any;
 
@@ -100,7 +99,7 @@ export class HomeDetailsComponent implements OnInit {
     });
   }
 
-  onmouseout(){
+  onmouseout() {
 
   }
 }

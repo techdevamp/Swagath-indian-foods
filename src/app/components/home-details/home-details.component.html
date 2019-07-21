@@ -27,8 +27,7 @@
                   <div class="snipcart-thumb">
 
                     <img id="{{item.id}}" src="{{imgUrl}}{{item.imageName[0]}}"
-                    alt="{{item.productItemNm}}" class="img-responsive"
-                    data-okimage>
+                    alt="{{item.productItemNm}}" class="img-responsive">
 
                         <p mat-line>{{item.productItemNm | titlecase}}({{item.productItemWeight | number}} gm)</p>
                         <h6 mat-line *ngIf="item.productItemDscnt; else noDiscount">
