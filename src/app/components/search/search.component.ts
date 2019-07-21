@@ -74,7 +74,7 @@ export class SearchComponent implements OnInit {
     this.results = null;
   }
 
-  onSubmit(){
+  onSubmit() {
     this.itemDetails = this.dataTransferService.getItemDetails();
     this.itemDetails.next(this.results);
     this.dataTransferService.setItemDetails(this.itemDetails);
