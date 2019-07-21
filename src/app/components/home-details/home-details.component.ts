@@ -48,7 +48,7 @@ export class HomeDetailsComponent implements OnInit {
   ngOnInit() {
     if (window.innerWidth < 768) {
       this.isMobileResolution = true;
-      this.colsize = 1;
+      this.colsize = 2;
     } else {
       this.isMobileResolution = false;
       this.colsize = 5;
