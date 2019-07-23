@@ -1,4 +1,4 @@
-<div fxFlex>
+<div class="image-manager">
     <h2 class="text-center">
         Image Manager
       </h2>
@@ -18,13 +18,17 @@
 </div>
 <mat-grid-list cols="5" role="list">
     <mat-grid-tile *ngFor="let image of imagesNames | filter:searchText" role="listitem" title="{{image | titlecase}}">
+      <div class="hover14 column">
+        <div class="agile_top_brand_left_grid1 w3l_agile_top_brand_left_grid">
+          <figure>
+            <div class="snipcart-item block">
+              <div class="snipcart-thumb">
+        <img src="{{imgUrl}}{{image}}" alt="{{image}}" class="img-responsive">
 
-        <img src="{{imgUrl}}{{image}}" alt="{{image}}" class="img-fluid">
-        <mat-grid-tile-footer class="clientGridFooterBG">
-            <div class="snipcart-details">
-            <span mat-line>{{image |titlecase}}</span>
+
+        <p >{{image |titlecase}}</p>
           </div>
-        </mat-grid-tile-footer>
+       </div></figure></div></div>
     </mat-grid-tile>
   </mat-grid-list>
   <mat-paginator [length]="imagesList.length"

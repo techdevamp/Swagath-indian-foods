@@ -69,7 +69,7 @@ export class EditItemDetailsComponent implements OnInit {
   onImageClick(imageFile: any) {
       this.fileToUpload = imageFile.target.files.item(0);
       this.createImageFromBlob(this.fileToUpload);
-      this.imgExists = AppConstants.imageURL.concat(this.fileToUpload.name);
+      this.imgExists = AppConstants.imageURL.concat(this.productItemNm);
   }
 
   onUpload() {
