@@ -1,3 +1,4 @@
+import { ItemDetails } from 'src/app/models/item.details';
 import { AppConstants } from 'src/app/constants/AppConstants';
 import { DataTransferService, AlertService } from 'src/app/services';
 import { SellerService } from './../../services/seller.service';
@@ -85,7 +86,13 @@ export class EditItemDetailsComponent implements OnInit {
   }
 
   onSubmit() {
-    this.sellerService.editItem(this.editItemDetailsForm.value)
+    let imagesNames: string;
+    let editItemDetails: ItemDetails;
+    imagesNames = this.editItemDetailsForm.controls.imageName.value;
+    this.imagesName = imagesNames.split(',');
+    editItemDetails = this.editItemDetailsForm.value;
+    editItemDetails.imageName = this.imagesName;
+    this.sellerService.editItem(editItemDetails)
       .subscribe(
         res => {
           if (res.status === 200) {

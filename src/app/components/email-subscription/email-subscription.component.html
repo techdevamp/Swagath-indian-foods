@@ -11,7 +11,7 @@
         </mat-error>
 
       </mat-form-field>
-      <mat-icon color="warn" style="vertical-align: middle;">sms</mat-icon>
+     <!-- <mat-icon color="warn" style="vertical-align: middle;">sms</mat-icon>
       <mat-form-field class="newsletter-form-field">
           <mat-label>Text</mat-label>
           <input matInput [formControl]="phoneNo" >
@@ -21,7 +21,7 @@
           <mat-error *ngIf="phoneNo.hasError('maxlength') ">
               Phone number must not excees 10 digits
             </mat-error>
-        </mat-form-field>
+        </mat-form-field>-->
       <button (click)="subscribe()"  type="submit" class="btn btn-info">Subscribe</button>
     </form>
 </div>
