@@ -89,7 +89,7 @@ export class EditItemDetailsComponent implements OnInit {
     let imagesNames: string;
     let editItemDetails: ItemDetails;
     imagesNames = this.editItemDetailsForm.controls.imageName.value;
-    this.imagesName = imagesNames.split(',');
+    this.imagesName = imagesNames.indexOf(',') > 0 ? imagesNames.split(',') : this.imagesName;
     editItemDetails = this.editItemDetailsForm.value;
     editItemDetails.imageName = this.imagesName;
     this.sellerService.editItem(editItemDetails)
